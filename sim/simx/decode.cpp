@@ -114,6 +114,7 @@ static op_string_t op_string(const Instr &instr) {
         }
       }
       case AluType::CZERO: return {aluArgs.imm ? "CZERO.NEZ":"CZERO.EQZ", ""};
+      case AluType::DOT8: return {"DOT8", ""};
       default:
         std::abort();
       }
@@ -938,6 +939,17 @@ Instr::Ptr Decoder::decode(uint32_t code, uint64_t uuid) {
       }
     } break;
   #endif
+    case 6: {
+      if (funct3 != 0) {
+        std::abort();
+      }
+      instr->set_fu_type(FUType::ALU);
+      instr->set_op_type(AluType::DOT8);
+      instr->set_args(IntrAluArgs{0, 0, 0});
+      instr->set_dest_reg(rd, RegType::Integer);
+      instr->set_src_reg(0, rs1, RegType::Integer);
+      instr->set_src_reg(1, rs2, RegType::Integer);
+    } break;
     case 4: { // Load/Store Packing extensions — macro-ops, sequencer expands to N single-elem uops
       instr->set_fu_type(FUType::LSU);
       instr->set_op_type(LsuType::LOAD);

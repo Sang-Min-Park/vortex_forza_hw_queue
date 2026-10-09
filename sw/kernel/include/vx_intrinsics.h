@@ -110,6 +110,14 @@ extern "C" {
 #define vx_mret() \
   __asm__ volatile ("mret")
 
+/// Computes the signed dot product of four packed int8 pairs.
+inline int32_t vx_dot8(uint32_t a, uint32_t b) {
+  int32_t ret;
+  __asm__ volatile (".insn r %1, 0, 6, %0, %2, %3"
+                    : "=r"(ret) : "i"(RISCV_CUSTOM0), "r"(a), "r"(b));
+  return ret;
+}
+
 // Set thread mask
 inline void vx_tmc(int thread_mask) {
     __asm__ volatile (".insn r %0, 0, 0, x0, %1, x0" :: "i"(RISCV_CUSTOM0), "r"(thread_mask) : "memory");

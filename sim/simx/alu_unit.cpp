@@ -45,6 +45,7 @@ uint32_t AluUnit::latency_of(const instr_trace_t* trace) const {
 		case AluType::AND:
 		case AluType::OR:
 		case AluType::CZERO:
+    case AluType::DOT8:
 			return 2;
 		default:
 			std::abort();
@@ -237,6 +238,24 @@ void AluUnit::execute(instr_trace_t* trace) {
 				rd_data[t].i = rs1_data[t].i ^ (aluArgs.is_imm ? imm : rs2_data[t].i);
 			}
 		} break;
+    case AluType::DOT8: {
+      for (uint32_t t = thread_start; t < num_threads; ++t) {
+        if (!tmask.test(t)) {
+          continue;
+        }
+        uint32_t packed_a = rs1_data[t].u;
+        uint32_t packed_b = rs2_data[t].u;
+        int32_t sum = 0;
+        for (uint32_t i = 0; i < 4; ++i) {
+          int32_t a = (packed_a >> (8 * i)) & 0xff;
+          int32_t b = (packed_b >> (8 * i)) & 0xff;
+          a = (a ^ 0x80) - 0x80;
+          b = (b ^ 0x80) - 0x80;
+          sum += a * b;
+        }
+        rd_data[t].i = sum;
+      }
+    } break;
 		case AluType::CZERO: {
 			for (uint32_t t = thread_start; t < num_threads; ++t) {
 				if (!tmask.test(t)) continue;

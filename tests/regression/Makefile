@@ -4,7 +4,7 @@ include $(ROOT_DIR)/config.mk
 # --- master list ------------------------------------------------------
 TESTS := \
     minimal                                                           \
-    basic demo dogfood dropout dotproduct dotproduct2 mstress io_addr \
+    basic demo dogfood dropout dot8 dotproduct dotproduct2 mstress io_addr \
     arith printf diverge sort fence                                   \
     vecadd vecadd_v1 sgemm sgemmx sgemm_v1 conv3 relu sgemv           \
     sgemm2 sgemm2_v1 madmax stencil3d raycast bfs jacobi pathfinder   \
@@ -22,9 +22,9 @@ EXCLUDE :=
 
 # --- per-backend exclude lists ---------------------------------------
 EXCLUDE_simx   :=
-EXCLUDE_rtlsim :=
-EXCLUDE_opae   :=
-EXCLUDE_xrt    :=
+EXCLUDE_rtlsim := dot8
+EXCLUDE_opae   := dot8
+EXCLUDE_xrt    := dot8
 
 BACKENDS := simx rtlsim opae xrt
 
