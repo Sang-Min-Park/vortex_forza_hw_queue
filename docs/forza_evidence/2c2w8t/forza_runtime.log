@@ -1,0 +1,20 @@
+make: Entering directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/tests/regression/forza_runtime'
+CONFIGS="-DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_NUM_CORES=2 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=8 -DVX_CFG_NUM_SFU_LANES=8"     make -C /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime/stub DESTDIR=/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime
+make[1]: Entering directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime/stub'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime/stub'
+CONFIGS="-DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_NUM_CORES=2 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=8 -DVX_CFG_NUM_SFU_LANES=8"     make -C /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime/simx DESTDIR=/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime
+make[1]: Entering directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime/simx'
+DESTDIR=/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime make -C /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sim/simx /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime/libsimx.so
+make[2]: Entering directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sim/simx'
+make[2]: Leaving directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sim/simx'
+make[1]: Leaving directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime/simx'
+LD_LIBRARY_PATH=/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/sw/runtime:/nethome/spark3100/vortex-deps/root/usr/lib/x86_64-linux-gnu:/nethome/spark3100/vortex-deps/root/usr/lib/x86_64-linux-gnu VORTEX_DRIVER=simx ./forza_runtime -n4 -p10000
+FORZA runtime: 2 cores, 2 warps, 8 lanes, 4 rounds, 32 actors
+[VXDRV] Warning: CP has not retired a command in 10s.
+[VXDRV]   Q_SEQNUM=25 target=26 CP_CTRL=0x00000001 CP_STATUS=0x00000001 Q_ERROR=0x00000000
+[VXDRV]   RING_BASE=0x0000610fe1d73dc0 HEAD_ADDR=0x0000610fe1d83e00 CMPL_ADDR=0x0000610fe1d83f00
+[VXDRV]   RING_SIZE_LOG2=16 Q_CONTROL=0x00000001 Q_TAIL=0x0000000000000680
+[VXDRV]   The ring was accepted but nothing is executing. Set VORTEX_CP_POLL_TIMEOUT_S=<sec> to abort instead of spinning.
+PASSED: 768 handler invocations; global-PE ring and fan-in, two mailboxes, short payloads, per-sender FIFO, software DONE from all peers, ACK counts zero; 32 actors closed before their final handler-generated reply; backpressure retries=2
+make: Leaving directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-2c2w8t/tests/regression/forza_runtime'

@@ -30,6 +30,11 @@ public:
   SimChannel<LsuReq> ReqOutDC;
   SimChannel<LsuRsp> RspInDC;
 
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  SimChannel<LsuReq> ReqOutForza;
+  SimChannel<LsuRsp> RspInForza;
+#endif
+
   LocalMemSwitch(
     const SimContext& ctx,
     const char* name,
@@ -37,10 +42,16 @@ public:
   );
 
 protected:
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  void on_reset();
+#endif
   void on_tick();
 
 private:
   uint32_t delay_;
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  uint32_t rsp_cursor_;
+#endif
 
   friend class SimObject<LocalMemSwitch>;
 };

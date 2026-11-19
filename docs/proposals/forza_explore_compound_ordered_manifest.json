@@ -1,0 +1,329 @@
+{
+  "schema": 1,
+  "cohort": "data_dependent_release",
+  "source_sha256": {
+    "tests/regression/forza_explore/compound_state_ordered/Makefile": "4725ae54a590b9b963362952f8514e6b2eae516a5a96a84bfcfbb7883e623057",
+    "tests/regression/forza_explore/compound_state_ordered/README.md": "4aeba64b16d0c93cfb109ea6f22e04e35d38450f6f21497120f9b985f50e7e38",
+    "tests/regression/forza_explore/compound_state_ordered/analyze.py": "97bf12ec5001c3152b3f87bd2de046a2088daf8a3d1c6c65eec073d6252bdb5f",
+    "tests/regression/forza_explore/compound_state_ordered/common.h": "db288db248c6e89b0d278041878484d7cd7661384f7cec4869c01b84df9b6a26",
+    "tests/regression/forza_explore/compound_state_ordered/compiled-release-proof.txt": "2dc0a16f86183d9e7fd5f97be76c659e114fa8a2ca0826794e70435a9a76653d",
+    "tests/regression/forza_explore/compound_state_ordered/kernel_mp.cpp": "ad2d373a30de5be81415e9ca8303ff97985bddd49ab2bf3cba878a6eba8aaf5c",
+    "tests/regression/forza_explore/compound_state_ordered/main.cpp": "6f8233abbebdf276ef4dabbf1e80a1771056001f8640a772c2617c7535834c21",
+    "tests/regression/forza_explore/compound_state_ordered/run_comparison.py": "2a9d0a97b5b8c888f4d39ed10661300001fc87800ade010c59a1f948ae52303d",
+    "tests/regression/forza_explore/compound_state_ordered/source-freeze.json": "ce57947675e6dbf9edc7da0213b0b1b152091403c3a269bacbabfc2fea9b51f5",
+    "tests/regression/forza_explore/compound_state_ordered/state.h": "0cbf5327a9c2214c4321c2971fde02dec30143b479147ed7ba1dbf18b4b6c99d",
+    "tests/regression/forza_explore/compound_state_ordered/write_provenance.py": "25b3d1df44fa89674e68bc4d1d9e11dcb17b0ade0aa879b688187a111d8bda78",
+    "tests/regression/forza_explore/runtime_ordered/inc/forza_message_lib.vortex.h": "88dd02938677c25e1e0c02645ca31fb51d277152b4f333c5554e73fb457aeaab",
+    "tests/regression/forza_explore/runtime_ordered/inc/selector.forza.h": "f3619c9664b8cd1d80acc9afab40cfa9ea69559349dd3578a7b4d14a317a0187",
+    "tests/regression/forza_explore/runtime_ordered/inc/selector.vortex.h": "580e37ef3552c24061d1f99fe7fd907c07c6a97ef7260fba4f1e02ad78dd2710",
+    "tests/regression/forza_explore/runtime_ordered/vortex.mk": "1af296a8ce95ae0d2faff8497422911e86813c0cac957ea128e6f23b07a291e1"
+  },
+  "copied_app_sources_identical_to_frozen": {
+    "main.cpp": true,
+    "common.h": true,
+    "state.h": true,
+    "kernel_mp.cpp": true
+  },
+  "frozen_reference_manifest": "/export/nethomes/spark3100/vortex-forza-hwqueue/docs/proposals/forza_explore_compound_manifest.json",
+  "frozen_reference_manifest_sha256": "481a5a3ebe05f0e27f12876f73afe39cf2b626c90e1a8e2f62c1970181fa83d7",
+  "driver_configuration": {
+    "common": [
+      "-DVX_CFG_EXT_FORZA_ENABLE",
+      "-DVX_CFG_EXT_A_ENABLE",
+      "-DVX_CFG_L2_ENABLE",
+      "-DVX_CFG_NUM_CORES=2",
+      "-DVX_CFG_NUM_WARPS=2",
+      "-DVX_CFG_NUM_THREADS=4"
+    ],
+    "l1_off_extra": "-DVX_CFG_DCACHE_DISABLE",
+    "xlen": 64,
+    "actual_cpp_constants": {
+      "L2_SIZE": 1048576,
+      "L2_BANKS": 4,
+      "LMEM_BANKS": 4,
+      "L2_REQS": 4,
+      "L1_PORTS": 2
+    },
+    "constants_scope": "Generated sw/VX_config.h plus sim/simx/constants.h; not standalone host gen_config expansion."
+  },
+  "builds": {
+    "l1_off": {
+      "run_manifest": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/validation-run-manifest.json",
+      "run_manifest_sha256": "5496c4f79051a167f8b0f54e6a20ec25be320c3754f5cdc273ffd927574ca475",
+      "artifacts": {
+        "build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin": "d7a75409ee4ce24c981ffb3bbd7e0d5eedd7acf0a2436dd7bcb7455ce33303cd",
+        "build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.dump": "288e068fd3f06d92d1c248d51511ca5fe28c1f7d73bde060d35e923d93c0dd94",
+        "build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp": "11d12622d2c91eb376bdb980e789e39b3d44f79ef4a75e79452e2d4a5cba80dd",
+        "build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.elf": "6252068a0c595ce7fd92912742f614be48c7a3bf25ce3446cd9bf429b3f93d2f"
+      },
+      "runs": [
+        {
+          "case": "hot",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "32",
+            "-u",
+            "4096",
+            "-g",
+            "hot",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_off-mp-hot.log",
+          "log_sha256": "7e3d1a5ddd91668425a0cdcada3eca9fff00ae2d091d42a36271e7590b5de570",
+          "exit_code": 0,
+          "wall_seconds": 22.392324209213257,
+          "passed": true
+        },
+        {
+          "case": "capacity",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "32768",
+            "-u",
+            "65536",
+            "-g",
+            "uniform",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_off-mp-capacity.log",
+          "log_sha256": "db563c458e57ca57fe154efe3f88f9d47d21da3341ada5ff10c8e7470e19d3f9",
+          "exit_code": 0,
+          "wall_seconds": 70.00151681900024,
+          "passed": true
+        },
+        {
+          "case": "uniform_smoke",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "64",
+            "-u",
+            "128",
+            "-g",
+            "uniform",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_off-mp-uniform_smoke.log",
+          "log_sha256": "fb9ba8f976095a1899747c1e04008feef25908f912da45a1f7ff459dbf9312bf",
+          "exit_code": 0,
+          "wall_seconds": 0.16423535346984863,
+          "passed": true
+        },
+        {
+          "case": "hot_smoke",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "64",
+            "-u",
+            "128",
+            "-g",
+            "hot",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_off-mp-hot_smoke.log",
+          "log_sha256": "abb766ea915447df5daf259ce2974380918e9e07bbcbe732e9cb134d559f3094",
+          "exit_code": 0,
+          "wall_seconds": 0.4645504951477051,
+          "passed": true
+        },
+        {
+          "case": "zero_smoke",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "64",
+            "-u",
+            "0",
+            "-g",
+            "hot",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_off-mp-zero_smoke.log",
+          "log_sha256": "60b700910fb383d7e9e96eae81cddf2e5c898c69088a759118e39a52479c1dac",
+          "exit_code": 0,
+          "wall_seconds": 0.03196120262145996,
+          "passed": true
+        }
+      ],
+      "measured_artifacts": {
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp": "11d12622d2c91eb376bdb980e789e39b3d44f79ef4a75e79452e2d4a5cba80dd",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin": "d7a75409ee4ce24c981ffb3bbd7e0d5eedd7acf0a2436dd7bcb7455ce33303cd",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/sw/runtime/libsimx.so": "eab861e9100862dcd3d4ed2de3b5ba8b7704d5658862b49ebed2cf5290dc07b6",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/sw/runtime/libvortex-simx.so": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/sw/runtime/libvortex.so": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state/snapshots/gpu_lock/forza_compound_gpu_lock": "992f7eccc8255a9a2bd0adce21057b9cd1d87f31ee4e68e5770d5b37140b2817",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state/snapshots/gpu_lock/kernel-gpu_lock.vxbin": "785dac3c1329f619290cd4398348314f073f7837b297cbe597ab707af73286af",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state/snapshots/gpu_owner/forza_compound_gpu_owner": "b7f90d448f9d5b7915ead9740c8bca1867df7243e88e357e3a68921984df7ff4",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/compound_state/snapshots/gpu_owner/kernel-gpu_owner.vxbin": "d16964f7aaed55e762c6127eeefb14f6164805060733fe7e7bba41903d3b33b5"
+      },
+      "frozen_native_drivers_verified": true
+    },
+    "l1_on": {
+      "run_manifest": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/validation-run-manifest.json",
+      "run_manifest_sha256": "bb251f2b7c9593ba703e0bad35dfce0514c773be6fa28d7a197b23de01a1a719",
+      "artifacts": {
+        "build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp": "11d12622d2c91eb376bdb980e789e39b3d44f79ef4a75e79452e2d4a5cba80dd",
+        "build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.dump": "288e068fd3f06d92d1c248d51511ca5fe28c1f7d73bde060d35e923d93c0dd94",
+        "build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.elf": "6252068a0c595ce7fd92912742f614be48c7a3bf25ce3446cd9bf429b3f93d2f",
+        "build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin": "d7a75409ee4ce24c981ffb3bbd7e0d5eedd7acf0a2436dd7bcb7455ce33303cd"
+      },
+      "runs": [
+        {
+          "case": "hot",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "32",
+            "-u",
+            "4096",
+            "-g",
+            "hot",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_on-mp-hot.log",
+          "log_sha256": "9ac6eb6bc0c38e0b6f0820d544354c2270a3dd8ae9a47f4db728d1d2c6eb4780",
+          "exit_code": 0,
+          "wall_seconds": 23.043346405029297,
+          "passed": true
+        },
+        {
+          "case": "capacity",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "32768",
+            "-u",
+            "65536",
+            "-g",
+            "uniform",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_on-mp-capacity.log",
+          "log_sha256": "0593478e020c190cea6d7acba08c2a09d3c29965ade0abf5e19729ef823c3b9f",
+          "exit_code": 0,
+          "wall_seconds": 73.60667300224304,
+          "passed": true
+        },
+        {
+          "case": "uniform_smoke",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "64",
+            "-u",
+            "128",
+            "-g",
+            "uniform",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_on-mp-uniform_smoke.log",
+          "log_sha256": "7cdf40f049a8c18f25033a3995e0a12c085a720d9acfa50bfe02bc5d007d9c06",
+          "exit_code": 0,
+          "wall_seconds": 0.16430878639221191,
+          "passed": true
+        },
+        {
+          "case": "hot_smoke",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "64",
+            "-u",
+            "128",
+            "-g",
+            "hot",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_on-mp-hot_smoke.log",
+          "log_sha256": "96dd34266aba973cea0a827ff5b833c538c7d7e6ecb6fb5f1a17ee92b7248611",
+          "exit_code": 0,
+          "wall_seconds": 0.46451902389526367,
+          "passed": true
+        },
+        {
+          "case": "zero_smoke",
+          "command": [
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp",
+            "-k",
+            "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin",
+            "-n",
+            "64",
+            "-u",
+            "0",
+            "-g",
+            "hot",
+            "-s",
+            "17",
+            "-t",
+            "600"
+          ],
+          "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/logs/validation-l1_on-mp-zero_smoke.log",
+          "log_sha256": "9ee8dbea9c82cbe9ae8f72534f78aa64e754aa3c665b5da94f2cb0d132bd40e3",
+          "exit_code": 0,
+          "wall_seconds": 0.031982421875,
+          "passed": true
+        }
+      ],
+      "measured_artifacts": {
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/forza_compound_ordered_mp": "11d12622d2c91eb376bdb980e789e39b3d44f79ef4a75e79452e2d4a5cba80dd",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state_ordered/artifacts/mp/kernel-ordered-mp.vxbin": "d7a75409ee4ce24c981ffb3bbd7e0d5eedd7acf0a2436dd7bcb7455ce33303cd",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/sw/runtime/libsimx.so": "2597787ee710e442901c243a46c2bdba3fe54f29f2a1e0e4d4213d2cae1209f1",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/sw/runtime/libvortex-simx.so": "31d9e38b02d70903f96d56f8decd32d0199449abf41d377b57e69d580f7ab793",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/sw/runtime/libvortex.so": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state/snapshots/gpu_lock/forza_compound_gpu_lock": "992f7eccc8255a9a2bd0adce21057b9cd1d87f31ee4e68e5770d5b37140b2817",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state/snapshots/gpu_lock/kernel-gpu_lock.vxbin": "785dac3c1329f619290cd4398348314f073f7837b297cbe597ab707af73286af",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state/snapshots/gpu_owner/forza_compound_gpu_owner": "b7f90d448f9d5b7915ead9740c8bca1867df7243e88e357e3a68921984df7ff4",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore-l1/tests/regression/forza_explore/compound_state/snapshots/gpu_owner/kernel-gpu_owner.vxbin": "d16964f7aaed55e762c6127eeefb14f6164805060733fe7e7bba41903d3b33b5"
+      },
+      "frozen_native_drivers_verified": true
+    }
+  }
+}

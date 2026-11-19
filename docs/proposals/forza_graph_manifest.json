@@ -1,0 +1,141 @@
+{
+  "measurement_date": "2026-10-27",
+  "scope": "SimX model experiment; not calibrated RTL/GPU performance",
+  "build_directory": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph",
+  "environment": {
+    "VORTEX_DRIVER": "simx",
+    "LD_LIBRARY_PATH": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/sw/runtime"
+  },
+  "configs": "-DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_DCACHE_DISABLE -DVX_CFG_L2_ENABLE -DVX_CFG_NUM_CORES=2 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=4",
+  "xlen": 64,
+  "actors": 16,
+  "software_queue_capacity": 16,
+  "repositories": {
+    "/export/nethomes/spark3100/vortex-forza-hwqueue": {
+      "base_commit": "1ab680880d7aeb0366ba01628b0ef26d4e3b0832",
+      "has_uncommitted_changes": true
+    },
+    "/export/nethomes/spark3100/forza-runtime-vortex": {
+      "base_commit": "138df12fbe56d2bc248c596841ac23703217e6d8",
+      "has_uncommitted_changes": true
+    }
+  },
+  "compiler": "clang version 20.1.8 (https://github.com/vortexgpgpu/llvm.git 4c836512a60c0b965bb298104e084cd0f07ca962)",
+  "files": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/sw/runtime/libsimx.so",
+      "bytes": 2063064,
+      "sha256": "e563ad9a3b5616f61ec3a35c26f16bb4df6fc4aaef54d2ce2cd48b50d66b7749"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/sw/runtime/libvortex-simx.so",
+      "bytes": 111856,
+      "sha256": "ff91d97e8f204082c68b751d88310b0bea1d6d8da25cd4b55f9371ac176d0474"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/sw/runtime/libvortex.so",
+      "bytes": 309800,
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/tests/regression/forza_graph/kernel-hw.vxbin",
+      "bytes": 10160,
+      "sha256": "da952ffbb673c8fdbdbf3522a24cdef600f79436fcecdbb2ac042faf1ddb1b13"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/tests/regression/forza_graph/kernel-sw.vxbin",
+      "bytes": 12080,
+      "sha256": "e09d543c91af46ccbfaf69310da7517582e5cc5a53c7c394ca4a70c18cf9fbfe"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/tests/regression/forza_graph/kernel-hw.elf",
+      "bytes": 13304,
+      "sha256": "eea079654432a1c424d8815105f6ffdb8aa48f2edb39cac9ccbedc19ec08a9fd"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/tests/regression/forza_graph/kernel-sw.elf",
+      "bytes": 16504,
+      "sha256": "647cb23a71a92b4f7c82818672b397b9843e4b4637ff56fc539ff96d6c04a4bf"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/tests/regression/forza_graph/forza_graph_hw",
+      "bytes": 37064,
+      "sha256": "d70b9de36b6be1503d64081d08adb27208cd23ed85012ec8d24b63798515791e"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph/tests/regression/forza_graph/forza_graph_sw",
+      "bytes": 37208,
+      "sha256": "516e579a6674bd9cea185a3965b995fafa83b9b0f24fe66fcbe57af764c22668"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/VX_config.toml",
+      "bytes": 20412,
+      "sha256": "6ba1610d4d8263a85fffa6c075b1528ea2d8770338f98ca8496b12b644c0d4e2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_zone.cpp",
+      "bytes": 14251,
+      "sha256": "4bf88d704f90af7e58b841329d53d76147838627aea0d92b648066eccebdeb42"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_fabric.cpp",
+      "bytes": 1716,
+      "sha256": "e4d9833673fd8e1de8884d2cb729de73d98fb4db55c121b1890b119b4157f579"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/processor.cpp",
+      "bytes": 17401,
+      "sha256": "d8cc7bf6a0b4b335064c841a23b5c33d3a532f5920acdc51b07ea1a21dd1a528"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_abi.h",
+      "bytes": 1457,
+      "sha256": "3cdd800b945ba971b6c51a5c310ca903120360a4c41538db48d45a05cb48ff5c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_software_abi.h",
+      "bytes": 497,
+      "sha256": "b9549c35dec27c4659a72f973facb5ad8db957d08eb09df69f2bb78a7d89a28e"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/kernel.cpp",
+      "bytes": 4794,
+      "sha256": "a9199c315df1c5d2ae13fd01206845fc9cb241bbc84a8930eb5509b6924c0154"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/common.h",
+      "bytes": 1720,
+      "sha256": "4c6048e5a9c9860f2b3313adf16b9013daf4c2039b3df49d88fb0f352073fb11"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/Makefile",
+      "bytes": 956,
+      "sha256": "7a76da74efc6c1adf09bedcb3cb830cee737301808f9f1b579ea6caedfe3bc8a"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/selector.forza.h",
+      "bytes": 16459,
+      "sha256": "f3619c9664b8cd1d80acc9afab40cfa9ea69559349dd3578a7b4d14a317a0187"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/selector.vortex.h",
+      "bytes": 13055,
+      "sha256": "301a41fd2f45101ccda96114db2fdb8f5131f6439e0e8bcaa89ca182570f3421"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/forza_message_lib.vortex.h",
+      "bytes": 6430,
+      "sha256": "6007f6747937f1bddc7417e94342250ebb1edeb3bc989e924642496c46405007"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/forza_message_lib.software.h",
+      "bytes": 6820,
+      "sha256": "9940874021775f07d85a1f5d2cbff1a599b14e002b088c889459a1282bc356e6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/vortex.mk",
+      "bytes": 460,
+      "sha256": "10bdfe4ce8fff5f18692786ee9ec021dc29a5687c183ee4fa6b2f593a78e0c02"
+    }
+  ]
+}

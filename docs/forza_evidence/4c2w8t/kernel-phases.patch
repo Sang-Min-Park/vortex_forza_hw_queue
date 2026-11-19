@@ -1,0 +1,130 @@
+--- /export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_runtime/kernel.cpp
++++ /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w8t/diagnostics/kernel-phases.cpp
+@@ -1,11 +1,22 @@
+ #include <vx_spawn2.h>
+ #include <vx_barrier.h>
++#include <vx_print.h>
+ #include <selector.forza.h>
+-#include "common.h"
++#include "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_runtime/common.h"
+ 
+ #if __riscv_xlen != 64
+ #error "forza_runtime requires RV64"
+ #endif
++
++static __attribute__((noinline)) void print_phase(runtime_actor_result_t* result,
++                                                  const char* label, uint32_t epoch,
++                                                  uint32_t first, uint32_t second) {
++  if (vx_thread_id() == 0) {
++    vx_printf("CSR_PHASE core=%u warp=%u rank=%u label=%s epoch=%u phase=%u a=%u b=%u error=%u\n",
++              result->core, result->warp, result->rank, label, epoch,
++              result->phase, first, second, result->error);
++  }
++}
+ 
+ static void fail(runtime_actor_result_t* result, uint32_t code,
+                  uint64_t expected, uint64_t actual) {
+@@ -76,9 +87,11 @@
+ };
+ 
+ static bool run_epoch(runtime_kernel_arg_t* arg, runtime_actor_result_t* result, uint32_t epoch) {
++  print_phase(result, "epoch-enter", epoch, 0, 0);
+   RuntimeSelector selector(arg, result, epoch);
+   auto& stats = result->epoch[epoch];
+   selector.start();
++  print_phase(result, "epoch-started", epoch, 0, 0);
+   uint32_t next_send = 0;
+   uint32_t rank = result->rank;
+   uint32_t destination = epoch == 0 ? (rank + 1) % arg->num_actors : 0;
+@@ -114,14 +127,17 @@
+     }
+   }
+   if (!data_complete) {
++    print_phase(result, "data-exhausted", epoch, next_send, stats.handled[0]);
+     fail(result, FORZA_RUNTIME_TIMEOUT, expected_received, stats.handled[0]);
+   }
++  print_phase(result, "data-loop-exit", epoch, stats.handled[0], stats.handled[1]);
+   // Every actor has finished its application work before closing this epoch.
+   // The global barrier also keeps one warp's lanes from entering the next
+   // phase while another lane still needs to poll and run callbacks.
+   barrier();
+   result->phase = epoch * 10 + 2;
+   selector.request_done();
++  print_phase(result, "done-started", epoch, 0, 0);
+   bool done_complete = false;
+   for (uint32_t iteration = 0; iteration < arg->iteration_limit; ++iteration) {
+     selector.progress();
+@@ -135,8 +151,10 @@
+     }
+   }
+   if (!done_complete) {
++    print_phase(result, "done-exhausted", epoch, selector.done_received(0), selector.done_received(1));
+     fail(result, FORZA_RUNTIME_TIMEOUT, 1, 0);
+   }
++  print_phase(result, "done-loop-exit", epoch, selector.done_received(0), selector.done_received(1));
+   for (uint32_t mailbox = 0; mailbox < FORZA_RUNTIME_MAILBOXES; ++mailbox) {
+     stats.done_received[mailbox] = selector.done_received(mailbox);
+     stats.outstanding[mailbox] = selector.outstanding(mailbox);
+@@ -145,17 +163,20 @@
+     }
+   }
+   barrier();
++  print_phase(result, "epoch-leave", epoch, stats.handled[0], stats.handled[1]);
+   return data_complete && done_complete && selector.ok();
+ }
+ 
+ static bool run_request_reply(runtime_kernel_arg_t* arg, runtime_actor_result_t* result) {
+   constexpr uint32_t epoch = 2;
++  print_phase(result, "reply-enter", epoch, 0, 0);
+   RuntimeSelector selector(arg, result, epoch);
+   auto& stats = result->epoch[epoch];
+   selector.start();
+   uint32_t next_send = 0;
+   uint32_t rank = result->rank;
+   uint32_t destination = (rank + 1) % arg->num_actors;
++  print_phase(result, "reply-started", epoch, 0, 0);
+   bool submitted = false;
+   result->phase = 21;
+   for (uint32_t iteration = 0; iteration < arg->iteration_limit; ++iteration) {
+@@ -183,11 +204,15 @@
+     }
+   }
+   if (!submitted) {
++    print_phase(result, "reply-submit-exhausted", epoch, next_send, stats.handled[1]);
+     fail(result, FORZA_RUNTIME_TIMEOUT, arg->rounds, next_send);
+   }
++  print_phase(result, "reply-submit-exit", epoch, next_send, stats.handled[1]);
+   result->phase = 22;
+   stats.responses_at_close = stats.handled[1];
++  print_phase(result, "reply-done-enter", epoch, stats.handled[0], stats.handled[1]);
+   selector.done();
++  print_phase(result, "reply-done-leave", epoch, stats.handled[0], stats.handled[1]);
+   for (uint32_t mailbox = 0; mailbox < FORZA_RUNTIME_MAILBOXES; ++mailbox) {
+     stats.done_received[mailbox] = selector.done_received(mailbox);
+     stats.outstanding[mailbox] = selector.outstanding(mailbox);
+@@ -200,6 +225,7 @@
+     fail(result, FORZA_RUNTIME_COMPLETION, 0, selector.error());
+   }
+   barrier();
++  print_phase(result, "reply-leave", epoch, stats.handled[0], stats.handled[1]);
+   return submitted && selector.is_done() && selector.ok();
+ }
+ 
+@@ -215,8 +241,10 @@
+   result->lane = lane;
+   result->rank = actor;
+   result->phase = 100;
++  print_phase(result, "kernel-entry", 0, arg->num_actors, arg->num_threads);
+   const char* deps[] = {"system", "bale_actor"};
+   hclib::launch(deps, 2, [&] {
++    print_phase(result, "runtime-registered", 0, 0, 0);
+     uint64_t my_pe = hclib::forza_my_pe();
+     uint64_t pes = hclib::forza_n_pes();
+     if (my_pe != actor || pes != arg->num_actors) {
+@@ -228,5 +256,6 @@
+     hclib::finish([&] { run_request_reply(arg, result); });
+   });
+   result->phase = 200;
++  print_phase(result, "kernel-leave", 2, 0, 0);
+   result->done = FORZA_RUNTIME_COMPLETE;
+ }

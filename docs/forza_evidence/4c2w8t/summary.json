@@ -1,0 +1,48 @@
+{
+  "configuration": {
+    "clusters": 1,
+    "cores": 4,
+    "warps_per_core": 2,
+    "threads_per_warp": 8,
+    "sfu_lanes": 8,
+    "actors": 64,
+    "xlen": 64,
+    "transport": "CSR",
+    "additional_forza_extensions": false
+  },
+  "raw_queue": {
+    "arguments": "-n8",
+    "exit_code": 0,
+    "status": "PASS",
+    "messages": 3072,
+    "log": "run-queue.log"
+  },
+  "runtime_n4": {
+    "arguments": "-n4 -p10000",
+    "make_exit_code": 2,
+    "status": "HOST_TIMEOUT",
+    "event_timeout_s": 120,
+    "alarm_s": 125,
+    "log": "run-selector.log"
+  },
+  "runtime_n1": {
+    "arguments": "-n1 -p10000",
+    "make_exit_code": 2,
+    "status": "HOST_TIMEOUT",
+    "timing": "Command exited with non-zero status 2\nwall_seconds=125.35 user_seconds=135.51 system_seconds=0.15 exit=2",
+    "log": "run-selector-n1.log"
+  },
+  "runtime_n1_long_host": {
+    "arguments": "-n1 -p10000",
+    "exit_code": 1,
+    "status": "HOST_TIMEOUT",
+    "event_timeout_s": 300,
+    "alarm_s": 305,
+    "external_timeout_s": 315,
+    "timing": "Command exited with non-zero status 1\nwall_seconds=305.18 user_seconds=329.95 system_seconds=0.09 exit=1",
+    "log": "run-selector-n1-long.log",
+    "host_patch": "host-wait-only.patch",
+    "device_unchanged": true
+  },
+  "interpretation": "Raw CSR queue passed at64 physical actors; existing Selector runtime did not complete within120s or300s event waits. Timeout does not establish deadlock or locate root cause. No simulator/device/runtime source modifications were made for these runs."
+}

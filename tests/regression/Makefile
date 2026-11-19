@@ -17,14 +17,18 @@ TESTS := \
     occupancy multikernel reopen module_reload single_cta            \
     vm_test vm_fault vm_stress
 
+ifneq ($(filter -DVX_CFG_EXT_FORZA_ENABLE,$(CONFIGS)),)
+TESTS += forza_queue forza_runtime forza_graph
+endif
+
 # --- common exclude list ---------------------------------------------
 EXCLUDE :=
 
 # --- per-backend exclude lists ---------------------------------------
 EXCLUDE_simx   :=
-EXCLUDE_rtlsim := dot8
-EXCLUDE_opae   := dot8
-EXCLUDE_xrt    := dot8
+EXCLUDE_rtlsim := dot8 forza_queue forza_runtime forza_graph
+EXCLUDE_opae   := dot8 forza_queue forza_runtime forza_graph
+EXCLUDE_xrt    := dot8 forza_queue forza_runtime forza_graph
 
 BACKENDS := simx rtlsim opae xrt
 

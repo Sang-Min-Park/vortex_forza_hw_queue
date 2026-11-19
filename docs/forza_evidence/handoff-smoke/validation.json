@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-19",
+  "configuration": {
+    "cores": 2,
+    "warps_per_core": 2,
+    "threads_per_warp": 4,
+    "sfu_lanes": 4,
+    "xlen": 64
+  },
+  "runtime": "bundled sw/forza_runtime",
+  "checks": {
+    "raw_queue": {
+      "status": "PASS",
+      "messages": 768
+    },
+    "selector_runtime": {
+      "status": "PASS",
+      "handler_invocations": 384
+    },
+    "drained_physical_reuse": {
+      "status": "PASS",
+      "blocks": 4,
+      "messages": 128
+    }
+  },
+  "build_and_test_script": "ci/run_forza_csr.sh",
+  "known_limit": "No new 64-actor runtime or logical-rebinding fix is claimed."
+}

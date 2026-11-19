@@ -1,0 +1,863 @@
+diff --git a/inc/selector.forza.h b/inc/selector.forza.h
+index 4ee55b4..c689a61 100644
+--- a/inc/selector.forza.h
++++ b/inc/selector.forza.h
+@@ -1,3 +1,7 @@
++#ifdef FORZA_VORTEX_BACKEND
++#include "selector.vortex.h"
++#else
++
+ #include <cstring>
+ #include <functional>
+ #include "forza_message_lib.h"
+@@ -428,3 +432,5 @@ namespace hclib {
+     }
+     };
+ }  // namespace hclib
++
++#endif
+diff --git a/inc/forza_message_lib.software.h b/inc/forza_message_lib.software.h
+new file mode 100644
+index 0000000..915a0a5
+--- /dev/null
++++ b/inc/forza_message_lib.software.h
+@@ -0,0 +1,197 @@
++#pragma once
++
++#include <stdint.h>
++#include <stddef.h>
++#include <vx_spawn2.h>
++#include <vx_barrier.h>
++#include <forza_software_abi.h>
++
++#if !defined(VX_CFG_DCACHE_DISABLE)
++#error "The controlled software mailbox baseline requires private D-cache disabled"
++#endif
++#if !defined(VX_CFG_L2_ENABLE)
++#error "The controlled software mailbox baseline requires shared L2 enabled"
++#endif
++
++enum MSG_OP { DIRECT_OP, INDIRECT_OP, DONE_OP };
++enum RET_STATUS {
++  SUCCESS, DONE_MSG, NO_MSG, INVALID_NUM_MBOX, INVALID_MBOX, INVALID_LPE,
++  INVALID_PRECINCT, INVALID_ZONE, ZEN_NOT_READY, INVALID_PTR, INVALID_PKT_SZ,
++  MALLOC_FAIL, TRANSPORT_ERROR, PROTOCOL_ERROR
++};
++
++struct ForzaSoftwareContext {
++  uint64_t metadata;
++  uint64_t slots;
++  uint32_t capacity;
++  uint32_t actors;
++  uint32_t rank;
++  uint32_t cursor;
++  uint32_t selected;
++};
++
++static __thread ForzaSoftwareContext forza_software_context;
++static constexpr uint64_t FORZA_SW_DONE = 1ull << 63;
++static constexpr uint64_t FORZA_SW_SEQUENCE = ~FORZA_SW_DONE;
++
++inline uint64_t forza_vortex_pes_per_zone() {
++  return uint64_t(vx_num_warps()) * vx_num_threads();
++}
++inline uint64_t forza_vortex_n_pes() {
++  return uint64_t(vx_num_cores()) * forza_vortex_pes_per_zone();
++}
++inline uint64_t forza_vortex_local_pe() {
++  return uint64_t(vx_warp_id()) * vx_num_threads() + vx_thread_id();
++}
++inline uint64_t forza_vortex_my_pe() {
++  return uint64_t(vx_core_id()) * forza_vortex_pes_per_zone() + forza_vortex_local_pe();
++}
++
++inline void forza_graph_bind_transport(uint64_t metadata, uint64_t slots,
++                                       uint64_t offsets, uint32_t capacity,
++                                       uint32_t actors) {
++  (void)offsets;
++  forza_software_context = {metadata, slots, capacity, actors,
++                            uint32_t(forza_vortex_my_pe()), 0, actors};
++}
++
++inline uint32_t forza_vortex_init() {
++  const auto& ctx = forza_software_context;
++  if (ctx.metadata == 0 || ctx.slots == 0 || ctx.capacity < 2
++      || ctx.actors != forza_vortex_n_pes()
++      || uint32_t(gridDim.x) != uint32_t(vx_num_cores())
++      || uint32_t(gridDim.y) != 1 || uint32_t(gridDim.z) != 1
++      || uint32_t(blockDim.x) != forza_vortex_pes_per_zone()
++      || uint32_t(blockDim.y) != 1 || uint32_t(blockDim.z) != 1
++      || get_cluster_size() != 1) {
++    return INVALID_LPE;
++  }
++  __syncthreads();
++  vortex::gbarrier(1).arrive_and_wait();
++  return SUCCESS;
++}
++
++inline uint32_t forza_get_outstanding_msg_count(uint64_t mailbox, uint64_t* count) {
++  if (mailbox != 0) {
++    return INVALID_MBOX;
++  }
++  if (count == nullptr) {
++    return INVALID_PTR;
++  }
++  // A published SPSC slot is already receiver-visible. Per-channel ordering
++  // keeps its DONE marker behind its data; there is no transport ACK plane.
++  *count = 0;
++  return SUCCESS;
++}
++
++inline volatile forza_sw_queue_t* forza_sw_queue(uint32_t source, uint32_t destination) {
++  auto& ctx = forza_software_context;
++  auto queues = reinterpret_cast<volatile forza_sw_queue_t*>(ctx.metadata);
++  return queues + uint64_t(source) * ctx.actors + destination;
++}
++
++inline volatile uint64_t* forza_sw_slot(uint32_t source, uint32_t destination,
++                                       uint64_t position) {
++  auto& ctx = forza_software_context;
++  uint64_t channel = uint64_t(source) * ctx.actors + destination;
++  uint64_t index = channel * ctx.capacity + position % ctx.capacity;
++  return reinterpret_cast<volatile uint64_t*>(ctx.slots + index * 64);
++}
++
++inline uint32_t forza_message_available(uint64_t mailbox) {
++  if (mailbox != 0) {
++    return INVALID_MBOX;
++  }
++  auto& ctx = forza_software_context;
++  if (ctx.selected < ctx.actors) {
++    return SUCCESS;
++  }
++  for (uint32_t offset = 0; offset < ctx.actors; ++offset) {
++    uint32_t source = (ctx.cursor + offset) % ctx.actors;
++    uint64_t position = forza_sw_queue(source, ctx.rank)->consumed;
++    uint64_t sequence = forza_sw_slot(source, ctx.rank, position)[0];
++    if ((sequence & FORZA_SW_SEQUENCE) == position + 1) {
++      ctx.selected = source;
++      return SUCCESS;
++    }
++  }
++  return NO_MSG;
++}
++
++inline uint32_t forza_message_receive(uint64_t mailbox, uint64_t* packet, size_t size) {
++  if (packet == nullptr) {
++    return INVALID_PTR;
++  }
++  if (size != 56) {
++    return INVALID_PKT_SZ;
++  }
++  uint32_t available = forza_message_available(mailbox);
++  if (available != SUCCESS) {
++    return available;
++  }
++  auto& ctx = forza_software_context;
++  uint32_t source = ctx.selected;
++  auto queue = forza_sw_queue(source, ctx.rank);
++  uint64_t position = queue->consumed;
++  auto slot = forza_sw_slot(source, ctx.rank, position);
++  uint64_t sequence = slot[0];
++  __asm__ volatile ("fence r, rw" ::: "memory");
++  for (uint32_t word = 0; word < 7; ++word) {
++    packet[word] = slot[word + 1];
++  }
++  __asm__ volatile ("fence r, rw" ::: "memory");
++  slot[0] = position + ctx.capacity;
++  queue->consumed = position + 1;
++  ctx.cursor = (source + 1) % ctx.actors;
++  ctx.selected = ctx.actors;
++  return (sequence & FORZA_SW_DONE) ? DONE_MSG : SUCCESS;
++}
++
++inline uint32_t forza_sw_send_packet(uint64_t mailbox, const void* packet,
++                                    uint64_t precinct, uint64_t zone,
++                                    uint64_t local_pe, bool done) {
++  if (mailbox != 0) {
++    return INVALID_MBOX;
++  }
++  if (precinct != 0) {
++    return INVALID_PRECINCT;
++  }
++  if (zone >= uint64_t(vx_num_cores())) {
++    return INVALID_ZONE;
++  }
++  if (local_pe >= forza_vortex_pes_per_zone()) {
++    return INVALID_LPE;
++  }
++  if (packet == nullptr) {
++    return INVALID_PTR;
++  }
++  auto& ctx = forza_software_context;
++  uint32_t destination = zone * forza_vortex_pes_per_zone() + local_pe;
++  auto queue = forza_sw_queue(ctx.rank, destination);
++  uint64_t position = queue->published;
++  auto slot = forza_sw_slot(ctx.rank, destination, position);
++  if (slot[0] != position) {
++    return ZEN_NOT_READY;
++  }
++  auto words = reinterpret_cast<const uint64_t*>(packet);
++  for (uint32_t word = 0; word < 7; ++word) {
++    slot[word + 1] = words[word];
++  }
++  // The publication word shares the payload's cache line. With private L1
++  // disabled, both endpoints observe the same shared-L2 line and bank order.
++  __asm__ volatile ("fence rw, w" ::: "memory");
++  slot[0] = (position + 1) | (done ? FORZA_SW_DONE : 0);
++  queue->published = position + 1;
++  return SUCCESS;
++}
++
++inline uint32_t forza_send(uint64_t mailbox, const void* packet, uint64_t precinct,
++                           uint64_t zone, uint64_t local_pe) {
++  return forza_sw_send_packet(mailbox, packet, precinct, zone, local_pe, false);
++}
++
++inline uint32_t forza_send_done_epoch(uint64_t mailbox, uint64_t precinct,
++                                      uint64_t zone, uint64_t local_pe, uint64_t epoch) {
++  uint64_t packet[7] = {forza_vortex_my_pe(), epoch, 0, 0, 0, 0, 0};
++  return forza_sw_send_packet(mailbox, packet, precinct, zone, local_pe, true);
++}
+diff --git a/inc/forza_message_lib.vortex.h b/inc/forza_message_lib.vortex.h
+new file mode 100644
+index 0000000..69384c5
+--- /dev/null
++++ b/inc/forza_message_lib.vortex.h
+@@ -0,0 +1,182 @@
++#pragma once
++
++#include <stdint.h>
++#include <stddef.h>
++#include <string.h>
++#include <vx_spawn2.h>
++#include <vx_barrier.h>
++#include <forza_abi.h>
++
++#if defined(VX_CFG_NUM_CLUSTERS) && VX_CFG_NUM_CLUSTERS != 1
++#error "FORZA Vortex runtime currently requires one cluster for its global barriers"
++#endif
++
++enum MSG_OP { DIRECT_OP, INDIRECT_OP, DONE_OP };
++enum RET_STATUS {
++  SUCCESS, DONE_MSG, NO_MSG, INVALID_NUM_MBOX, INVALID_MBOX, INVALID_LPE,
++  INVALID_PRECINCT, INVALID_ZONE, ZEN_NOT_READY, INVALID_PTR, INVALID_PKT_SZ,
++  MALLOC_FAIL, TRANSPORT_ERROR, PROTOCOL_ERROR
++};
++
++inline uint64_t forza_vortex_pes_per_zone() {
++  return uint64_t(vx_num_warps()) * vx_num_threads();
++}
++
++inline uint64_t forza_vortex_n_pes() {
++  return uint64_t(vx_num_cores()) * forza_vortex_pes_per_zone();
++}
++
++inline uint64_t forza_vortex_local_pe() {
++  return uint64_t(vx_warp_id()) * vx_num_threads() + vx_thread_id();
++}
++
++inline uint64_t forza_vortex_my_pe() {
++  return uint64_t(vx_core_id()) * forza_vortex_pes_per_zone() + forza_vortex_local_pe();
++}
++
++inline uint64_t forza_get_num_precincts() { return 1; }
++inline uint64_t forza_get_zones_per_precinct() { return vx_num_cores(); }
++inline uint64_t forza_get_my_precinct() { return 0; }
++inline uint64_t forza_get_my_zone() { return vx_core_id(); }
++
++inline uint32_t forza_vortex_init() {
++  if (uint32_t(gridDim.x) != uint32_t(vx_num_cores())
++      || uint32_t(gridDim.y) != 1 || uint32_t(gridDim.z) != 1
++      || uint32_t(blockDim.x) != forza_vortex_pes_per_zone()
++      || uint32_t(blockDim.y) != 1 || uint32_t(blockDim.z) != 1
++      || get_cluster_size() != 1) {
++    return INVALID_LPE;
++  }
++  csr_write(FORZA_CSR_ZQMMBOXREG, (forza_vortex_local_pe() << 8) | 0xff);
++  __syncthreads();
++  vortex::gbarrier registration(1);
++  registration.arrive_and_wait();
++  uint64_t status = csr_read(FORZA_CSR_ZENSTAT);
++  return ((status >> 63) && !(status & (0x1ffull << 8))) ? SUCCESS : TRANSPORT_ERROR;
++}
++
++inline uint32_t forza_get_outstanding_msg_count(uint64_t mailbox, uint64_t* count) {
++  if (mailbox >= 8) {
++    return INVALID_MBOX;
++  }
++  if (count == nullptr) {
++    return INVALID_PTR;
++  }
++  *count = (csr_read(FORZA_CSR_ZENCOUNT) >> (8 * mailbox)) & 255;
++  return SUCCESS;
++}
++
++inline uint32_t forza_message_available(uint64_t mailbox) {
++  if (mailbox >= 8) {
++    return INVALID_MBOX;
++  }
++  uint64_t status = csr_read(FORZA_CSR_ZQMSTAT);
++  if (status & (1ull << (8 + mailbox))) {
++    return TRANSPORT_ERROR;
++  }
++  return (status & (1ull << mailbox)) ? SUCCESS : NO_MSG;
++}
++
++inline uint64_t forza_vortex_dequeue(uint64_t mailbox) {
++  switch (mailbox) {
++  case 0: return csr_read(FORZA_CSR_ZQMDQ0 + 0);
++  case 1: return csr_read(FORZA_CSR_ZQMDQ0 + 1);
++  case 2: return csr_read(FORZA_CSR_ZQMDQ0 + 2);
++  case 3: return csr_read(FORZA_CSR_ZQMDQ0 + 3);
++  case 4: return csr_read(FORZA_CSR_ZQMDQ0 + 4);
++  case 5: return csr_read(FORZA_CSR_ZQMDQ0 + 5);
++  case 6: return csr_read(FORZA_CSR_ZQMDQ0 + 6);
++  case 7: return csr_read(FORZA_CSR_ZQMDQ0 + 7);
++  default: return 0;
++  }
++}
++
++inline void forza_vortex_release(uint64_t mailbox) {
++  // A CSR write does not by itself order preceding LSU payload loads.
++  __asm__ volatile ("fence r, rw" ::: "memory");
++  switch (mailbox) {
++  case 0: csr_write(FORZA_CSR_ZQMDQ0 + 0, 0); break;
++  case 1: csr_write(FORZA_CSR_ZQMDQ0 + 1, 0); break;
++  case 2: csr_write(FORZA_CSR_ZQMDQ0 + 2, 0); break;
++  case 3: csr_write(FORZA_CSR_ZQMDQ0 + 3, 0); break;
++  case 4: csr_write(FORZA_CSR_ZQMDQ0 + 4, 0); break;
++  case 5: csr_write(FORZA_CSR_ZQMDQ0 + 5, 0); break;
++  case 6: csr_write(FORZA_CSR_ZQMDQ0 + 6, 0); break;
++  case 7: csr_write(FORZA_CSR_ZQMDQ0 + 7, 0); break;
++  }
++}
++
++inline uint32_t forza_message_receive(uint64_t mailbox, uint64_t* packet, size_t size) {
++  if (packet == nullptr) {
++    return INVALID_PTR;
++  }
++  if (size != FORZA_PAYLOAD_WORDS * sizeof(uint64_t)) {
++    return INVALID_PKT_SZ;
++  }
++  uint32_t available = forza_message_available(mailbox);
++  if (available != SUCCESS) {
++    return available;
++  }
++  uint64_t pointer = forza_vortex_dequeue(mailbox);
++  if (pointer == 0) {
++    return TRANSPORT_ERROR;
++  }
++  auto words = reinterpret_cast<volatile const uint64_t*>(pointer);
++  uint32_t opcode = (words[0] >> FORZA_CONTROL_OPCODE_SHIFT) & 255;
++  for (uint32_t word = 0; word < FORZA_PAYLOAD_WORDS; ++word) {
++    packet[word] = words[word + 1];
++  }
++  forza_vortex_release(mailbox);
++  return opcode == DIRECT_OP ? SUCCESS : opcode == DONE_OP ? DONE_MSG : PROTOCOL_ERROR;
++}
++
++inline uint32_t forza_vortex_send_packet(uint64_t mailbox, const void* packet,
++                                        uint64_t precinct, uint64_t zone,
++                                        uint64_t logical_pe, uint32_t opcode) {
++  if (mailbox >= 8) {
++    return INVALID_MBOX;
++  }
++  if (precinct != 0) {
++    return INVALID_PRECINCT;
++  }
++  if (zone >= uint64_t(vx_num_cores())) {
++    return INVALID_ZONE;
++  }
++  if (logical_pe >= forza_vortex_pes_per_zone()) {
++    return INVALID_LPE;
++  }
++  if (packet == nullptr) {
++    return INVALID_PTR;
++  }
++  uint64_t sender_status = csr_read(FORZA_CSR_ZENSTAT);
++  if (!(sender_status >> 63) || (sender_status & (0x1ffull << 8))) {
++    return TRANSPORT_ERROR;
++  }
++  // Busy is a hint only. ZENTRY atomically checks and commits every lane.
++  if (sender_status & (1ull << mailbox)) {
++    return ZEN_NOT_READY;
++  }
++  auto bytes = reinterpret_cast<const uint8_t*>(packet);
++  for (uint32_t word = 0; word < FORZA_PAYLOAD_WORDS; ++word) {
++    uint64_t value;
++    memcpy(&value, bytes + word * 8, 8);
++    csr_write(FORZA_CSR_ZENEQD, value);
++  }
++  uint64_t control = forza_message_control(zone, logical_pe, mailbox, opcode);
++  uint64_t result;
++  __asm__ volatile ("csrrw %0, %1, %2"
++                    : "=r"(result) : "i"(FORZA_CSR_ZENTRY), "r"(control) : "memory");
++  return result == FORZA_TRY_ACCEPTED ? SUCCESS
++       : result == FORZA_TRY_BUSY ? ZEN_NOT_READY : TRANSPORT_ERROR;
++}
++
++inline uint32_t forza_send(uint64_t mailbox, const void* packet, uint64_t precinct,
++                           uint64_t zone, uint64_t logical_pe) {
++  return forza_vortex_send_packet(mailbox, packet, precinct, zone, logical_pe, DIRECT_OP);
++}
++
++inline uint32_t forza_send_done_epoch(uint64_t mailbox, uint64_t precinct,
++                                      uint64_t zone, uint64_t logical_pe, uint64_t epoch) {
++  uint64_t packet[FORZA_PAYLOAD_WORDS] = {forza_vortex_my_pe(), epoch, 0, 0, 0, 0, 0};
++  return forza_vortex_send_packet(mailbox, packet, precinct, zone, logical_pe, DONE_OP);
++}
+diff --git a/inc/selector.vortex.h b/inc/selector.vortex.h
+new file mode 100644
+index 0000000..24aa51b
+--- /dev/null
++++ b/inc/selector.vortex.h
+@@ -0,0 +1,434 @@
++#pragma once
++
++#if defined(__VORTEX__) && !defined(FORZA_VORTEX_DIVERGENCE_OK)
++#error "FORZA Vortex device code must include vortex.mk to configure SIMT divergence handling"
++#endif
++
++// Vortex adaptation of selector.forza.h at upstream 138df12fbe56d2bc248c596841ac23703217e6d8.
++#include <stddef.h>
++#include <stdint.h>
++#include <string.h>
++#include <new>
++#include <type_traits>
++#ifndef FORZA_VORTEX_TRANSPORT_HEADER
++#define FORZA_VORTEX_TRANSPORT_HEADER "forza_message_lib.vortex.h"
++#endif
++#include FORZA_VORTEX_TRANSPORT_HEADER
++
++#ifndef FORZA_VORTEX_MAX_PES
++#define FORZA_VORTEX_MAX_PES 128
++#endif
++#ifndef FORZA_VORTEX_OUTBOX_DEPTH
++#define FORZA_VORTEX_OUTBOX_DEPTH 8
++#endif
++
++namespace hclib {
++
++enum VortexRuntimeError {
++  RUNTIME_INVALID_ARGUMENT = 16,
++  RUNTIME_MISSING_HANDLER,
++  RUNTIME_PROTOCOL_ERROR
++};
++
++struct Packet56b {
++  uint64_t v1, v2, v3, v4, v5, v6, v7;
++};
++
++inline uint64_t forza_n_pes() { return forza_vortex_n_pes(); }
++inline uint64_t forza_my_pe() { return forza_vortex_my_pe(); }
++
++inline void forza_get_physical_ids_by_global_pe(uint64_t pe, uint64_t* precinct,
++                                               uint64_t* zone, uint64_t* local_pe) {
++  *precinct = 0;
++  *zone = pe / forza_vortex_pes_per_zone();
++  *local_pe = pe % forza_vortex_pes_per_zone();
++}
++
++inline void forza_runtime_init() {
++  if (forza_vortex_init() != SUCCESS) {
++    __builtin_trap();
++  }
++}
++
++template <typename F>
++inline void launch(const char** deps, int ndeps, F&& body) {
++  (void)deps;
++  (void)ndeps;
++  forza_runtime_init();
++  body();
++}
++
++template <typename F>
++inline void finish(F&& body) {
++  // The upstream adapter's finish is a callback scope, without HClib futures.
++  body();
++}
++
++template <typename T>
++class InlineProcess {
++public:
++  InlineProcess() = default;
++  InlineProcess(const InlineProcess&) = delete;
++  InlineProcess& operator=(const InlineProcess&) = delete;
++
++  template <typename F>
++  InlineProcess& operator=(F body) {
++    static_assert(sizeof(F) <= sizeof(storage_), "handler capture exceeds inline storage");
++    static_assert(alignof(F) <= alignof(max_align_t), "handler capture alignment is unsupported");
++    static_assert(std::is_trivially_copyable<F>::value,
++                  "handler captures must be trivially copyable");
++    static_assert(std::is_trivially_destructible<F>::value,
++                  "handler captures must be trivially destructible");
++    new (storage_) F(body);
++    call_ = [](void* storage, T packet, int sender) {
++      (*static_cast<F*>(storage))(packet, sender);
++    };
++    return *this;
++  }
++
++  explicit operator bool() const { return call_ != nullptr; }
++
++  void operator()(T packet, int sender) {
++    call_(storage_, packet, sender);
++  }
++
++private:
++  alignas(max_align_t) unsigned char storage_[128];
++  void (*call_)(void*, T, int) = nullptr;
++};
++
++template <int N, typename T> class Selector;
++
++template <typename T>
++class Mailbox {
++public:
++  uint64_t mb_id = 0;
++  InlineProcess<T> process;
++
++  bool send(T packet, int rank) {
++    return send_(owner_, mb_id, packet, rank);
++  }
++
++  uint64_t done_received() const { return done_received_; }
++  uint64_t outstanding() const { return outstanding_(owner_, mb_id); }
++  bool isDone() const { return finished_; }
++
++  uint32_t receive(bool return_on_done) {
++    do {
++      progress_(owner_);
++      if (!return_on_done || vx_vote_all(finished_)) {
++        break;
++      }
++    } while (!vx_vote_any(!ok_(owner_)));
++    return finished_ ? uint32_t(DONE_MSG) : status_(owner_, mb_id);
++  }
++
++  void receiveUntil(uint64_t threshold) {
++    while (!vx_vote_all(outstanding() <= threshold && !queued_(owner_, mb_id))) {
++      progress_(owner_);
++      if (vx_vote_any(!ok_(owner_))) {
++        return;
++      }
++    }
++  }
++
++  void done() { done_(owner_); }
++
++  void safeCopyPacket56btoT(const Packet56b& packet, T& target) {
++    static_assert(sizeof(T) <= 56, "actor payload exceeds 56 bytes");
++    static_assert(std::is_trivially_copyable<T>::value,
++                  "actor payload must be trivially copyable");
++    memcpy(&target, &packet, sizeof(T));
++  }
++
++private:
++  template <int N, typename U> friend class Selector;
++  void* owner_ = nullptr;
++  bool (*send_)(void*, uint32_t, T, int) = nullptr;
++  bool (*progress_)(void*) = nullptr;
++  void (*done_)(void*) = nullptr;
++  bool (*ok_)(const void*) = nullptr;
++  uint64_t (*outstanding_)(const void*, uint32_t) = nullptr;
++  bool (*queued_)(const void*, uint32_t) = nullptr;
++  uint32_t (*status_)(const void*, uint32_t) = nullptr;
++  uint64_t done_received_ = 0;
++  bool closing_ = false;
++  bool data_drained_ = false;
++  bool finished_ = false;
++  uint32_t done_destination_ = 0;
++  uint64_t seen_[(FORZA_VORTEX_MAX_PES + 63) / 64]{};
++};
++
++template <int N, typename T = int64_t>
++class Selector {
++public:
++  static_assert(N > 0 && N <= 8, "Selector requires one to eight mailboxes");
++  static_assert(sizeof(T) <= 56, "actor payload exceeds 56 bytes");
++  static_assert(std::is_trivially_copyable<T>::value,
++                "actor payload must be trivially copyable");
++  static_assert(FORZA_VORTEX_OUTBOX_DEPTH > 0, "outbox must have positive capacity");
++
++  Mailbox<T> mb[N];
++
++  explicit Selector(uint64_t epoch = 0)
++    : epoch_(epoch), pes_(forza_n_pes()) {
++    if (pes_ == 0 || pes_ > FORZA_VORTEX_MAX_PES) {
++      error_ = RUNTIME_INVALID_ARGUMENT;
++    }
++    for (uint32_t m = 0; m < N; ++m) {
++      auto& mailbox = mb[m];
++      mailbox.mb_id = m;
++      mailbox.owner_ = this;
++      mailbox.send_ = [](void* owner, uint32_t id, T packet, int rank) {
++        return static_cast<Selector*>(owner)->send(id, packet, rank);
++      };
++      mailbox.progress_ = [](void* owner) { return static_cast<Selector*>(owner)->progress(); };
++      mailbox.done_ = [](void* owner) { static_cast<Selector*>(owner)->done(); };
++      mailbox.ok_ = [](const void* owner) { return static_cast<const Selector*>(owner)->ok(); };
++      mailbox.outstanding_ = [](const void* owner, uint32_t id) {
++        return static_cast<const Selector*>(owner)->outstanding(id);
++      };
++      mailbox.queued_ = [](const void* owner, uint32_t id) {
++        return static_cast<const Selector*>(owner)->has_queued(id);
++      };
++      mailbox.status_ = [](const void* owner, uint32_t id) {
++        return static_cast<const Selector*>(owner)->last_receive_[id];
++      };
++      last_receive_[m] = NO_MSG;
++    }
++  }
++
++  Selector(const Selector&) = delete;
++  Selector& operator=(const Selector&) = delete;
++
++  void start() {}
++  bool ok() const { return error_ == SUCCESS; }
++  uint32_t error() const { return error_; }
++  uint64_t epoch() const { return epoch_; }
++
++  uint64_t done_received(uint32_t mailbox) const {
++    return mailbox < N ? mb[mailbox].done_received_ : 0;
++  }
++
++  uint64_t outstanding(uint32_t mailbox) const {
++    uint64_t count = 0;
++    uint32_t result = forza_get_outstanding_msg_count(mailbox, &count);
++    if (result != SUCCESS) {
++      error_ = result;
++    }
++    return count;
++  }
++
++  bool try_send(int mailbox, T packet, int rank) {
++    if (!validate_send(mailbox, rank) || queued_count_ != 0) {
++      return false;
++    }
++    Payload payload{};
++    memcpy(payload.words, &packet, sizeof(T));
++    return send_payload(mailbox, payload, rank);
++  }
++
++  bool send(int mailbox, T packet, int rank) {
++    if (!validate_send(mailbox, rank) || queued_count_ == FORZA_VORTEX_OUTBOX_DEPTH) {
++      return false;
++    }
++    uint32_t tail = (queued_head_ + queued_count_) % FORZA_VORTEX_OUTBOX_DEPTH;
++    auto& pending = outbox_[tail];
++    pending.mailbox = mailbox;
++    pending.rank = rank;
++    memset(pending.payload.words, 0, sizeof(pending.payload.words));
++    memcpy(pending.payload.words, &packet, sizeof(T));
++    ++queued_count_;
++    return true;
++  }
++
++  bool progress() {
++    if (!ok() || in_progress_) {
++      return false;
++    }
++    in_progress_ = true;
++    bool made_progress = false;
++    // All mailboxes progress even while an earlier mailbox is closing. A
++    // request handler can therefore enqueue replies on a later mailbox.
++    for (uint32_t m = 0; m < N; ++m) {
++      last_receive_[m] = NO_MSG;
++      uint32_t available = forza_message_available(m);
++      if (available == NO_MSG) {
++        continue;
++      }
++      if (available != SUCCESS) {
++        error_ = available;
++        break;
++      }
++      Payload payload{};
++      uint32_t received = forza_message_receive(m, payload.words, sizeof(payload.words));
++      last_receive_[m] = received;
++      if (received == SUCCESS) {
++        if (mb[m].finished_) {
++          error_ = RUNTIME_PROTOCOL_ERROR;
++          break;
++        }
++        if (!mb[m].process) {
++          error_ = RUNTIME_MISSING_HANDLER;
++          break;
++        }
++        T packet;
++        memcpy(&packet, payload.words, sizeof(T));
++        mb[m].process(packet, -1);
++        made_progress = true;
++      } else if (received == DONE_MSG) {
++        accept_done(m, payload);
++        made_progress = true;
++      } else if (received != NO_MSG) {
++        error_ = received;
++        break;
++      }
++      if (!ok()) {
++        break;
++      }
++    }
++    if (ok() && queued_count_ != 0) {
++      auto& pending = outbox_[queued_head_];
++      if (send_payload(pending.mailbox, pending.payload, pending.rank)) {
++        queued_head_ = (queued_head_ + 1) % FORZA_VORTEX_OUTBOX_DEPTH;
++        --queued_count_;
++        made_progress = true;
++      }
++    }
++    if (ok() && close_requested_ && closing_mailbox_ < N) {
++      made_progress = progress_close() || made_progress;
++    }
++    in_progress_ = false;
++    return made_progress;
++  }
++
++  void request_done() {
++    if (!close_requested_) {
++      close_requested_ = true;
++      mb[0].closing_ = true;
++    }
++  }
++
++  bool is_done() const {
++    bool complete = close_requested_ && closing_mailbox_ == N && queued_count_ == 0;
++    for (uint32_t m = 0; m < N; ++m) {
++      complete = (outstanding(m) == 0) && complete;
++    }
++    return complete && ok();
++  }
++
++  void done(int mailbox = 0) {
++    if (mailbox != 0) {
++      error_ = RUNTIME_INVALID_ARGUMENT;
++      return;
++    }
++    request_done();
++    // A completed lane must keep serving peers until its whole warp finishes.
++    while (!vx_vote_all(is_done())) {
++      progress();
++      if (vx_vote_any(!ok())) {
++        return;
++      }
++    }
++  }
++
++private:
++  struct Payload {
++    uint64_t words[7];
++  };
++  struct Pending {
++    uint32_t mailbox;
++    uint32_t rank;
++    Payload payload;
++  };
++
++  bool validate_send(int mailbox, int rank) {
++    if (!ok()) {
++      return false;
++    }
++    if (mailbox < 0 || mailbox >= N || rank < 0 || uint64_t(rank) >= pes_) {
++      error_ = RUNTIME_INVALID_ARGUMENT;
++      return false;
++    }
++    if (mb[mailbox].closing_) {
++      error_ = RUNTIME_PROTOCOL_ERROR;
++      return false;
++    }
++    return true;
++  }
++
++  bool has_queued(uint32_t mailbox) const {
++    bool found = false;
++    for (uint32_t i = 0; i < queued_count_; ++i) {
++      found = found || outbox_[(queued_head_ + i) % FORZA_VORTEX_OUTBOX_DEPTH].mailbox == mailbox;
++    }
++    return found;
++  }
++
++  bool send_payload(uint32_t mailbox, const Payload& payload, uint32_t rank) {
++    uint64_t precinct, zone, local_pe;
++    forza_get_physical_ids_by_global_pe(rank, &precinct, &zone, &local_pe);
++    uint32_t result = forza_send(mailbox, payload.words, precinct, zone, local_pe);
++    if (result != SUCCESS && result != ZEN_NOT_READY) {
++      error_ = result;
++    }
++    return result == SUCCESS;
++  }
++
++  void accept_done(uint32_t mailbox, const Payload& payload) {
++    uint64_t sender = payload.words[0];
++    if (sender >= pes_ || payload.words[1] != epoch_) {
++      error_ = RUNTIME_PROTOCOL_ERROR;
++      return;
++    }
++    uint64_t bit = 1ull << (sender % 64);
++    auto& word = mb[mailbox].seen_[sender / 64];
++    if (!(word & bit)) {
++      word |= bit;
++      ++mb[mailbox].done_received_;
++    }
++  }
++
++  bool progress_close() {
++    auto& mailbox = mb[closing_mailbox_];
++    if (!mailbox.data_drained_ && !has_queued(closing_mailbox_)
++        && outstanding(closing_mailbox_) == 0) {
++      mailbox.data_drained_ = true;
++    }
++    bool made_progress = false;
++    if (mailbox.data_drained_ && mailbox.done_destination_ < pes_) {
++      uint64_t precinct, zone, local_pe;
++      forza_get_physical_ids_by_global_pe(mailbox.done_destination_, &precinct, &zone, &local_pe);
++      uint32_t result = forza_send_done_epoch(closing_mailbox_, precinct, zone, local_pe, epoch_);
++      if (result == SUCCESS) {
++        ++mailbox.done_destination_;
++        made_progress = true;
++      } else if (result != ZEN_NOT_READY) {
++        error_ = result;
++      }
++    }
++    if (mailbox.done_destination_ == pes_ && mailbox.done_received_ == pes_
++        && outstanding(closing_mailbox_) == 0) {
++      mailbox.finished_ = true;
++      ++closing_mailbox_;
++      if (closing_mailbox_ < N) {
++        mb[closing_mailbox_].closing_ = true;
++      }
++      made_progress = true;
++    }
++    return made_progress;
++  }
++
++  uint64_t epoch_;
++  uint64_t pes_;
++  mutable uint32_t error_ = SUCCESS;
++  Pending outbox_[FORZA_VORTEX_OUTBOX_DEPTH];
++  uint32_t queued_head_ = 0;
++  uint32_t queued_count_ = 0;
++  uint32_t last_receive_[N];
++  uint32_t closing_mailbox_ = 0;
++  bool close_requested_ = false;
++  bool in_progress_ = false;
++};
++
++} // namespace hclib
+diff --git a/vortex.mk b/vortex.mk
+new file mode 100644
+index 0000000..36bc3e9
+--- /dev/null
++++ b/vortex.mk
+@@ -0,0 +1,8 @@
++FORZA_VORTEX_RUNTIME_ROOT := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
++
++# Inlining the runtime can exceed the compiler's default SIMT conversion budget.
++VX_CFLAGS += -std=c++17 -I$(FORZA_VORTEX_RUNTIME_ROOT)/inc
++VX_CFLAGS += -DFORZA_VORTEX_BACKEND -DFORZA_VORTEX_DIVERGENCE_OK
++VX_CFLAGS += -mllvm -vortex-divergence-max-bbs=512
++VX_HDRS += $(wildcard $(FORZA_VORTEX_RUNTIME_ROOT)/inc/*.h)
++VX_HDRS += $(FORZA_VORTEX_RUNTIME_ROOT)/vortex.mk

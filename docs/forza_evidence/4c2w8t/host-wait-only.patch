@@ -1,0 +1,38 @@
+--- /export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_runtime/main.cpp
++++ diagnostics/main-long.cpp
+@@ -5,7 +5,7 @@
+ #include <csignal>
+ #include <unistd.h>
+ #include <vector>
+-#include "common.h"
++#include "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_runtime/common.h"
+ 
+ static vx_device_h device = nullptr;
+ static vx_buffer_h results_buffer = nullptr;
+@@ -15,7 +15,7 @@
+ static vx_event_h completed = nullptr;
+ 
+ static void deadline_expired(int) {
+-  static const char message[] = "FAILED: FORZA runtime test exceeded the 125s deadline\n";
++  static const char message[] = "FAILED: FORZA runtime test exceeded the 305s deadline\n";
+   ssize_t written = write(STDERR_FILENO, message, sizeof(message) - 1);
+   (void)written;
+   _exit(EXIT_FAILURE);
+@@ -88,7 +88,7 @@
+     return EXIT_FAILURE;
+   }
+   std::signal(SIGALRM, deadline_expired);
+-  alarm(125);
++  alarm(305);
+   std::setvbuf(stdout, nullptr, _IOLBF, 0);
+   RT_CHECK(vx_device_open(0, &device));
+   vx_queue_info_t queue_info = {sizeof(queue_info), nullptr, VX_QUEUE_PRIORITY_NORMAL, 0};
+@@ -131,7 +131,7 @@
+   launch.block_dim[0] = args.actors_per_core;
+   RT_CHECK(vx_enqueue_launch(queue, &launch, 0, nullptr, nullptr));
+   RT_CHECK(vx_enqueue_read(queue, results.data(), results_buffer, 0, results_size, 0, nullptr, &completed));
+-  RT_CHECK(vx_event_wait_value(completed, 1, UINT64_C(120000000000)));
++  RT_CHECK(vx_event_wait_value(completed, 1, UINT64_C(300000000000)));
+ 
+   uint32_t errors = 0;
+   uint32_t closed_with_reply_pending = 0;

@@ -1,0 +1,6 @@
+FORZA CSR generalize: 2 cores, 2 warps/core, 4 lanes/warp; 2 waves, 4 blocks, 32 logical threads; PE mode=physical, rounds=4
+block=0 completed=8/8
+block=1 completed=8/8
+block=2 completed=8/8
+block=3 completed=8/8
+PASSED: errors=0 registration_errors=0 sent=128 received=128 retries=0

@@ -1,0 +1,2 @@
+FORZA runtime: 4 cores, 2 warps, 8 lanes, 1 rounds, 64 actors
+timeout: the monitored command dumped core

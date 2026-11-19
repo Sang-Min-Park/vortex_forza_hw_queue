@@ -26,6 +26,48 @@
 #include <stringutil.h>
 #include <VX_config.h>
 #include <VX_types.h>
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+#include <forza_abi.h>
+#endif
+#ifdef VX_CFG_FORZA_ISA_ENABLE
+#ifndef VX_CFG_EXT_FORZA_ENABLE
+#error "FORZA ISA requires the FORZA extension"
+#endif
+#include <forza_isa_abi.h>
+#endif
+#ifdef VX_CFG_FORZA_MMIO_ENABLE
+#if !defined(VX_CFG_EXT_FORZA_ENABLE) || !defined(VX_CFG_EXT_A_ENABLE)
+#error "FORZA MMIO requires the FORZA and A extensions"
+#endif
+#include <forza_mmio_abi.h>
+#endif
+#ifdef VX_CFG_FORZA_MMIO_VECTOR_ENABLE
+#if !defined(VX_CFG_FORZA_MMIO_ENABLE) || !defined(VX_CFG_EXT_A_ENABLE)
+#error "FORZA vector MMIO requires MMIO and the A extension"
+#endif
+#endif
+#ifdef VX_CFG_FORZA_UPDATE_ENABLE
+#if !defined(VX_CFG_FORZA_MMIO_ENABLE) || !defined(VX_CFG_EXT_A_ENABLE)
+#error "FORZA UPDATE requires MMIO and the A extension"
+#endif
+#include <forza_update_abi.h>
+#endif
+#ifdef VX_CFG_FORZA_RECORD_ENABLE
+#if !defined(VX_CFG_FORZA_UPDATE_ENABLE)
+#error "FORZA RECORD requires the UPDATE extension"
+#endif
+#include <forza_record_abi.h>
+#endif
+
+#ifdef VX_CFG_FORZA_VM_ENABLE
+#if !defined(VX_CFG_FORZA_MMIO_ENABLE) || !defined(VX_CFG_EXT_FORZA_ENABLE)
+#error "FORZA programmable engine requires MMIO and FORZA"
+#endif
+#if defined(VX_CFG_FORZA_UPDATE_ENABLE) || defined(VX_CFG_FORZA_RECORD_ENABLE)
+#error "Use a separate programmable-engine build without fixed UPDATE/RECORD engines"
+#endif
+#include <forza_vm_abi.h>
+#endif
 
 // Simulation-kernel selection for the SimX build. The component-facing API
 // (SimObject, SimChannel, SimEventLink, SimPlatform) is identical in both
@@ -735,6 +777,29 @@ enum class CsrType {
   CSRRC
 };
 
+#ifdef VX_CFG_FORZA_ISA_ENABLE
+enum class ForzaType {
+  SEND_TRY, RECV_TRY, SEND_WAIT, RECV_WAIT,
+  CREDITS, REGISTER, STATUS, RECV_WAIT_ANY
+};
+
+struct IntrForzaArgs {};
+
+inline std::ostream &operator<<(std::ostream &os, const ForzaType& type) {
+  switch (type) {
+  case ForzaType::SEND_TRY: os << "SEND.TRY"; break;
+  case ForzaType::RECV_TRY: os << "RECV.TRY"; break;
+  case ForzaType::SEND_WAIT: os << "SEND.WAIT"; break;
+  case ForzaType::RECV_WAIT: os << "RECV.WAIT"; break;
+  case ForzaType::CREDITS: os << "MSG.CREDITS"; break;
+  case ForzaType::REGISTER: os << "MSG.REGISTER"; break;
+  case ForzaType::STATUS: os << "MSG.STATUS"; break;
+  case ForzaType::RECV_WAIT_ANY: os << "RECV.WAIT.ANY"; break;
+  }
+  return os;
+}
+#endif
+
 struct IntrCsrArgs {
   uint32_t is_imm: 1;
   uint32_t imm : 5;
@@ -813,6 +878,9 @@ using OpType = std::variant<
 , AmoType
 , FpuType
 , CsrType
+#ifdef VX_CFG_FORZA_ISA_ENABLE
+, ForzaType
+#endif
 , VoteType
 , ShflType
 , WgatherType
@@ -842,6 +910,9 @@ using IntrArgs = std::variant<
 , IntrAmoArgs
 , IntrFpuArgs
 , IntrCsrArgs
+#ifdef VX_CFG_FORZA_ISA_ENABLE
+, IntrForzaArgs
+#endif
 , IntrWgatherArgs
 , IntrWctlArgs
 #ifdef VX_CFG_EXT_DXA_ENABLE
@@ -866,10 +937,41 @@ using IntrArgs = std::variant<
 enum class AddrType {
   Global,
   Shared,
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  Forza,
+#endif
   IO
 };
 
 inline AddrType get_addr_type(uint64_t addr) {
+#ifdef VX_CFG_FORZA_VM_ENABLE
+  if ((addr >= FORZA_VM_BASE && addr - FORZA_VM_BASE < FORZA_VM_APERTURE)
+      || (addr >= FORZA_VM_DIRECT_BASE && addr - FORZA_VM_DIRECT_BASE < FORZA_VM_APERTURE)
+      || (addr >= FORZA_VM_CONFIG_BASE && addr - FORZA_VM_CONFIG_BASE < FORZA_VM_CONFIG_BYTES))
+    return AddrType::Forza;
+#endif
+#ifdef VX_CFG_FORZA_RECORD_ENABLE
+  if ((addr >= FORZA_RECORD_BASE && (addr - FORZA_RECORD_BASE) < FORZA_RECORD_APERTURE)
+      || (addr >= FORZA_RECORD_DIRECT_BASE
+          && (addr - FORZA_RECORD_DIRECT_BASE) < FORZA_RECORD_APERTURE)) {
+    return AddrType::Forza;
+  }
+#endif
+#ifdef VX_CFG_FORZA_UPDATE_ENABLE
+  if (addr >= FORZA_UPDATE_BASE && (addr - FORZA_UPDATE_BASE) < FORZA_UPDATE_APERTURE) {
+    return AddrType::Forza;
+  }
+#endif
+#ifdef VX_CFG_FORZA_MMIO_ENABLE
+  if (addr >= FORZA_MMIO_BASE && (addr - FORZA_MMIO_BASE) < FORZA_MMIO_APERTURE) {
+    return AddrType::Forza;
+  }
+#endif
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  if (addr >= FORZA_MAILBOX_BASE && (addr - FORZA_MAILBOX_BASE) < FORZA_MAILBOX_APERTURE) {
+    return AddrType::Forza;
+  }
+#endif
   if (addr >= VX_MEM_IO_BASE_ADDR && addr < VX_MEM_IO_END_ADDR) {
      return AddrType::IO;
   }
@@ -885,6 +987,9 @@ inline std::ostream &operator<<(std::ostream &os, const AddrType& type) {
   switch (type) {
   case AddrType::Global: os << "Global"; break;
   case AddrType::Shared: os << "Shared"; break;
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  case AddrType::Forza:  os << "Forza"; break;
+#endif
   case AddrType::IO:     os << "IO"; break;
   default: assert(false);
   }

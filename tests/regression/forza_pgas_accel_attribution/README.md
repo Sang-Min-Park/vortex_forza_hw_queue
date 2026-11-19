@@ -1,0 +1,11 @@
+# Destination accelerator attribution
+
+This isolated SimX experiment separates a fixed record accelerator from its response protocol. All variants run on one frozen machine with the existing RECORD engine enabled. The native controls are the previously validated GPU lock, optimized same-key grouped lock, and GPU histogram/prefix/scatter plus warp-prefix owner apply.
+
+The operation is unchanged: return the old u64 `(count,sum,xor)` tuple and commit `(count+1,sum+signext(delta32),xor^request_id32)` modulo 2^64. Full signed32 deltas include INT32_MIN/MAX. Every old tuple is replayed in per-key ticket order, and final records and source counts are exact-checked.
+
+`engine_mailbox` and `engine_direct` share one source kernel and a two-request-per-physical-source software window. Both submit the same operation into the same destination engine and actually consume every returned tuple before exporting it to the same global output array. The mailbox path uses the actor mailbox PEEK/control/ID/tuple/RELEASE protocol. The direct path uses physical-source-tagged completion ID/tuple/RELEASE registers and does not register a logical actor. It is a proposed nonblocking hardware completion queue, not a blocking LSU instruction result. Both use the same two 64-byte response slots, fabric framing/bandwidth and engine contexts; the direct completion aperture aliases the mailbox1 storage and cannot be used concurrently with mailbox1. `engine_unlimited` is an additional mailbox reference without the source software window. Its result must not be substituted for the paired protocol comparison.
+
+Owner state uses actual 16KiB/core LocalMem. Requests remain 64-byte physical frames and every engine transaction still uses three reads, one compute stage and three acknowledged writes. Source response publication and state export are timed. CPU initialization, exact correctness checks and readback do not pre-route any input.
+
+The engine's arithmetic remains specialized; no performance result makes it a generic programmable handler or establishes messaging-only benefit. Direct completion still needs remote request/response packets. The comparison removes actor-address registration and mailbox interpretation, not physical communication.

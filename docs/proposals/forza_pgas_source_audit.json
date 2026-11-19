@@ -1,0 +1,79 @@
+{
+  "reviewed_utc": "2026-10-28T02:07:21.964727+00:00",
+  "review_type": "independent_read_only_source_audit_not_simulation",
+  "geometry": "2cores,2warps/core,4lanes/warp,16KiB local SRAM/core",
+  "source_artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/common.h",
+      "bytes": 1222,
+      "sha256": "bc1dcd18cbdad35cc3ff2c68e7b1ea6bdcf2c16f3307210c91e7f60782420833"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/kernel.cpp",
+      "bytes": 6484,
+      "sha256": "0ef7126f53dbf4af9f17d0d8f8bee30ee98ddc9503c4f46abf68da540ab10675"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/main.cpp",
+      "bytes": 13997,
+      "sha256": "dd93a474ada2335603b30c4efc7f828c96b8731bce2772e2bafdcaf9a8ee92b1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/Makefile",
+      "bytes": 1456,
+      "sha256": "0ad108f7295c955c5e104249eeb8be64011c2b977fcf7597b151c8906ddea7f5"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/README.md",
+      "bytes": 6149,
+      "sha256": "c269fd3b418c2c6957d488d860b4d6462b1d72f26c86ec91699a9501ade2b5e5"
+    }
+  ],
+  "reviewer": "/root/perf_baseline_audit/pgas_review",
+  "remaining_source_blockers": [],
+  "verified": [
+    "Native-local partition is disjoint: same-core resident to LMEM, others to global; ACK fence/barrier before unique owner pull/export",
+    "Resident maximum physical byte16383; interleaved private owner words spread banks",
+    "Software channel permutation is bijective for power-of-two actor count; sequence recycle and final expected tickets consistent",
+    "Each lane stops only after all own inputs accepted and exact expected incoming count; warp-vote loop exit stays uniform",
+    "Independent CPU sum checks every state word and peractor work/transport/AMO counts",
+    "Mode-named kernel artifacts match host defaults; full config stamps force recompilation across variants"
+  ],
+  "addressed_integration_issue": "run-simx now depends on the mode-named vxbin, matching host default; no RTL implementation claimed",
+  "current_source_artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/common.h",
+      "bytes": 1222,
+      "sha256": "bc1dcd18cbdad35cc3ff2c68e7b1ea6bdcf2c16f3307210c91e7f60782420833"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/kernel.cpp",
+      "bytes": 6484,
+      "sha256": "0ef7126f53dbf4af9f17d0d8f8bee30ee98ddc9503c4f46abf68da540ab10675"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/main.cpp",
+      "bytes": 13997,
+      "sha256": "dd93a474ada2335603b30c4efc7f828c96b8731bce2772e2bafdcaf9a8ee92b1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/Makefile",
+      "bytes": 1546,
+      "sha256": "0970078c2d58b36bd5445213fffdade6d380350f4707f2063dba323cafddfcc5"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/README.md",
+      "bytes": 6149,
+      "sha256": "c269fd3b418c2c6957d488d860b4d6462b1d72f26c86ec91699a9501ade2b5e5"
+    }
+  ],
+  "post_review_build_integration_changes": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/Makefile",
+      "reviewed_sha256": "0ad108f7295c955c5e104249eeb8be64011c2b977fcf7597b151c8906ddea7f5",
+      "current_sha256": "0970078c2d58b36bd5445213fffdade6d380350f4707f2063dba323cafddfcc5"
+    }
+  ],
+  "post_review_change_explanation": "Added explicit shared ABI headers as build dependencies; kernel/host/common/README remain reviewed bytes. Current source also passed42actual simulations inforza_pgas_l1_off.json.",
+  "actual_simulation_manifest": "docs/proposals/forza_pgas_l1_off.json"
+}

@@ -1,0 +1,809 @@
+{
+  "verified_utc": "2026-10-28T03:16:39.605042+00:00",
+  "new_manifest": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/arch-manifest.json",
+  "passed": 49,
+  "capacity_na": 6,
+  "original_91_cohort_preserved": true,
+  "new_source_shared_binary_artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_arch_pow2/kernel.cpp",
+      "bytes": 5109,
+      "sha256": "edf8d5fea48ab1a4959971eabdba445a231f9d9cbf48461bf90f0e2f70e0c3ba"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_arch_pow2/main.cpp",
+      "bytes": 10886,
+      "sha256": "29f12950b21415d3fcf10051ca083f3460f2b30f8eb33cd16cf4af3ab4dde060"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_arch_pow2/common.h",
+      "bytes": 477,
+      "sha256": "94f23c0fa183bbed89cde6468c64b1ca0decee5a530d107c398d233059d011fb"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_arch_pow2/Makefile",
+      "bytes": 994,
+      "sha256": "d57e5b75cfc246405c27e20dbe805a533def9f79cd74773824fa0d67b1ffed99"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_arch_pow2/README.md",
+      "bytes": 1061,
+      "sha256": "945091256beecfdcc0c8318ddb2c662f4880651deeb0caffe8923b0284b6af0c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_arch_pow2/run_matrix.py",
+      "bytes": 5646,
+      "sha256": "1bf3960c6d92508ba5c50cceae0ddcbf3835a2c9fef52ce2d5b988d3ae846313"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_update_abi.h",
+      "bytes": 946,
+      "sha256": "b3b1bd55fbeb4e26997a16618560297590224636b96fff11300582c7edfda37b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_mmio_abi.h",
+      "bytes": 1912,
+      "sha256": "492fcdc7cb9dac592346767a52d28e942c17dd508d36a76bebfdf33bef622675"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/sw/runtime/libsimx.so",
+      "bytes": 2099672,
+      "sha256": "180475668b34bbaac0159c9eadb6bd7f987422d6bd4f64285b17110ed7a607d1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/sw/runtime/libvortex.so",
+      "bytes": 309800,
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/sw/runtime/libvortex-simx.so",
+      "bytes": 111856,
+      "sha256": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/sw/kernel/libvortex2.a",
+      "bytes": 67566,
+      "sha256": "224e549ed78ceb1787581103df00e6ddcca3e1d65f56be886c3e1a9e371e0c96"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_global/forza_pow2_gpu_global",
+      "bytes": 36848,
+      "sha256": "ef2a600aa56401e2a1e11704fb5395eea54b8c6b4509e6f37ad7eb5085963e92"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_global/kernel.vxbin",
+      "bytes": 4720,
+      "sha256": "38dce6b67678694b31a460a3a0fbe543c6932d774dfea9773bfa620bad5b892b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_global/kernel.elf",
+      "bytes": 6296,
+      "sha256": "f6ab81e4e7e7040c8b1783cb1ae5fa65a0c5e69df1816aecfc91b660f3c6a872"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_global/kernel.dump",
+      "bytes": 17310,
+      "sha256": "5d469b29e1f262cfeb20217c161653872ff62afa67d8a6d9200ab0b48e336928"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_local/forza_pow2_gpu_local",
+      "bytes": 36848,
+      "sha256": "33b89afa102f4b35bb53cb75bf0d3e7900324ff705827a35e66abc1d774d9e7f"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_local/kernel.vxbin",
+      "bytes": 5040,
+      "sha256": "431b401f84ca0d9815f4cf115530cc25f9690567954fa1ac0cb94d64078f5d3d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_local/kernel.elf",
+      "bytes": 6648,
+      "sha256": "c9b321377977153eb8ac2f12a4f06b5468e0459482470e4c6389ceb1c74a7ca6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_local/kernel.dump",
+      "bytes": 21223,
+      "sha256": "1164f25acba9e2fcef4707ea8069494c54dc3e6be0ffea23bd0048f6a33342f6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_core_comb/forza_pow2_gpu_core_comb",
+      "bytes": 36848,
+      "sha256": "9eca99bf26f26cdd7cbdef58f97dcd8b03b8fc50987a8cabd59c29133f6bbe30"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_core_comb/kernel.vxbin",
+      "bytes": 4912,
+      "sha256": "7a7ba3c00c0310656ba5b64f43fcc2ae23bfb42bc9fd6114b4c1dd0aa879b4b4"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_core_comb/kernel.elf",
+      "bytes": 6488,
+      "sha256": "002f6ec22e2252e151012a83b2dfc7f1b1749f715da2b4f2ab24bc169e9ae395"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/gpu_core_comb/kernel.dump",
+      "bytes": 19426,
+      "sha256": "1f5eb8d4cbe16a2a093ebd7dcad749e464a1453fd949dcb6ac84337dc114e39c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/engine_hybrid/forza_pow2_engine_hybrid",
+      "bytes": 36848,
+      "sha256": "3ed33a3a56b8738e90fd8237b1fb7f1b06467e37b37bb1d9a61dc940e10a667d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/engine_hybrid/kernel.vxbin",
+      "bytes": 5424,
+      "sha256": "9e99d15e853442deb8baab2060e60d24cfb18fce9398707be6c1c5b019120e08"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/engine_hybrid/kernel.elf",
+      "bytes": 6896,
+      "sha256": "7e4ed3b09a7f85185147370220dea9d39d2733597075a8196f8971e2ef39f550"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/engine_hybrid/kernel.dump",
+      "bytes": 24880,
+      "sha256": "2182ce3304971b85f09bb5e0aa06ae9b876c91498fb51aa9cbc32b4f609c5357"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/engine_comb/forza_pow2_engine_comb",
+      "bytes": 36848,
+      "sha256": "00c5e582b1c30128f1ac3ccded18f3e5398fbc387b5bc049ae7a034d4b4ea726"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/engine_comb/kernel.vxbin",
+      "bytes": 5680,
+      "sha256": "588b80607b22aa9fc348461a4fc69617280d83c856b7dbc37cf99adcb88ced63"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/engine_comb/kernel.elf",
+      "bytes": 7152,
+      "sha256": "52eae128b506bf618f1e0a4e94a1998c2fcd31090342fa799c2f7d8751fb86d7"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch_pow2/artifacts/engine_comb/kernel.dump",
+      "bytes": 27531,
+      "sha256": "13ef6c291e860b71ee9c1c71da45c0daa4b96b826956e52365e6f4b37f5f6ffb"
+    }
+  ],
+  "original_artifacts_checked": 46,
+  "compiled_mapping_proof": {
+    "gpu_global": {
+      "division_or_remainder_instructions": 0,
+      "guest_identical_to_original": true
+    },
+    "gpu_local": {
+      "division_or_remainder_instructions": 0,
+      "guest_identical_to_original": false
+    },
+    "gpu_core_comb": {
+      "division_or_remainder_instructions": 0,
+      "guest_identical_to_original": true
+    },
+    "engine_hybrid": {
+      "division_or_remainder_instructions": 0,
+      "guest_identical_to_original": false
+    },
+    "engine_comb": {
+      "division_or_remainder_instructions": 0,
+      "guest_identical_to_original": false
+    }
+  },
+  "exact_cycle_controls": [
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 128,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 3360,
+      "new_cycles": 3360
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 128,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 10789,
+      "new_cycles": 10789
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 50532,
+      "new_cycles": 50532
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 56463,
+      "new_cycles": 56463
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 51919,
+      "new_cycles": 51919
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 56838,
+      "new_cycles": 56838
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 52262,
+      "new_cycles": 52262
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 55118,
+      "new_cycles": 55118
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 50598,
+      "new_cycles": 50598
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 104897,
+      "new_cycles": 104897
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 51981,
+      "new_cycles": 51981
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 101571,
+      "new_cycles": 101571
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 52262,
+      "new_cycles": 52262
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 92638,
+      "new_cycles": 92638
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 50881,
+      "new_cycles": 50881
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 50998,
+      "new_cycles": 50998
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 52338,
+      "new_cycles": 52338
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 4,
+      "old_cycles": 188174,
+      "new_cycles": 188174
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 4,
+      "old_cycles": 199064,
+      "new_cycles": 199064
+    }
+  ],
+  "comparison": [
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 128,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 3360,
+      "new_cycles": 3360
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 1024,
+      "updates": 128,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 9423,
+      "new_cycles": 9447
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 128,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 10789,
+      "new_cycles": 10789
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 1024,
+      "updates": 128,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 14213,
+      "new_cycles": 14140
+    },
+    {
+      "mode": "engine_comb",
+      "state_bytes": 1024,
+      "updates": 128,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 25179,
+      "new_cycles": 24380
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 50532,
+      "new_cycles": 50532
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 116467,
+      "new_cycles": 114065
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 56463,
+      "new_cycles": 56463
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 274130,
+      "new_cycles": 271363
+    },
+    {
+      "mode": "engine_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 75086,
+      "new_cycles": 73547
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 51919,
+      "new_cycles": 51919
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 97547,
+      "new_cycles": 95319
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 56838,
+      "new_cycles": 56838
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 264902,
+      "new_cycles": 263598
+    },
+    {
+      "mode": "engine_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 74249,
+      "new_cycles": 72695
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 52262,
+      "new_cycles": 52262
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 97688,
+      "new_cycles": 95482
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 55118,
+      "new_cycles": 55118
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 264902,
+      "new_cycles": 263598
+    },
+    {
+      "mode": "engine_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 60269,
+      "new_cycles": 59846
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 50598,
+      "new_cycles": 50598
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 139771,
+      "new_cycles": 137365
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 104897,
+      "new_cycles": 104897
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 288640,
+      "new_cycles": 285873
+    },
+    {
+      "mode": "engine_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 237251,
+      "new_cycles": 227419
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 51981,
+      "new_cycles": 51981
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 139691,
+      "new_cycles": 137248
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 101571,
+      "new_cycles": 101571
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 293222,
+      "new_cycles": 290515
+    },
+    {
+      "mode": "engine_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 185801,
+      "new_cycles": 179577
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 52262,
+      "new_cycles": 52262
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 122110,
+      "new_cycles": 120069
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 92638,
+      "new_cycles": 92638
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 279412,
+      "new_cycles": 278108
+    },
+    {
+      "mode": "engine_comb",
+      "state_bytes": 8192,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 112405,
+      "new_cycles": 112094
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 50881,
+      "new_cycles": 50881
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 219832,
+      "new_cycles": 217492
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "random",
+      "epochs": 1,
+      "old_cycles": 338523,
+      "new_cycles": 335807
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 50998,
+      "new_cycles": 50998
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 222939,
+      "new_cycles": 220811
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "skew",
+      "epochs": 1,
+      "old_cycles": 343105,
+      "new_cycles": 340449
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 52338,
+      "new_cycles": 52338
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 205881,
+      "new_cycles": 204469
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 32768,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 1,
+      "old_cycles": 329295,
+      "new_cycles": 328042
+    },
+    {
+      "mode": "gpu_global",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 4,
+      "old_cycles": 188174,
+      "new_cycles": 188174
+    },
+    {
+      "mode": "gpu_local",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 4,
+      "old_cycles": 354188,
+      "new_cycles": 345055
+    },
+    {
+      "mode": "gpu_core_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 4,
+      "old_cycles": 199064,
+      "new_cycles": 199064
+    },
+    {
+      "mode": "engine_hybrid",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 4,
+      "old_cycles": 1025540,
+      "new_cycles": 1020576
+    },
+    {
+      "mode": "engine_comb",
+      "state_bytes": 1024,
+      "updates": 4096,
+      "pattern": "hot",
+      "epochs": 4,
+      "old_cycles": 208085,
+      "new_cycles": 207281
+    }
+  ],
+  "report_sha256": "fe7fcea577dce941c450a0131d940dfd31fa0eb6889366c3ba30bde4eab596b5"
+}

@@ -63,6 +63,14 @@ ifneq ($(filter -DVX_CFG_VM_ENABLE, $(XCONFIGS)),)
 	SRCS += $(SRC_DIR)/mem/ptw.cpp
 endif
 
+# Experimental FORZA message queues
+ifneq ($(filter -DVX_CFG_EXT_FORZA_ENABLE, $(XCONFIGS)),)
+	SRCS += $(SRC_DIR)/forza/forza_zone.cpp $(SRC_DIR)/forza/forza_fabric.cpp
+endif
+ifneq ($(filter -DVX_CFG_FORZA_VM_ENABLE, $(CONFIGS)),)
+	SRCS += $(SRC_DIR)/forza/forza_vm.cpp
+endif
+
 # Add DXA extension sources
 ifneq ($(filter -DVX_CFG_EXT_DXA_ENABLE, $(XCONFIGS)),)
 	SRCS += $(SRC_DIR)/dxa/dxa_core.cpp

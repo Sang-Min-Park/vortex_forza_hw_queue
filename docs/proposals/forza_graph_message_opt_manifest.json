@@ -1,0 +1,122 @@
+{
+  "date_utc": "2026-10-27T23:29:40.389032+00:00",
+  "scope": "application/runtime-path optimization experiments; hardware timing and original runtime unchanged",
+  "compiler": {
+    "invoked_path": "/export/nethomes/spark3100/tools/llvm-vortex/bin/clang++",
+    "resolved_path": "/export/nethomes/spark3100/tools/llvm-vortex/bin/clang-20",
+    "version": "clang version 20.1.8 (https://github.com/vortexgpgpu/llvm.git 4c836512a60c0b965bb298104e084cd0f07ca962)",
+    "sha256": "a953f76b8aaa0f80dd12b0fff30f455684d64f489f9917e8135072220ba1cf3a"
+  },
+  "configs": "-DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_EXT_A_ENABLE -DVX_CFG_DCACHE_DISABLE -DVX_CFG_L2_ENABLE -DVX_CFG_NUM_CORES=2 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=4",
+  "primary_metric": "core0 MCYCLE after host readback/cache flush; fresh device/process per case",
+  "changes": [
+    "hoist invariant argument scalars and CSR-row end, verified fold loads6->2 in emitted code",
+    "owner handles own core partial locally; only remote dense partials use messages or global buffers",
+    "msg_local/private retain cyclicthread source mapping; msg_warp/sw_warp/gpu_warp use interleaved core/warp source rows and lane-strided edges",
+    "private acknowledged AMO table is interleaved[word][sender], reduced in-place to column0; init/footprint and bank0 gather costs remain",
+    "fixed expected-remote-count completion plus unique-chunk maps, ACK drain, final barrier; one-shot phase only",
+    "matching software warp control applies same fold/work distribution/local bypass; direct GPU warp control uses atomic output"
+  ],
+  "sources": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_message_opt/Makefile",
+      "bytes": 1384,
+      "sha256": "9194ec676d50c03e2a29f58eea8ca5b2c1b7949bfc8957db1347dadd05f3c3b1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_message_opt/main.cpp",
+      "bytes": 18334,
+      "sha256": "f8f14d3287df577f5af25a1b9491d9f120858f977659d25524b5a4a4c21c1b2a"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_message_opt/kernel.cpp",
+      "bytes": 9593,
+      "sha256": "c8221d594264b0e5104e7ebbecd4d5da45f9edbfbcce11c95e8d7496b0470ce4"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_message_opt/kernel_sw.cpp",
+      "bytes": 5481,
+      "sha256": "5eacbff6db1ce135722f61e9381e23d64b9a3e7e800e4664f0d3af59ec209b01"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_message_opt/kernel_gpu.cpp",
+      "bytes": 2192,
+      "sha256": "5cf3fa9c787e115e72c35b375573a2d71eb5e255c4daa6eab67f731ab95a8e4d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_message_opt/README.md",
+      "bytes": 8693,
+      "sha256": "54e5cbff15287d823873847628232e90df24182507a841b9534051cfc434ad1d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_message_opt/run_comparison.py",
+      "bytes": 4144,
+      "sha256": "aaddbbfe14faef63e46815ec4abc53eaaae0d84043bee4cf29e0fd3bb39c39b6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_message_opt/analyze.py",
+      "bytes": 14044,
+      "sha256": "9582c04effb1e39d8711eab8ca5ec48147d12270d2e236d79a4acd00d4d7f509"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_coalesced/common.h",
+      "bytes": 1405,
+      "sha256": "3102f03ab8d69ee29ca75d5fba4d36dda285d50a2462252ca1820754a869d5f1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_coalesced/analyze.py",
+      "bytes": 13448,
+      "sha256": "1a0f91e81c71369ee47da88990de151571215d7d7e354a766ac1dc35dfcc08ad"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_core_hw/analyze.py",
+      "bytes": 12277,
+      "sha256": "93307212abc31655793de3586b94e037cdb0966d0d6ff12ee05b4048365a9762"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/vortex.mk",
+      "bytes": 460,
+      "sha256": "10bdfe4ce8fff5f18692786ee9ec021dc29a5687c183ee4fa6b2f593a78e0c02"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/selector.vortex.h",
+      "bytes": 13055,
+      "sha256": "301a41fd2f45101ccda96114db2fdb8f5131f6439e0e8bcaa89ca182570f3421"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/forza_message_lib.vortex.h",
+      "bytes": 6430,
+      "sha256": "6007f6747937f1bddc7417e94342250ebb1edeb3bc989e924642496c46405007"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/mem/local_mem.cpp",
+      "bytes": 10516,
+      "sha256": "74947f5c66410c833fc0edfe6406fcbcbe8e7252e8e6060d38133462e38ae0da"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/mem/cache.cpp",
+      "bytes": 75543,
+      "sha256": "e3b2c0ae1aebd18e4d7c7fdccdc643f3284526154c9cf11c2dc919d0190fb5c4"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/lsu_unit.cpp",
+      "bytes": 21413,
+      "sha256": "01ca50a673c7f53b8c15e47ad77d9e3e20f403fbdc21565491c628d2b73c19fb"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/alu_unit.cpp",
+      "bytes": 20697,
+      "sha256": "7fd149530c0f8ffab56eaebc9ec1a033fe4f5fdbb158d2e0fcc6fc326b7092ca"
+    }
+  ],
+  "compiled_fold_proof": {
+    "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph-gpu/tests/regression/forza_graph_message_opt/compiled-fold-proof.txt",
+    "bytes": 4896,
+    "sha256": "43c5c7689dd5cbda087351c72b1e65975b35fa5c9e86af0d0354a0ea4d3a28ef"
+  },
+  "reference_provenance": {
+    "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/docs/proposals/forza_graph_core_hw_manifest.json",
+    "bytes": 5409,
+    "sha256": "e9a6d7a9b2fd2b4548d5744c4445a2777bcd5f72b89e2d03fd0264ac203de6f8"
+  }
+}

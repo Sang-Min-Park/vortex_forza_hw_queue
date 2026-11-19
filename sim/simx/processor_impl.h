@@ -18,6 +18,9 @@
 #include "constants.h"
 #include "cluster.h"
 #include "kmu.h"
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+#include "forza/forza_fabric.h"
+#endif
 
 namespace vortex {
 
@@ -81,6 +84,9 @@ private:
   bool mmu_fault_pending() const;
 
   Kmu::Ptr    kmu_;
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  ForzaFabric::Ptr forza_fabric_;
+#endif
   std::vector<Cluster::Ptr> clusters_;
   Memory::Ptr memsim_;
 #ifdef VX_CFG_VM_ENABLE

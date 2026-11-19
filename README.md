@@ -1,3 +1,28 @@
+# Vortex FORZA hardware queue prototype
+
+This repository contains a **SimX prototype** of FORZA-style hardware message
+queues in Vortex, with a CSR transport, bounded FIFOs, per-actor mailboxes,
+message SRAM, a crossbar model and delivery ACKs. The FORZA extension is opt-in
+and requires RV64. It has not been integrated and validated in Vortex RTL.
+
+**Start here: [handoff, setup, recorded results and open issues](docs/forza_handoff.md).**
+
+- [Core CSR implementation](sim/simx/forza/forza_zone.cpp)
+- [Reading-only CSR training copy](sim/simx/forza/forza_zone_train.cpp)
+- [Queue design and original FORZA differences](docs/proposals/forza_runtime_contract.md)
+- [Recorded CSR scalability/lifetime results](docs/proposals/forza_csr_generalization_results.json)
+- [Archived CSR evidence](docs/forza_evidence/manifest.json)
+
+Recorded raw queue checks passed at 16, 32 and 64 physical actors. The Selector
+runtime passed at 16/32 actors and timed out in the tested 64-actor cases.
+Changing logical PE registration when physical endpoints are reused remains
+unsupported. Optional research extensions and historical reports are included;
+follow the CSR baseline first.
+
+The original Vortex project documentation follows.
+
+---
+
 # Vortex GPGPU
 
 Vortex is a full-stack open-source RISC-V GPGPU. Vortex supports multiple **backend drivers**, including our C++ simulator (simx), an RTL simulator, and physical Xilinx and Altera FPGAs-- all controlled by a single driver script. The chosen driver determines the corresponding code invoked to run Vortex. Generally, developers will prototype their intended design in simx, before completing going forward with an RTL implementation. Alternatively, you can get up and running by selecting a driver of your choice and running a demo program.

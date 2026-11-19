@@ -1,0 +1,11 @@
+{
+  "tests/regression/forza_explore/compound_state_ordered/main.cpp": "6f8233abbebdf276ef4dabbf1e80a1771056001f8640a772c2617c7535834c21",
+  "tests/regression/forza_explore/compound_state_ordered/common.h": "db288db248c6e89b0d278041878484d7cd7661384f7cec4869c01b84df9b6a26",
+  "tests/regression/forza_explore/compound_state_ordered/state.h": "0cbf5327a9c2214c4321c2971fde02dec30143b479147ed7ba1dbf18b4b6c99d",
+  "tests/regression/forza_explore/compound_state_ordered/kernel_mp.cpp": "ad2d373a30de5be81415e9ca8303ff97985bddd49ab2bf3cba878a6eba8aaf5c",
+  "tests/regression/forza_explore/compound_state_ordered/Makefile": "4725ae54a590b9b963362952f8514e6b2eae516a5a96a84bfcfbb7883e623057",
+  "tests/regression/forza_explore/runtime_ordered/inc/selector.forza.h": "f3619c9664b8cd1d80acc9afab40cfa9ea69559349dd3578a7b4d14a317a0187",
+  "tests/regression/forza_explore/runtime_ordered/inc/selector.vortex.h": "580e37ef3552c24061d1f99fe7fd907c07c6a97ef7260fba4f1e02ad78dd2710",
+  "tests/regression/forza_explore/runtime_ordered/inc/forza_message_lib.vortex.h": "88dd02938677c25e1e0c02645ca31fb51d277152b4f333c5554e73fb457aeaab",
+  "tests/regression/forza_explore/runtime_ordered/vortex.mk": "1af296a8ce95ae0d2faff8497422911e86813c0cac957ea128e6f23b07a291e1"
+}

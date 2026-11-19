@@ -32,6 +32,10 @@ using namespace vortex;
 
 SfuUnit::SfuUnit(const SimContext& ctx, const char* name, Core* core)
 	: FuncUnit<VX_CFG_NUM_SFU_BLOCKS>(ctx, name, core, 6)
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+	, forza_req_out(this)
+	, forza_rsp_in(this, 2)
+#endif
 #ifdef VX_CFG_EXT_DXA_ENABLE
 	, dxa_req_out(this)
 #endif
@@ -83,6 +87,16 @@ bool SfuUnit::rtu_trace2_reserve_slot(uint32_t wid) {
 
 
 void SfuUnit::on_tick() {
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+	if (!forza_rsp_in.empty()) {
+		const auto& response = forza_rsp_in.peek();
+		auto& output = Outputs.at(response.block);
+		if (!output.full()) {
+			output.send(response.trace, 1);
+			forza_rsp_in.pop();
+		}
+	}
+#endif
 #ifdef VX_CFG_EXT_RTU_ENABLE
 	// Drain RTU rsps. Two flavors, both completing the warp's parked WAIT
 	// through the same writeback path (candidate-return, no async trap):
@@ -261,6 +275,28 @@ void SfuUnit::on_tick() {
 			continue;
 		auto& output = Outputs.at(b);
 		auto trace = input.peek();
+
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+#ifdef VX_CFG_FORZA_ISA_ENABLE
+		if (std::get_if<ForzaType>(&trace->op_type)) {
+			if (!forza_req_out.full()) {
+				forza_req_out.send(ForzaCsrRequest{trace, b}, 1);
+				input.pop();
+			}
+			continue;
+		}
+#endif
+		if (std::get_if<CsrType>(&trace->op_type)) {
+			auto args = std::get<IntrCsrArgs>(trace->instr_ptr->get_args());
+			if (is_forza_csr(args.csr)) {
+				if (!forza_req_out.full()) {
+					forza_req_out.send(ForzaCsrRequest{trace, b}, 1);
+					input.pop();
+				}
+				continue;
+			}
+		}
+#endif
 
 #ifdef VX_CFG_EXT_TEX_ENABLE
 		// TEX path is async: don't gate on output.full() yet — that check

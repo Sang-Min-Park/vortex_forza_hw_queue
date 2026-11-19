@@ -1,0 +1,338 @@
+{
+  "scope": "Existing .W contended atomic regression; whole application, not saturated-bank II; native-only model",
+  "configs": "-DVX_CFG_EXT_A_ENABLE -DVX_CFG_DCACHE_DISABLE -DVX_CFG_L2_ENABLE -DVX_CFG_NUM_CORES=2 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=4",
+  "guest_sha256": "10d7c8df80fe208165c4f481be3a9a652f52759379961ffc7be3f9eb367776d2",
+  "runs": [
+    {
+      "driver": "simx",
+      "case": "amoadd",
+      "command": [
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/amo",
+        "-k",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/kernel.vxbin",
+        "-tamoadd",
+        "-n64"
+      ],
+      "cwd": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/simx-amoadd",
+      "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/simx-amoadd/run.log",
+      "returncode": 0,
+      "passed": true,
+      "sha256": "1f5534194cbb6eb1bb36b09b893720d2acfabe965d48ae92323d81d4e4de210a",
+      "retired_instructions": 1164,
+      "whole_application_cycles": 5093
+    },
+    {
+      "driver": "simx",
+      "case": "amoadd_lmem",
+      "command": [
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/amo",
+        "-k",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/kernel.vxbin",
+        "-tamoadd_lmem",
+        "-n64"
+      ],
+      "cwd": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/simx-amoadd_lmem",
+      "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/simx-amoadd_lmem/run.log",
+      "returncode": 0,
+      "passed": true,
+      "sha256": "1c445924ddff68899c590df222b7270b21b534fb412906b2be8cc53a2547fe04",
+      "retired_instructions": 1258,
+      "whole_application_cycles": 4839
+    },
+    {
+      "driver": "rtlsim",
+      "case": "amoadd",
+      "command": [
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/amo",
+        "-k",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/kernel.vxbin",
+        "-tamoadd",
+        "-n64"
+      ],
+      "cwd": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/rtlsim-amoadd",
+      "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/rtlsim-amoadd/run.log",
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "sha256": "115766a6bb8a9c03af8a086fd640486c31ecc6b17c20b9bcbb5e83804013fc22",
+      "retired_instructions": 1164,
+      "whole_application_cycles": 8581
+    },
+    {
+      "driver": "rtlsim",
+      "case": "amoadd_lmem",
+      "command": [
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/amo",
+        "-k",
+        "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/kernel.vxbin",
+        "-tamoadd_lmem",
+        "-n64"
+      ],
+      "cwd": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/rtlsim-amoadd_lmem",
+      "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/rtlsim-amoadd_lmem/run.log",
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "sha256": "94dd114ecd6b739d207e32501b043980f4a84a5a53400c9edfe746894b56e123",
+      "retired_instructions": 1258,
+      "whole_application_cycles": 4956
+    }
+  ],
+  "completed_utc": "2026-10-28T03:13:03.595653+00:00",
+  "artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/sw/runtime/libsimx.so",
+      "bytes": 1890720,
+      "sha256": "e59d06444a582f3bc39e73c0bfbd25ddd10af74a58656e6b7de6d9ad071bf735"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/sw/runtime/libvortex-simx.so",
+      "bytes": 111856,
+      "sha256": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/sw/runtime/librtlsim.so",
+      "bytes": 3180104,
+      "sha256": "02434a7ac489fa1c2447ed60a68fe2de2a499e89b56959789f43fe88441e3dd2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/sw/runtime/libvortex-rtlsim.so",
+      "bytes": 107528,
+      "sha256": "2e3af069f59eb110e4b505b19bcb8697ba9818b09ac0c5ca2af0ba7d9783ec94"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/sw/runtime/libvortex.so",
+      "bytes": 309800,
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/sw/kernel/libvortex2.a",
+      "bytes": 67566,
+      "sha256": "8e00461cfe966321b1228b312b141bd0cea87af279f659989b5da86bbfd6ed53"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/amo",
+      "bytes": 61024,
+      "sha256": "f00adfcc4a51c67fd0ff2d0c1031ef277830a9f4b7eceac005a354b7544ea274"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/kernel.vxbin",
+      "bytes": 5680,
+      "sha256": "10d7c8df80fe208165c4f481be3a9a652f52759379961ffc7be3f9eb367776d2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/kernel.elf",
+      "bytes": 8552,
+      "sha256": "d340cc8d1baf0653c12cafce9d06dbd5c23a7823c338d3318b6a6715e6bc3ba6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/tests/regression/amo/kernel.dump",
+      "bytes": 48026,
+      "sha256": "f8209e207284fd96b5e8a47c7c5a46559d526c18d39fba058eeb385273c0d998"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/simx-build.log",
+      "bytes": 91009,
+      "sha256": "9eb2d684462328d458d525d0a6950861d6206c0ccd8b60861e0ea77656183f14"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/rtlsim-build.log",
+      "bytes": 273277,
+      "sha256": "87d3f4eeff9aca3feb6498a4363859b6512178c26bf64b4a5387d769c8249d0d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/amo-build.log",
+      "bytes": 53289,
+      "sha256": "dd91c9a50291991fff9c58000cb64d06f90bc2ac7ff825cdb099a9b62cf2b56b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/mem/cache.cpp",
+      "bytes": 75543,
+      "sha256": "e3b2c0ae1aebd18e4d7c7fdccdc643f3284526154c9cf11c2dc919d0190fb5c4"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/mem/local_mem.cpp",
+      "bytes": 10516,
+      "sha256": "74947f5c66410c833fc0edfe6406fcbcbe8e7252e8e6060d38133462e38ae0da"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/hw/rtl/cache/VX_cache_amo.sv",
+      "bytes": 42133,
+      "sha256": "33d3b94dbcfebb6a47f642a6e340f2f5a0df465afabb25525ee7f773e9505efb"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/hw/rtl/cache/VX_cache_bank.sv",
+      "bytes": 70418,
+      "sha256": "03179c7d04dd88bcf358a0b21f4f1827722db0e92ca4e0621d09cfd4b0a6f9c5"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/hw/rtl/mem/VX_local_mem.sv",
+      "bytes": 35609,
+      "sha256": "2847dc735b4b9edb1dd1486d4b14d161e92861ebe3154783b73397edbe763407"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/amo/kernel.cpp",
+      "bytes": 16715,
+      "sha256": "1bb5d4836436d82908c3e1b7d9a9ee21316f77a42916efdf1d64e28d03a45107"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/amo/main.cpp",
+      "bytes": 6851,
+      "sha256": "6394ef572a3c896fe1eb64d570ebaaf64b6160d8246e02e3f33aead69a21b8ad"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/VX_config.toml",
+      "bytes": 20740,
+      "sha256": "b4d45c48267759c492bfd00a376577703312a4d4c1ae7c7a880fd7f835934ce6"
+    }
+  ],
+  "comparisons": [
+    {
+      "case": "amoadd",
+      "instructions_identical": true,
+      "instructions": 1164,
+      "simx_cycles": 5093,
+      "rtl_cycles": 8581,
+      "rtl_over_simx_cycles": 1.6848615747103868
+    },
+    {
+      "case": "amoadd_lmem",
+      "instructions_identical": true,
+      "instructions": 1258,
+      "simx_cycles": 4839,
+      "rtl_cycles": 4956,
+      "rtl_over_simx_cycles": 1.0241785492870428
+    }
+  ],
+  "limitations": [
+    "Existing .W atomic regression in RV64, not the new .D ADD workload",
+    "Same compiled guest for both drivers; whole application cycles, not saturated bank II",
+    "No full workload correction factor or hardware-engine RTL performance established",
+    "Cache/atomic timing was not changed"
+  ],
+  "scatter_doubleword_probe": {
+    "scope": "Same frozen .D scatter GPU guest on native-only SimX/RTL, 1KiB single-hot4096 inputs",
+    "runs": [
+      {
+        "driver": "simx",
+        "command": [
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch/artifacts/gpu_global/forza_arch_gpu_global",
+          "-k",
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch/artifacts/gpu_global/kernel.vxbin",
+          "-b",
+          "1024",
+          "-n",
+          "4096",
+          "-p",
+          "hot",
+          "-e",
+          "1",
+          "-s",
+          "17",
+          "-t",
+          "120"
+        ],
+        "cwd": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/simx-scatter-d-hot",
+        "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/simx-scatter-d-hot/run.log",
+        "passed": true,
+        "returncode": 0,
+        "sha256": "4a9dd10e969e69e7b0ba2bcb7f6d089c72b9bafa92bc573845796f7d49fbb0af",
+        "result": {
+          "mode": "gpu_global",
+          "state_bytes": "1024",
+          "updates": "4096",
+          "epochs": "1",
+          "pattern": "hot",
+          "seed": "17",
+          "hash": "b7b852f54b3eb463",
+          "checksum": "a1fca5c23162987b",
+          "device_cycles_post_readback_including_flush": "52262",
+          "phase_cycles": "51300",
+          "init_span_cycles": "104",
+          "process_span_cycles": "50891",
+          "output_span_cycles": "319",
+          "local_updates": "0",
+          "remote_updates": "4096",
+          "partials_published": "0",
+          "send_attempts": "0",
+          "send_retries": "0",
+          "lmem_bytes_per_core": "0",
+          "lmem_reads": "0",
+          "lmem_writes": "0",
+          "lmem_bank_stalls": "0",
+          "dram_reads": "569",
+          "dram_writes": "47",
+          "l2_reads": "4216",
+          "l2_writes": "4336",
+          "l2_read_misses": "2096",
+          "l2_write_misses": "93"
+        }
+      },
+      {
+        "driver": "rtlsim",
+        "command": [
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch/artifacts/gpu_global/forza_arch_gpu_global",
+          "-k",
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch/artifacts/gpu_global/kernel.vxbin",
+          "-b",
+          "1024",
+          "-n",
+          "4096",
+          "-p",
+          "hot",
+          "-e",
+          "1",
+          "-s",
+          "17",
+          "-t",
+          "120"
+        ],
+        "cwd": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/rtlsim-scatter-d-hot",
+        "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-amo-audit/atomic-audit/rtlsim-scatter-d-hot/run.log",
+        "passed": true,
+        "returncode": 0,
+        "sha256": "3dba3b1967ea2bcea702f118104894aaf3e3e5bf9fd127d97c49f196f840b060",
+        "result": {
+          "mode": "gpu_global",
+          "state_bytes": "1024",
+          "updates": "4096",
+          "epochs": "1",
+          "pattern": "hot",
+          "seed": "17",
+          "hash": "b7b852f54b3eb463",
+          "checksum": "a1fca5c23162987b",
+          "device_cycles_post_readback_including_flush": "80727",
+          "phase_cycles": "75576",
+          "init_span_cycles": "4309",
+          "process_span_cycles": "62636",
+          "output_span_cycles": "8640",
+          "local_updates": "0",
+          "remote_updates": "4096",
+          "partials_published": "0",
+          "send_attempts": "0",
+          "send_retries": "0",
+          "lmem_bytes_per_core": "0",
+          "lmem_reads": "0",
+          "lmem_writes": "0",
+          "lmem_bank_stalls": "0",
+          "dram_reads": "0",
+          "dram_writes": "0",
+          "l2_reads": "0",
+          "l2_writes": "0",
+          "l2_read_misses": "0",
+          "l2_write_misses": "0"
+        }
+      }
+    ],
+    "guest": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-arch/tests/regression/forza_pgas_arch/artifacts/gpu_global/kernel.vxbin",
+    "guest_sha256": "38dce6b67678694b31a460a3a0fbe543c6932d774dfea9773bfa620bad5b892b",
+    "same_input_and_result": true,
+    "whole_cycle_ratio_rtl_over_simx": 1.5446595997091577,
+    "limitations": [
+      "Same real .D scatter guest and exact mathematical answer; no engine RTL comparison",
+      "Whole device after readback/flush, not isolated LLC bank initiation interval",
+      "RTL optional memory counters report zero in this build and are not traffic evidence",
+      "Do not rescale any engine SimX result using this ratio"
+    ]
+  }
+}

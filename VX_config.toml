@@ -37,6 +37,16 @@ VX_CFG_EXT_ZICOND_ENABLE = true
 VX_CFG_EXT_TCU_ENABLE = false
 VX_CFG_EXT_DMA_ENABLE = false
 VX_CFG_EXT_DXA_ENABLE = false
+# Experimental SimX-only CSR message queues (requires RV64).
+VX_CFG_EXT_FORZA_ENABLE = false
+# Experimental SimX LSU command aperture; requires FORZA, RV64, and A.
+VX_CFG_FORZA_MMIO_ENABLE = false
+# Alternative SimX command resource: one LSU-width vector per cycle.
+VX_CFG_FORZA_MMIO_VECTOR_ENABLE = false
+# Experimental destination ADD engine using an additional client of local SRAM.
+VX_CFG_FORZA_UPDATE_ENABLE = false
+# Experimental multiword object transactions over the existing local-memory client.
+VX_CFG_FORZA_RECORD_ENABLE = false
 VX_CFG_EXT_TEX_ENABLE = false
 VX_CFG_EXT_RASTER_ENABLE = false
 VX_CFG_EXT_OM_ENABLE = false

@@ -1,0 +1,437 @@
+{
+  "scope": "Archived CSR scalability and endpoint-lifetime evidence. Build products excluded. Original paths retained as provenance.",
+  "files": [
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/collect-results.py",
+      "published_path": "docs/forza_evidence/2c2w4t/collect-results.py",
+      "sha256": "33951f2e10c2b74a40eee00214f084bbd322610e06dfb918a323c8c326ca856b",
+      "bytes": 5921
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/configs.txt",
+      "published_path": "docs/forza_evidence/2c2w4t/configs.txt",
+      "sha256": "5968d1ef4c1ff917caefe8a9cf4437b5037a2dff1d9814930df0e7d84823f59e",
+      "bytes": 116
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/forza_queue.exit",
+      "published_path": "docs/forza_evidence/2c2w4t/forza_queue.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/forza_queue.log",
+      "published_path": "docs/forza_evidence/2c2w4t/forza_queue.log",
+      "sha256": "9c77848d018dbef40a255e5b06deb9076c6ddb0552670a0589ba28a178eaf7a2",
+      "bytes": 94457
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/forza_runtime.exit",
+      "published_path": "docs/forza_evidence/2c2w4t/forza_runtime.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/forza_runtime.log",
+      "published_path": "docs/forza_evidence/2c2w4t/forza_runtime.log",
+      "sha256": "8411681857cc1839051047f908387f0bfbf9b1f3685b9f20f91f4e5e79aa035a",
+      "bytes": 3098
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w1-logical.exit",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w1-logical.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w1-logical.log",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w1-logical.log",
+      "sha256": "587e7f84cf3e53b985c3a219b5ffc64e4e2ec16bc840084d56105a78620086eb",
+      "bytes": 237
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w1-physical.exit",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w1-physical.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w1-physical.log",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w1-physical.log",
+      "sha256": "3b9b9e31fc9e3cd394ae4d976cf2ec1ef68859ee303b829af216f6587e968e8e",
+      "bytes": 238
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w2-logical.exit",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w2-logical.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w2-logical.log",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w2-logical.log",
+      "sha256": "d603eefeb93494d74d306e746b60423f66797f494a127920fc3adcd3a25cfa55",
+      "bytes": 2233
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w2-physical.exit",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w2-physical.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w2-physical.log",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w2-physical.log",
+      "sha256": "d9a68153eb3d55ad4185028a68d5a7edc51aafe12270e1aae3a9b18a0041116c",
+      "bytes": 284
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w4-logical.exit",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w4-logical.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w4-logical.log",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w4-logical.log",
+      "sha256": "903048190ed85e497d5e98f509ffea16fc516eea08d5c74fa6d42dce8c859929",
+      "bytes": 2321
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w4-physical.exit",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w4-physical.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w4-physical.log",
+      "published_path": "docs/forza_evidence/2c2w4t/probe-w4-physical.log",
+      "sha256": "6a38eb9599480fd4b7f668186fc93e76c2d917600632e632bd0244b3529b792e",
+      "bytes": 372
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/run-probes.sh",
+      "published_path": "docs/forza_evidence/2c2w4t/run-probes.sh",
+      "sha256": "b9e7faa8bb3875141db525b135cec681525093a68ffb27adbcf1fe10f62e1b5a",
+      "bytes": 1229
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/run.sh",
+      "published_path": "docs/forza_evidence/2c2w4t/run.sh",
+      "sha256": "b671d61ca634cda7e1ae11575e86e9333581cd30d4d86cdb54a76f308dfd47cc",
+      "bytes": 1362
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w4t/diagnostics/source-sha256.json",
+      "published_path": "docs/forza_evidence/2c2w4t/source-sha256.json",
+      "sha256": "2a6d662fb1b3590cda1efedf870a820470f11192e4c7ea217b3db29594c75315",
+      "bytes": 1960
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w8t/diagnostics/configs.txt",
+      "published_path": "docs/forza_evidence/2c2w8t/configs.txt",
+      "sha256": "4410243d3f18bec8a4a777e6cf1e1132fbdb760410228c521064e386845324cd",
+      "bytes": 116
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w8t/diagnostics/forza_queue.exit",
+      "published_path": "docs/forza_evidence/2c2w8t/forza_queue.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w8t/diagnostics/forza_queue.log",
+      "published_path": "docs/forza_evidence/2c2w8t/forza_queue.log",
+      "sha256": "ef174e5eadfbd1141d325f2ff01a41c8d0003c43ae6c1a54599d942bcf241428",
+      "bytes": 94458
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w8t/diagnostics/forza_runtime.exit",
+      "published_path": "docs/forza_evidence/2c2w8t/forza_runtime.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w8t/diagnostics/forza_runtime.log",
+      "published_path": "docs/forza_evidence/2c2w8t/forza_runtime.log",
+      "sha256": "ea1bc6a92d8f30fa5bee5f1846759259864539fd286f4a1ef587f5fb59fa5860",
+      "bytes": 3098
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c2w8t/diagnostics/run.sh",
+      "published_path": "docs/forza_evidence/2c2w8t/run.sh",
+      "sha256": "2b4216662cf07f651e6a853024d1883b73c90a6b2bad6dd23db7be14f6dac0bc",
+      "bytes": 1362
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w4t/diagnostics/configs.txt",
+      "published_path": "docs/forza_evidence/4c2w4t/configs.txt",
+      "sha256": "3981dd869197baaaf5011b33f846774e336e9c47d118c5fc928724889a8d4bac",
+      "bytes": 116
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w4t/diagnostics/forza_queue.exit",
+      "published_path": "docs/forza_evidence/4c2w4t/forza_queue.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w4t/diagnostics/forza_queue.log",
+      "published_path": "docs/forza_evidence/4c2w4t/forza_queue.log",
+      "sha256": "74f3bea71872952a225589fda23ca5ca5036690919ecb6bc94c913c51f4b455a",
+      "bytes": 2542
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w4t/diagnostics/forza_runtime.exit",
+      "published_path": "docs/forza_evidence/4c2w4t/forza_runtime.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w4t/diagnostics/forza_runtime.log",
+      "published_path": "docs/forza_evidence/4c2w4t/forza_runtime.log",
+      "sha256": "3a8c6dbaf358acb2cf23e24eb0493f910e246dec3c1e67d0e0c0276857aa6d8f",
+      "bytes": 3098
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w4t/diagnostics/run.sh",
+      "published_path": "docs/forza_evidence/4c2w4t/run.sh",
+      "sha256": "bd414c1b95b3f5437c70ec058a1175db712913e890efd7ddec55140a9c5cf9ec",
+      "bytes": 1388
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/artifacts.sha256",
+      "published_path": "docs/forza_evidence/4c2w8t/artifacts.sha256",
+      "sha256": "e5eb5513636fb91979a35a4b86ddcc5495dfc21cfbf66c46c999e4d1febe9a3f",
+      "bytes": 705
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/config.txt",
+      "published_path": "docs/forza_evidence/4c2w8t/config.txt",
+      "sha256": "ba6f963a5a4eed27ca5030eb7e60ad1d876e8de17079439e704dfbd97c216ece",
+      "bytes": 116
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/effective-config.txt",
+      "published_path": "docs/forza_evidence/4c2w8t/effective-config.txt",
+      "sha256": "065f657ba59fc50491d58f2c085c7bf7cf7b5a5011cd07d269acb69d706ece1e",
+      "bytes": 396
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/host-wait-only.patch",
+      "published_path": "docs/forza_evidence/4c2w8t/host-wait-only.patch",
+      "sha256": "51bef71c074ea33220d8a14127d6763585782cc9c45d55a00928e1f371236cb7",
+      "bytes": 1560
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/kernel-phases.patch",
+      "published_path": "docs/forza_evidence/4c2w8t/kernel-phases.patch",
+      "sha256": "373034d7a6b731585d5f8ba000b91f2806228a6b0671858e1c0351a7fe0f744b",
+      "bytes": 5440
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/long-device-after.sha256",
+      "published_path": "docs/forza_evidence/4c2w8t/long-device-after.sha256",
+      "sha256": "d7b8acccd4119a6cf4466c4c836f80207aa12339d5b33be0d534299bef2e7759",
+      "bytes": 218
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/long-device-before.sha256",
+      "published_path": "docs/forza_evidence/4c2w8t/long-device-before.sha256",
+      "sha256": "d7b8acccd4119a6cf4466c4c836f80207aa12339d5b33be0d534299bef2e7759",
+      "bytes": 218
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/long-device-unchanged.txt",
+      "published_path": "docs/forza_evidence/4c2w8t/long-device-unchanged.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/rerun-runtime-n1.sh",
+      "published_path": "docs/forza_evidence/4c2w8t/rerun-runtime-n1.sh",
+      "sha256": "c25f700d1e4e9496d7506128ae5a0113f4df7bcf040d6c57d6bec39d6463931b",
+      "bytes": 730
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-experiment.sh",
+      "published_path": "docs/forza_evidence/4c2w8t/run-experiment.sh",
+      "sha256": "2ba89b7b51efe46413cf9324fac592cf5b80aab6dd10c714ab7343ef6afdb119",
+      "bytes": 1453
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-long-host.sh",
+      "published_path": "docs/forza_evidence/4c2w8t/run-long-host.sh",
+      "sha256": "0775d1860c0fbabd821f481aed6325ca475813e2a0ea670d22453e6254df1959",
+      "bytes": 1083
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-phase-probe.sh",
+      "published_path": "docs/forza_evidence/4c2w8t/run-phase-probe.sh",
+      "sha256": "262222fb69e0bfaa90377dbbc0ea96a5833a4c72cb6e65ea8a48b10ba59f40c3",
+      "bytes": 1354
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-phase.exit",
+      "published_path": "docs/forza_evidence/4c2w8t/run-phase.exit",
+      "sha256": "e726b440cc164001999e718b51780d80314709efe06e7857282377be9111127b",
+      "bytes": 4
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-phase.log",
+      "published_path": "docs/forza_evidence/4c2w8t/run-phase.log",
+      "sha256": "bd929867e236c8cecddd70af5f9f5030a6fb1429d68e36d1eb1be1c368c0199e",
+      "bytes": 105
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-queue.exit",
+      "published_path": "docs/forza_evidence/4c2w8t/run-queue.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-queue.log",
+      "published_path": "docs/forza_evidence/4c2w8t/run-queue.log",
+      "sha256": "dfe79b66d9b84798814b312a8dec7e13677b12215c8a62f4455f2a9b666f9918",
+      "bytes": 94458
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector-n1-long.exit",
+      "published_path": "docs/forza_evidence/4c2w8t/run-selector-n1-long.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector-n1-long.log",
+      "published_path": "docs/forza_evidence/4c2w8t/run-selector-n1-long.log",
+      "sha256": "9dcca0642e1287db5f7c74aa614a287792666d9f13614cbf6a462010421c65b1",
+      "bytes": 624
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector-n1-long.time",
+      "published_path": "docs/forza_evidence/4c2w8t/run-selector-n1-long.time",
+      "sha256": "e5deae763384907965f659ce56a936180cbbaaffb8919409b9e2bf18398caa1f",
+      "bytes": 105
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector-n1.exit",
+      "published_path": "docs/forza_evidence/4c2w8t/run-selector-n1.exit",
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector-n1.log",
+      "published_path": "docs/forza_evidence/4c2w8t/run-selector-n1.log",
+      "sha256": "937efe0d1fe347f3b97f5c5c24ff1bab7ba735efe751531b0c2b7f4204e3e6bb",
+      "bytes": 3028
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector-n1.time",
+      "published_path": "docs/forza_evidence/4c2w8t/run-selector-n1.time",
+      "sha256": "e38d2f8be0c105dee3c60abb5b097ed187e13f9214d0e2fdb23912ca2278aa12",
+      "bytes": 105
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector.exit",
+      "published_path": "docs/forza_evidence/4c2w8t/run-selector.exit",
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector.log",
+      "published_path": "docs/forza_evidence/4c2w8t/run-selector.log",
+      "sha256": "3bc0a633040d1110ed1e9037b21f554f374afc66e9a69b77541fedc41588eb83",
+      "bytes": 3028
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-4c2w8t/diagnostics/summary.json",
+      "published_path": "docs/forza_evidence/4c2w8t/summary.json",
+      "sha256": "80078340de25f49aae3fd6955a5e8edfff864e3577ab92f568bb386eff130200",
+      "bytes": 1526
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/artifacts-sha256.json",
+      "published_path": "docs/forza_evidence/2c4w8t/artifacts-sha256.json",
+      "sha256": "d857de7ea4119e44d830b5d75a88c9cde0a1c9bab53db0023e419c9397ba97e5",
+      "bytes": 847
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/configs.txt",
+      "published_path": "docs/forza_evidence/2c4w8t/configs.txt",
+      "sha256": "060ecbbb70928458cb92a78297d8d0e7ffcf0c760ccc26e2dcf47328864f3aa5",
+      "bytes": 116
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/effective-config.txt",
+      "published_path": "docs/forza_evidence/2c4w8t/effective-config.txt",
+      "sha256": "f935588c31203954461c71fac621c5c14e1a48efe5437c9cd52c45116e5159e2",
+      "bytes": 356
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/forza_queue.exit",
+      "published_path": "docs/forza_evidence/2c4w8t/forza_queue.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/forza_queue.log",
+      "published_path": "docs/forza_evidence/2c4w8t/forza_queue.log",
+      "sha256": "dce06d6a698949711081ae1476673f8952973ba49005dea00d4db68770a4438d",
+      "bytes": 199
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/forza_queue.time",
+      "published_path": "docs/forza_evidence/2c4w8t/forza_queue.time",
+      "sha256": "2e03e69fb19c21d51498e96d32012507de813326a19ad992db91b3614d9cf117",
+      "bytes": 25
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/forza_runtime.exit",
+      "published_path": "docs/forza_evidence/2c4w8t/forza_runtime.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/forza_runtime.log",
+      "published_path": "docs/forza_evidence/2c4w8t/forza_runtime.log",
+      "sha256": "0f4d3d24b3381add3c70a555750ddf7a5769172feb908c90fec98805a88412c7",
+      "bytes": 624
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/forza_runtime.time",
+      "published_path": "docs/forza_evidence/2c4w8t/forza_runtime.time",
+      "sha256": "455e829399a14587e2cf174832d3af6bc3bf644086a267cbdb75aaa8f6c77ae2",
+      "bytes": 65
+    },
+    {
+      "original_path": "build64-forza-csr-generalize-2c4w8t/diagnostics/run-experiment.sh",
+      "published_path": "docs/forza_evidence/2c4w8t/run-experiment.sh",
+      "sha256": "2a8f08e3b25b316e2b7d89663036383754eb7aab45b54303a32b92966cf9271f",
+      "bytes": 1747
+    },
+    {
+      "original_path": "build64-forza-csr/diagnostics/configs.txt",
+      "published_path": "docs/forza_evidence/handoff-smoke/configs.txt",
+      "sha256": "90f0a6c42ed9640d5e9c2e9094cb53077612375a4e6a1e803643971c0450779e",
+      "bytes": 140
+    },
+    {
+      "original_path": "build64-forza-csr/diagnostics/queue.log",
+      "published_path": "docs/forza_evidence/handoff-smoke/queue.log",
+      "sha256": "d41cf69fcd82192e736d9426e80e417f8a90d6701b457263feb22c095b7f14b4",
+      "bytes": 198
+    },
+    {
+      "original_path": "build64-forza-csr/diagnostics/reuse-physical.log",
+      "published_path": "docs/forza_evidence/handoff-smoke/reuse-physical.log",
+      "sha256": "d9a68153eb3d55ad4185028a68d5a7edc51aafe12270e1aae3a9b18a0041116c",
+      "bytes": 284
+    },
+    {
+      "original_path": "build64-forza-csr/diagnostics/runtime.log",
+      "published_path": "docs/forza_evidence/handoff-smoke/runtime.log",
+      "sha256": "4f6a72116299fbfe6aee02c87ca892a4631ce7d7c99b1162eb995b1f6f1f30ba",
+      "bytes": 741
+    }
+  ]
+}

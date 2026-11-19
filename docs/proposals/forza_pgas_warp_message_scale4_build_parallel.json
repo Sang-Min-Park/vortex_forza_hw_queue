@@ -1,0 +1,263 @@
+{
+  "started_utc": "2026-10-28T05:53:40.741719+00:00",
+  "build_dir": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core",
+  "cohort": "scale4",
+  "configs": "-DVX_CFG_FORZA_ISA_ENABLE -DVX_CFG_FORZA_MMIO_VECTOR_ENABLE -DVX_CFG_FORZA_MMIO_ENABLE -DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_EXT_A_ENABLE -DVX_CFG_DCACHE_DISABLE -DVX_CFG_L2_ENABLE -DVX_CFG_NUM_CORES=4 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=4",
+  "source_artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/kernel_bucket.cpp",
+      "bytes": 2954,
+      "sha256": "1f438c3abd0418b4a67078643c98f7b75cb7756fac4900177d716e2b1ac12d40",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/kernel_bucket.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/kernel_field_core.cpp",
+      "bytes": 2169,
+      "sha256": "d1138415c42980ee7053aee6951d1c68a7e4e355915489b79341370a1cae801d",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/kernel_field_core.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/kernel_lock.cpp",
+      "bytes": 1244,
+      "sha256": "6559657b422194f16b80f6d3a7fe9e88f528b6f7076b3a501df2c99659e16e17",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/kernel_lock.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/kernel_warp_core.cpp",
+      "bytes": 2842,
+      "sha256": "94a74385a9fb6c8a32e766b113130705305eef477c7c56b233ad28eb1eebe653",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/kernel_warp_core.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/main.cpp",
+      "bytes": 14786,
+      "sha256": "98e8cbd24e00624ab512973fa0b427d6188c1afd0240c8aa22e845b5896eff27",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/main.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/kernel_warp.cpp",
+      "bytes": 2989,
+      "sha256": "c78c0cb87597666c42b12702cf548752c1e1721967824e7fe3c846a54b2f7595",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/kernel_warp.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/kernel_warp_batch.cpp",
+      "bytes": 8879,
+      "sha256": "e67cde6250cddd5f24e547c898ee241387bf453abaaaa3ccec5624c481cbf9c4",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/kernel_warp_batch.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/kernel_field_batch.cpp",
+      "bytes": 6227,
+      "sha256": "a1b1314907bdd7fcf56fb7aa5f6039636f5e7dba8dd1ddac4633ab935c40d2e6",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/kernel_field_batch.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/ordered_shuffle.h",
+      "bytes": 705,
+      "sha256": "06eba1e783cc7b3dfe88b6a601c312807984bc56a9c6e198ad68a812bbe882ed",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/ordered_shuffle.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/warp_handler.h",
+      "bytes": 5689,
+      "sha256": "1d2f90c9ab6c7ee60f1154ec71c80acf657ba0a07fa684164925649c6622a679",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/warp_handler.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/transport.h",
+      "bytes": 1662,
+      "sha256": "02c5b788a58b451ccbe4574204f4ce60e58f09eb01dbd0920bcc09adf8d02688",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/transport.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/common.h",
+      "bytes": 694,
+      "sha256": "9fd3b2f606eba4b58730997f56877b8f01dddadb6f0f7ab47a5c3907cf3b3c12",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/common.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/device.h",
+      "bytes": 1426,
+      "sha256": "6b86ec7e06a38f974fc90f376a3285bd5a3849a3a58b97a66035d1b2d2e3b3cc",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/device.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/field_handler.h",
+      "bytes": 2172,
+      "sha256": "112620b58ae4ecaaab62fd40b43904f564e906cebbb7b1f8014fc177adc3ce37",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/field_handler.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/Makefile",
+      "bytes": 1749,
+      "sha256": "1e958768832119f1caf35f724f94949c35f9373856f818242f885823f93351f6",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/Makefile"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/README.md",
+      "bytes": 1334,
+      "sha256": "7ade198fa5d77006a2742abc6b44eeb3d1305af46995856e8660466b0980a5e3",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/README.md"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_warp_message_parallel/run_matrix.py",
+      "bytes": 7036,
+      "sha256": "1e1f8594849525fcb1da3d4dc3635322fa1b5ec4c0f7df41a4b6bf68b6c4ad74",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/tests/regression/forza_pgas_warp_message_parallel/run_matrix.py"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_mmio_abi.h",
+      "bytes": 2450,
+      "sha256": "dafe9eba0190d89a129a30905d0546684ebe92aca02d49004f3a525a3093d2b1",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sw/common/forza_mmio_abi.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_isa_abi.h",
+      "bytes": 2162,
+      "sha256": "346f6c7a57dc4f38482b8852c5471b64e7d441d0db440c2058c83e56b53ef0e8",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sw/common/forza_isa_abi.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_abi.h",
+      "bytes": 1457,
+      "sha256": "3cdd800b945ba971b6c51a5c310ca903120360a4c41538db48d45a05cb48ff5c",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sw/common/forza_abi.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/VX_config.toml",
+      "bytes": 20859,
+      "sha256": "ff1b02f3b4de9826020d2971b62ef881dbbb325ad158c52f194acba22e064f6e",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/VX_config.toml"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/decode.cpp",
+      "bytes": 44472,
+      "sha256": "c9843a4dd2122b921d4e401c6b64035d163689f61b4dbbc38705d567e925de8c",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/decode.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/sfu_unit.cpp",
+      "bytes": 17228,
+      "sha256": "38bba87563adcfc482843332a454b974add30687338c1207fa858f6ba2bcb304",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/sfu_unit.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/types.h",
+      "bytes": 54074,
+      "sha256": "e31e33ee07398887b31dd74eacccbc073e5255310e83a924da3fb47239437829",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/types.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/core.cpp",
+      "bytes": 47272,
+      "sha256": "1f16b4e781cfcbe7d75b3e23db74d9507795b2dd2e7e39f33a9fe514e87f3640",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/core.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_zone.cpp",
+      "bytes": 56167,
+      "sha256": "b813bc39fda974eb592908cc3019ffdcb791d42146777ff7f1d634a2d905919f",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/forza/forza_zone.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_zone.h",
+      "bytes": 4934,
+      "sha256": "88f3f3871ca355a9f31b99d532e0892308c91472c06e2398169979abfcb77cda",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/forza/forza_zone.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_fabric.cpp",
+      "bytes": 2755,
+      "sha256": "07dc940fad1de5741efaedfe1c519875e6e9b012b24f561c142208cb8552931c",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/forza/forza_fabric.cpp"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_fabric.h",
+      "bytes": 846,
+      "sha256": "ebe81664305fa639a69b980c3da5eb15f790c3c520ff5abbaab516fbbac03442",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/forza/forza_fabric.h"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_types.h",
+      "bytes": 996,
+      "sha256": "1782480fa301078958997e82793d565eaf62f993db93351daaa108c8f1a79dda",
+      "snapshot": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/source-freeze/sim/simx/forza/forza_types.h"
+    }
+  ],
+  "shared_artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/sw/runtime/libsimx.so",
+      "bytes": 2119392,
+      "sha256": "d0721afe0dda2d22c703b35369e9276cfda0ffadac60fd516a94cf10457cf719"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/sw/runtime/libvortex.so",
+      "bytes": 309800,
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/sw/runtime/libvortex-simx.so",
+      "bytes": 111856,
+      "sha256": "44aa0a0d1d459ced79471efea4e8a2649d9db57b9c03ad9f07290dc5865fe06a"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/sw/kernel/libvortex2.a",
+      "bytes": 67566,
+      "sha256": "e5d780ae59d4553fc3e5c4a224669ae2050dc70400069068f0020cfe62dd249a"
+    }
+  ],
+  "builds": [
+    {
+      "mode": "warp_wait32",
+      "commands": [
+        [
+          "make",
+          "-C",
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4",
+          "MODE=warp_wait32",
+          "-o",
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/sw/runtime/libvortex.so",
+          "-o",
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/sw/kernel/libvortex2.a",
+          "clean"
+        ],
+        [
+          "make",
+          "-C",
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4",
+          "MODE=warp_wait32",
+          "-o",
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/sw/runtime/libvortex.so",
+          "-o",
+          "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/sw/kernel/libvortex2.a",
+          "-j2"
+        ]
+      ],
+      "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/logs/build-warp_wait32.log"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/artifacts/warp_wait32/forza_warp_parallel_warp_wait32",
+      "bytes": 46232,
+      "sha256": "add4ce8842637059f53d77b544b93c7ab2883bf1623a677d5686aa830c5d7b43"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/artifacts/warp_wait32/kernel.vxbin",
+      "bytes": 9008,
+      "sha256": "d9bdc5cf52c53a0c1c08cc0ac69bece0ac4e979c437a24df1d27c432c0a1eda0"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/artifacts/warp_wait32/kernel.elf",
+      "bytes": 10856,
+      "sha256": "45747c437e227af4c157faf05f121792a5e49236c2fa485ec2a7d50afe9f45c7"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-messaging-isa-4core/tests/regression/forza_pgas_warp_message_parallel_scale4/artifacts/warp_wait32/kernel.dump",
+      "bytes": 66815,
+      "sha256": "3fdefa8a67ff719775f140c60f7be0a14ffd5874e943a5b192e71a3a296c73ce"
+    }
+  ],
+  "runs": []
+}

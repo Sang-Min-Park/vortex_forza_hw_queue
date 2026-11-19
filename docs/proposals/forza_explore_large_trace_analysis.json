@@ -1,0 +1,232 @@
+{
+  "record_manifest": "/export/nethomes/spark3100/vortex-forza-hwqueue/docs/proposals/forza_explore_large_trace_record.json",
+  "record_manifest_sha256": "43789d979a5335ff68a20c1854644d81e7ef37827a8f3f52d31c25c10cc365ef",
+  "analysis_source": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/analyze_record.py",
+  "analysis_source_sha256": "ba34de0983f87b7392ef20f1bfc03b4ea99a38594eded793eb746ea8652ee78c",
+  "dumps": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/fulltrace.bin",
+      "sha256": "48593651a91a52f493f1af2b35bb13b37cd508eba271adab17ba1e62215cfa0a",
+      "bytes": 1019904
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/expectedstate.bin",
+      "sha256": "6f0d5abf539517fd80821e057640a4cda8e9a5d2bd05ba26ea2ab9a4afedebba",
+      "bytes": 262144
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/requests.bin",
+      "sha256": "cbbc26dc56731fecc03fc0ea99e110942d3b8c4dd31dd3082e0c54db9c210542",
+      "bytes": 1048576
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/actualstate.bin",
+      "sha256": "587ec58a8f723ec9340b7cc1054f4bf3058420da55396c0e5870b041823b2190",
+      "bytes": 262144
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/tracefold.bin",
+      "sha256": "587ec58a8f723ec9340b7cc1054f4bf3058420da55396c0e5870b041823b2190",
+      "bytes": 262144
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/results.bin",
+      "sha256": "63f89371a9f789419c36fe8787182edb9be1948c3854a46a097e98d2724d5b6b",
+      "bytes": 1792
+    }
+  ],
+  "actors": 16,
+  "stride": 3984,
+  "state_words": 32768,
+  "fold_matches_actual_for_every_word": true,
+  "fold_matches_expected": false,
+  "state_mismatches": [
+    {
+      "key": 22856,
+      "trace_fold": 15,
+      "actual": 15,
+      "expected": 14
+    },
+    {
+      "key": 22920,
+      "trace_fold": -17,
+      "actual": -17,
+      "expected": -16
+    },
+    {
+      "key": 30776,
+      "trace_fold": -31,
+      "actual": -31,
+      "expected": -32
+    },
+    {
+      "key": 30936,
+      "trace_fold": -5,
+      "actual": -5,
+      "expected": -13
+    },
+    {
+      "key": 31424,
+      "trace_fold": -2,
+      "actual": -2,
+      "expected": 3
+    }
+  ],
+  "payload_multiset_differences": [
+    {
+      "owner": 11,
+      "missing": [
+        {
+          "key": 22920,
+          "delta": 1,
+          "count": 1
+        }
+      ],
+      "excess": [
+        {
+          "key": 22856,
+          "delta": 1,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "owner": 15,
+      "missing": [
+        {
+          "key": 30776,
+          "delta": -1,
+          "count": 1
+        },
+        {
+          "key": 30936,
+          "delta": -6,
+          "count": 1
+        }
+      ],
+      "excess": [
+        {
+          "key": 30936,
+          "delta": 2,
+          "count": 1
+        },
+        {
+          "key": 31424,
+          "delta": -5,
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "two_slot_reuse_excerpts": [
+    {
+      "owner": 11,
+      "center_index": 119,
+      "entries": [
+        {
+          "index": 117,
+          "key": 23512,
+          "delta": 5
+        },
+        {
+          "index": 118,
+          "key": 22872,
+          "delta": 7
+        },
+        {
+          "index": 119,
+          "key": 22856,
+          "delta": 1
+        },
+        {
+          "index": 120,
+          "key": 24152,
+          "delta": -5
+        },
+        {
+          "index": 121,
+          "key": 22856,
+          "delta": 1
+        },
+        {
+          "index": 122,
+          "key": 23528,
+          "delta": -2
+        }
+      ]
+    },
+    {
+      "owner": 15,
+      "center_index": 2914,
+      "entries": [
+        {
+          "index": 2912,
+          "key": 31232,
+          "delta": 4
+        },
+        {
+          "index": 2913,
+          "key": 32752,
+          "delta": -7
+        },
+        {
+          "index": 2914,
+          "key": 31424,
+          "delta": -5
+        },
+        {
+          "index": 2915,
+          "key": 32032,
+          "delta": 2
+        },
+        {
+          "index": 2916,
+          "key": 31424,
+          "delta": -5
+        },
+        {
+          "index": 2917,
+          "key": 30848,
+          "delta": 6
+        }
+      ]
+    },
+    {
+      "owner": 15,
+      "center_index": 3152,
+      "entries": [
+        {
+          "index": 3150,
+          "key": 31384,
+          "delta": -1
+        },
+        {
+          "index": 3151,
+          "key": 31256,
+          "delta": 3
+        },
+        {
+          "index": 3152,
+          "key": 30936,
+          "delta": 2
+        },
+        {
+          "index": 3153,
+          "key": 31440,
+          "delta": 6
+        },
+        {
+          "index": 3154,
+          "key": 30968,
+          "delta": 2
+        },
+        {
+          "index": 3155,
+          "key": 32488,
+          "delta": 2
+        }
+      ]
+    }
+  ],
+  "inference": "Received values explain all state errors; same-parity two-entry duplicates/mixed payload match premature slot reuse, to be confirmed by ordering regression."
+}

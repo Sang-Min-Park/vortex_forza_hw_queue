@@ -1,0 +1,111 @@
+{
+  "date_utc": "2026-10-27T22:47:48.610153+00:00",
+  "scope": "same shared per-core software combining followed by hardware queue delivery, two completion policies",
+  "compiler": {
+    "invoked_path": "/export/nethomes/spark3100/tools/llvm-vortex/bin/clang++",
+    "resolved_path": "/export/nethomes/spark3100/tools/llvm-vortex/bin/clang-20",
+    "version": "clang version 20.1.8 (https://github.com/vortexgpgpu/llvm.git 4c836512a60c0b965bb298104e084cd0f07ca962)",
+    "sha256": "a953f76b8aaa0f80dd12b0fff30f455684d64f489f9917e8135072220ba1cf3a"
+  },
+  "configs": "-DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_EXT_A_ENABLE -DVX_CFG_DCACHE_DISABLE -DVX_CFG_L2_ENABLE -DVX_CFG_NUM_CORES=2 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=4",
+  "primary_metric": "core0 MCYCLE after host readback/cache flush; one fresh process/device per case",
+  "semantics": [
+    "same LMEM zero and int64 atomic folding as agg_comb; all owner vectors dense, including zeros",
+    "LMEM-to-CSR chunks replace global partial flush/tree barrier/owner pull; no global partial array",
+    "source-core and chunk bitmaps reject duplicate or missing input; payload header8B+six int64 values",
+    "core_hw uses generic Selector DONE exchange and ACK drain",
+    "core_hw_fixed uses a one-shot known-size phase: all publishes, all unique expected receives, own ACK drain, final global barrier; does not close a generic dynamic actor epoch"
+  ],
+  "sources": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_core_hw/Makefile",
+      "bytes": 860,
+      "sha256": "9bc6c8dc983cfa8eac7f6b067ede90b7e757515a32f8103de24d155881d50206"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_core_hw/main.cpp",
+      "bytes": 15575,
+      "sha256": "62b0c06adeb93de0d5c0f89e9c086e291605db44dc26dcacb33513f129810891"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_core_hw/kernel.cpp",
+      "bytes": 7909,
+      "sha256": "077e5811c87a3f327801716f01f7d324379e20fd68de19f0061e11d902dfd999"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_core_hw/README.md",
+      "bytes": 5935,
+      "sha256": "ea3ff49a92a33cacf540bec3c476fa128aa036a4916cedafca4961993b805229"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_core_hw/run_comparison.py",
+      "bytes": 4002,
+      "sha256": "989014f3d5df63dee7b032b974ea8220f184ce32f58a7fc3450f20fdaa0ae4b7"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_core_hw/analyze.py",
+      "bytes": 12277,
+      "sha256": "93307212abc31655793de3586b94e037cdb0966d0d6ff12ee05b4048365a9762"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_coalesced/common.h",
+      "bytes": 1405,
+      "sha256": "3102f03ab8d69ee29ca75d5fba4d36dda285d50a2462252ca1820754a869d5f1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_coalesced/kernel.cpp",
+      "bytes": 8285,
+      "sha256": "8e280180673237c51a0b64f2716435855c361503fe6619a45b848194b55e3c5f"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph_coalesced/analyze.py",
+      "bytes": 13448,
+      "sha256": "1a0f91e81c71369ee47da88990de151571215d7d7e354a766ac1dc35dfcc08ad"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/vortex.mk",
+      "bytes": 460,
+      "sha256": "10bdfe4ce8fff5f18692786ee9ec021dc29a5687c183ee4fa6b2f593a78e0c02"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/selector.vortex.h",
+      "bytes": 13055,
+      "sha256": "301a41fd2f45101ccda96114db2fdb8f5131f6439e0e8bcaa89ca182570f3421"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/forza_message_lib.vortex.h",
+      "bytes": 6430,
+      "sha256": "6007f6747937f1bddc7417e94342250ebb1edeb3bc989e924642496c46405007"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/mem/local_mem.cpp",
+      "bytes": 10516,
+      "sha256": "74947f5c66410c833fc0edfe6406fcbcbe8e7252e8e6060d38133462e38ae0da"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/mem/cache.cpp",
+      "bytes": 75543,
+      "sha256": "e3b2c0ae1aebd18e4d7c7fdccdc643f3284526154c9cf11c2dc919d0190fb5c4"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/lsu_unit.cpp",
+      "bytes": 21413,
+      "sha256": "01ca50a673c7f53b8c15e47ad77d9e3e20f403fbdc21565491c628d2b73c19fb"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_zone.cpp",
+      "bytes": 14251,
+      "sha256": "4bf88d704f90af7e58b841329d53d76147838627aea0d92b648066eccebdeb42"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_fabric.cpp",
+      "bytes": 1716,
+      "sha256": "e4d9833673fd8e1de8884d2cb729de73d98fb4db55c121b1890b119b4157f579"
+    }
+  ],
+  "reference_provenance": {
+    "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/docs/proposals/forza_graph_coalesced_manifest.json",
+    "bytes": 8408,
+    "sha256": "df02b87c7f9bde19303de45d8dc840a1ac6f2e08d686da82a26572a631dfea5a"
+  }
+}

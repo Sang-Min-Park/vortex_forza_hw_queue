@@ -1,0 +1,207 @@
+{
+  "command": [
+    "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/forza_large_msg_digest_record",
+    "-k",
+    "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/kernel-msg_digest.vxbin",
+    "-b",
+    "262144",
+    "-n",
+    "65536",
+    "-p",
+    "permute",
+    "-s",
+    "17",
+    "-t",
+    "600"
+  ],
+  "configs": "-DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_EXT_A_ENABLE -DVX_CFG_L2_ENABLE -DVX_CFG_NUM_CORES=2 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=4 -DVX_CFG_DCACHE_DISABLE",
+  "cwd": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute",
+  "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/run.log",
+  "returncode": 1,
+  "timed_out": false,
+  "wall_seconds": 254.09051044937223,
+  "guest_and_driver_unchanged_from_prior": true,
+  "prior_manifest": "/export/nethomes/spark3100/vortex-forza-hwqueue/docs/proposals/forza_explore_large_digest.json",
+  "artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/main.cpp",
+      "sha256": "c4d1a0a08502d727152de15a92348f98b40962e8ff11ed67cec77dff2dd0dcfa",
+      "bytes": 14419
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/kernel.cpp",
+      "sha256": "2f7568036cc0da09de88c67b0afea2746afdc20126a7fef48e399f982ac700ed",
+      "bytes": 4921
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/common.h",
+      "sha256": "888f0e5aed0cf60c3cac98bee7588a01242df4da993dd3fb6cfaee95738f6dae",
+      "bytes": 917
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/Makefile",
+      "sha256": "302891f5e8ef160c96a74e89a09c8a8052c5291fde587605dd8d812167ce290a",
+      "bytes": 1829
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/README.md",
+      "sha256": "3a04c5419fc22d7dea583234298b861d1d53c44aaa94c7ac58c80b961a21b488",
+      "bytes": 1244
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/run_diagnostic.py",
+      "sha256": "e376b5ce14fdeaf5ad7b7af7281248dd7382ff6aab2fa4dfe13326d280892894",
+      "bytes": 2894
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/kernel.elf",
+      "sha256": "d38ba778323a951147f32fcf883b980035b0e763b2dfe0cbb9f27aa9b07715d5",
+      "bytes": 13576
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/kernel.dump",
+      "sha256": "b5464dc1c2746d1c4d3a2ccf1f397342e705153cf14e82ea7fb858b49a213010",
+      "bytes": 102093
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/kernel-msg_digest.vxbin",
+      "sha256": "46e5e1286cf2eaa91a4c8d50451166e7512bec6efe954cb653e060e143b6e831",
+      "bytes": 10672
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/forza_large_msg_digest",
+      "sha256": "5f984f8655e9068c3960425b2186cd107688a576745755b73b7110a8e3e04fe7",
+      "bytes": 405680
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/runtime/inc/selector.vortex.h",
+      "sha256": "580e37ef3552c24061d1f99fe7fd907c07c6a97ef7260fba4f1e02ad78dd2710",
+      "bytes": 13336
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/runtime/inc/selector.forza.h",
+      "sha256": "f3619c9664b8cd1d80acc9afab40cfa9ea69559349dd3578a7b4d14a317a0187",
+      "bytes": 16459
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/runtime/inc/forza_message_lib.vortex.h",
+      "sha256": "1ac9808665261909bfd1da186345fbf87b120df4b6d28ce5cd3cc263f7547268",
+      "bytes": 8557
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/sw/runtime/libvortex.so",
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c",
+      "bytes": 309800
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/sw/runtime/libvortex-simx.so",
+      "sha256": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab",
+      "bytes": 111856
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/sw/runtime/libsimx.so",
+      "sha256": "eab861e9100862dcd3d4ed2de3b5ba8b7704d5658862b49ebed2cf5290dc07b6",
+      "bytes": 2077656
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/main_record.cpp",
+      "sha256": "e5abfe5113f4118d68d2419fe752d147ff6f21cce8d1bf207d03cd23725efb66",
+      "bytes": 17441
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_explore/large_state_digest/run_record.py",
+      "sha256": "3380ddebe297fab72a284949bcb0686449be5d66577b2b8a0de7c24e303b7033",
+      "bytes": 2407
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/forza_large_msg_digest_record",
+      "sha256": "01d59386f10506a85f70dd99a7b0db6da509fd19040176d90d80f01b1af1a14b",
+      "bytes": 416464
+    }
+  ],
+  "dump_artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/fulltrace.bin",
+      "sha256": "48593651a91a52f493f1af2b35bb13b37cd508eba271adab17ba1e62215cfa0a",
+      "bytes": 1019904
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/expectedstate.bin",
+      "sha256": "6f0d5abf539517fd80821e057640a4cda8e9a5d2bd05ba26ea2ab9a4afedebba",
+      "bytes": 262144
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/requests.bin",
+      "sha256": "cbbc26dc56731fecc03fc0ea99e110942d3b8c4dd31dd3082e0c54db9c210542",
+      "bytes": 1048576
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/actualstate.bin",
+      "sha256": "587ec58a8f723ec9340b7cc1054f4bf3058420da55396c0e5870b041823b2190",
+      "bytes": 262144
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/tracefold.bin",
+      "sha256": "587ec58a8f723ec9340b7cc1054f4bf3058420da55396c0e5870b041823b2190",
+      "bytes": 262144
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-explore/tests/regression/forza_explore/large_state_digest/runs/host-record-n65536-permute/results.bin",
+      "sha256": "63f89371a9f789419c36fe8787182edb9be1948c3854a46a097e98d2724d5b6b",
+      "bytes": 1792
+    }
+  ],
+  "diagnostic_lines": [
+    "TRACE_META actors=16 trace_stride=3984 request_bytes=16 state_words=32768 result_bytes=112",
+    "TRACE_FOLD_KEY key=22856 trace=15 actual=15 expected=14",
+    "TRACE_FOLD_KEY key=22920 trace=-17 actual=-17 expected=-16",
+    "TRACE_FOLD_KEY key=30776 trace=-31 actual=-31 expected=-32",
+    "TRACE_FOLD_KEY key=30936 trace=-5 actual=-5 expected=-13",
+    "TRACE_FOLD_KEY key=31424 trace=-2 actual=-2 expected=3",
+    "TRACE_FOLD invalid_keys=0 invalid_owner=0 zero_entries=0 mismatch_expected=5 mismatch_actual=0",
+    "TRACE_MULTISET owner=0 excess_events=0 missing_events=0",
+    "DIGEST owner=0 messages=3840 hash0=1d7b0c363ec8c713 expect0=1d7b0c363ec8c713 hash1=441b8d8e8d648a7e expect1=441b8d8e8d648a7e multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=1 excess_events=0 missing_events=0",
+    "DIGEST owner=1 messages=3856 hash0=672d3d05d86bddcb expect0=672d3d05d86bddcb hash1=9b885f76546ee6dc expect1=9b885f76546ee6dc multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=2 excess_events=0 missing_events=0",
+    "DIGEST owner=2 messages=3760 hash0=8aab9b9f26e6dce2 expect0=8aab9b9f26e6dce2 hash1=58e211496859e747 expect1=58e211496859e747 multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=3 excess_events=0 missing_events=0",
+    "DIGEST owner=3 messages=3984 hash0=302dbdfecb3e1783 expect0=302dbdfecb3e1783 hash1=fdf2e3bbce164866 expect1=fdf2e3bbce164866 multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=4 excess_events=0 missing_events=0",
+    "DIGEST owner=4 messages=3856 hash0=eb3ec32e70a0adc4 expect0=eb3ec32e70a0adc4 hash1=40d8fb57cd9b6285 expect1=40d8fb57cd9b6285 multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=5 excess_events=0 missing_events=0",
+    "DIGEST owner=5 messages=3744 hash0=a4732766431879b9 expect0=a4732766431879b9 hash1=0d35f1b909bf98b0 expect1=0d35f1b909bf98b0 multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=6 excess_events=0 missing_events=0",
+    "DIGEST owner=6 messages=3872 hash0=4e548841e9d48dca expect0=4e548841e9d48dca hash1=f1e389acc3eb3472 expect1=f1e389acc3eb3472 multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=7 excess_events=0 missing_events=0",
+    "DIGEST owner=7 messages=3760 hash0=0c8718e6fabb0508 expect0=0c8718e6fabb0508 hash1=c8d368a6dfd221f0 expect1=c8d368a6dfd221f0 multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=8 excess_events=0 missing_events=0",
+    "DIGEST owner=8 messages=3920 hash0=a073084e91cab41c expect0=a073084e91cab41c hash1=bc5d282258caf0cd expect1=bc5d282258caf0cd multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=9 excess_events=0 missing_events=0",
+    "DIGEST owner=9 messages=3840 hash0=c2f3eb018307b3cf expect0=c2f3eb018307b3cf hash1=339aaf9b3efd4ab3 expect1=339aaf9b3efd4ab3 multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=10 excess_events=0 missing_events=0",
+    "DIGEST owner=10 messages=3760 hash0=eb2250fef6bca95b expect0=eb2250fef6bca95b hash1=4f26cf2dfb9d8257 expect1=4f26cf2dfb9d8257 multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_EXCESS owner=11 key=22856 delta=1",
+    "TRACE_MISSING owner=11 key=22920 delta=1",
+    "TRACE_MULTISET owner=11 excess_events=1 missing_events=1",
+    "DIGEST owner=11 messages=3824 hash0=a4ee34ef05adbab9 expect0=0789db23f4192e33 hash1=ef6f4745e3c698a2 expect1=a3da6232cb4f6e20 multiset_mismatches=78 status=FAIL trace_bytes=1019904",
+    "TRACE_MULTISET owner=12 excess_events=0 missing_events=0",
+    "DIGEST owner=12 messages=3888 hash0=ab8ce8dccadfc396 expect0=ab8ce8dccadfc396 hash1=e2fe9c180d77cd5c expect1=e2fe9c180d77cd5c multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=13 excess_events=0 missing_events=0",
+    "DIGEST owner=13 messages=3888 hash0=502d077b375fb234 expect0=502d077b375fb234 hash1=f4cfd5c7b06d8bce expect1=f4cfd5c7b06d8bce multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MULTISET owner=14 excess_events=0 missing_events=0",
+    "DIGEST owner=14 messages=3904 hash0=d3eb91ef20dca974 expect0=d3eb91ef20dca974 hash1=0f5803e116debd8e expect1=0f5803e116debd8e multiset_mismatches=0 status=PASS trace_bytes=1019904",
+    "TRACE_MISSING owner=15 key=30776 delta=-1",
+    "TRACE_MISSING owner=15 key=30936 delta=-6",
+    "TRACE_EXCESS owner=15 key=30936 delta=2",
+    "TRACE_EXCESS owner=15 key=31424 delta=-5",
+    "TRACE_MULTISET owner=15 excess_events=2 missing_events=2",
+    "DIGEST owner=15 messages=3888 hash0=da06d5bef0656e33 expect0=fa32b671eaca2267 hash1=bd9dd1c49b5bff68 expect1=f2060cec5df9cc65 multiset_mismatches=738 status=FAIL trace_bytes=1019904",
+    "state[22856]=15 expected=14",
+    "state[22920]=-17 expected=-16",
+    "state[30776]=-31 expected=-32",
+    "state[30936]=-5 expected=-13",
+    "state[31424]=-2 expected=3",
+    "FAILED: 7 validation errors"
+  ]
+}

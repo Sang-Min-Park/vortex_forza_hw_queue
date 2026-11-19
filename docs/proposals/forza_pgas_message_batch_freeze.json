@@ -1,0 +1,891 @@
+{
+  "verified_utc": "2026-10-28T05:03:45.421953+00:00",
+  "run_count": 56,
+  "passed": 56,
+  "smokes": 35,
+  "performance": 21,
+  "cohort": "validated",
+  "manifest": {
+    "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/record-manifest.json",
+    "bytes": 173032,
+    "sha256": "1e111255ab10072dd8e25a63b42a8f814f10cfbcda6e9165eb126afeb6343daf"
+  },
+  "verified_artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/kernel_lock.cpp",
+      "bytes": 1244,
+      "sha256": "6559657b422194f16b80f6d3a7fe9e88f528b6f7076b3a501df2c99659e16e17"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/kernel_bucket.cpp",
+      "bytes": 2954,
+      "sha256": "1f438c3abd0418b4a67078643c98f7b75cb7756fac4900177d716e2b1ac12d40"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/kernel_field_core.cpp",
+      "bytes": 2169,
+      "sha256": "d1138415c42980ee7053aee6951d1c68a7e4e355915489b79341370a1cae801d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/kernel_warp.cpp",
+      "bytes": 2989,
+      "sha256": "c78c0cb87597666c42b12702cf548752c1e1721967824e7fe3c846a54b2f7595"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/kernel_batch.cpp",
+      "bytes": 6227,
+      "sha256": "a1b1314907bdd7fcf56fb7aa5f6039636f5e7dba8dd1ddac4633ab935c40d2e6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/main.cpp",
+      "bytes": 14601,
+      "sha256": "ea9acf95118b88390baa6a41fa9575ae3534df87ecc1e8bfd812093fced5c15e"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/device.h",
+      "bytes": 1426,
+      "sha256": "6b86ec7e06a38f974fc90f376a3285bd5a3849a3a58b97a66035d1b2d2e3b3cc"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/field_handler.h",
+      "bytes": 2172,
+      "sha256": "112620b58ae4ecaaab62fd40b43904f564e906cebbb7b1f8014fc177adc3ce37"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/transport.h",
+      "bytes": 1662,
+      "sha256": "02c5b788a58b451ccbe4574204f4ce60e58f09eb01dbd0920bcc09adf8d02688"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/common.h",
+      "bytes": 694,
+      "sha256": "9fd3b2f606eba4b58730997f56877b8f01dddadb6f0f7ab47a5c3907cf3b3c12"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/Makefile",
+      "bytes": 1236,
+      "sha256": "351aa95fa0ed7b8f299385c252cefb8c1f6c2d3a15f97cfbae40d15d75cdcbb2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/README.md",
+      "bytes": 2806,
+      "sha256": "01195fc94b94d5b874dc81af077a70d277f509c9b30ce36ac1e375178836de4b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_message_batch/run_matrix.py",
+      "bytes": 5645,
+      "sha256": "6682e5c5179f86f048fa57dc026c27c67ea46461fca47968af709ae7a14af6d0"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_mmio_abi.h",
+      "bytes": 2450,
+      "sha256": "dafe9eba0190d89a129a30905d0546684ebe92aca02d49004f3a525a3093d2b1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/runtime/libsimx.so",
+      "bytes": 2095024,
+      "sha256": "06a7a43a4c47b6073aaa81bcf8fac05561efbd081899a3dfc064a10b6c848dcb"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/runtime/libvortex.so",
+      "bytes": 309800,
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/runtime/libvortex-simx.so",
+      "bytes": 111856,
+      "sha256": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/kernel/libvortex2.a",
+      "bytes": 67566,
+      "sha256": "bca73f38ede9f7b6d2b0cd7bc6bf570ee0b3208debe3529089a4e7f9e1e39ef4"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_lock/forza_message_batch_gpu_lock",
+      "bytes": 46128,
+      "sha256": "08355d5a44520e011122383f42a306d57fa8d18cd408fa4b075b2df3eff0ce84"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_lock/kernel.vxbin",
+      "bytes": 4720,
+      "sha256": "21d8d5a928a1004aa2d07359549c6dfd4e5fd5a68a30dce57c2843ba6dc73851"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_lock/kernel.elf",
+      "bytes": 6184,
+      "sha256": "249203f64b40f441f4eea1a498e36fca70923cb791041bc82d2fc090ea4804a1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_lock/kernel.dump",
+      "bytes": 17375,
+      "sha256": "d4e2dfc78d8c0d81c53d0773fe75f7bd5fbeca3a50fed217064707274ef47548"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_warp/forza_message_batch_gpu_warp",
+      "bytes": 46128,
+      "sha256": "0ba3751065e24da3f5523ebdae7e7d798b2f51a6f47aaadeb4ace46dd48342f9"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_warp/kernel.vxbin",
+      "bytes": 5552,
+      "sha256": "f851d993bd515e49a1e4521d790ada366abd985f0b611fe7bdbe1ffaab0cea7f"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_warp/kernel.elf",
+      "bytes": 7048,
+      "sha256": "5663f2f5a8dceebd10ec5f92b70353af9fc29f921c5a336874c5b05098fbb385"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_warp/kernel.dump",
+      "bytes": 26155,
+      "sha256": "a4b1037d02a4fd99d1e9df8f39dea221314302755d42c1bef8c1bed48a0e287e"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_owner/forza_message_batch_gpu_owner",
+      "bytes": 46128,
+      "sha256": "a33789eb6115e8288c0b32c4a1f27349c214fb96cb6422e601f0606d8b756e76"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_owner/kernel.vxbin",
+      "bytes": 5744,
+      "sha256": "48e9cfb4c4bacf159508b002e5fd326f9ce1dabcf421218101fcbbff20bf0760"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_owner/kernel.elf",
+      "bytes": 7208,
+      "sha256": "530ab8ef4e3c86109150f774f9e7765c9c4534d2fff121431da2602e40daada2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_owner/kernel.dump",
+      "bytes": 28189,
+      "sha256": "75d8e807c0f37311b136d2816e97d5e3140e65c0155247545f2169e6b41d558f"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_field_core/forza_message_batch_gpu_field_core",
+      "bytes": 46128,
+      "sha256": "81fad50a2e49b566bf9a19e9b33b1b62024dc466dc5c5038b5b59754877dcb6b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_field_core/kernel.vxbin",
+      "bytes": 5680,
+      "sha256": "5f3968798fc3ed159732b1e1b2fcfb206a36f346c5ea9ecdf93d091c8f5389c8"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_field_core/kernel.elf",
+      "bytes": 7160,
+      "sha256": "f37c52b99defc62f1e374666d17ec5c034a397847a8ce9b1a049910014c31018"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/gpu_field_core/kernel.dump",
+      "bytes": 27679,
+      "sha256": "c0f1d8e34a4b6d8e8e6b41e363bc3cae5008d4aab94e116df76563b49dcb49b6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch1/forza_message_batch_batch1",
+      "bytes": 46128,
+      "sha256": "b427772c32dd2e1c906745c4b8df87a6de72baa9ab30fb253017e19d133fbf9b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch1/kernel.vxbin",
+      "bytes": 6768,
+      "sha256": "85bccf3b8283c472ec0af25e535d26925e3331452c8c39448afd92237cf1dc6b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch1/kernel.elf",
+      "bytes": 8504,
+      "sha256": "d117edc0da63881f7c266b17ecb440282b777592ae4ea1bc8042424d13564227"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch1/kernel.dump",
+      "bytes": 41865,
+      "sha256": "8eedf9243f35b88f35d4818230c8391317c709cb6831bd329489f033c1ab8b0d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch4/forza_message_batch_batch4",
+      "bytes": 46128,
+      "sha256": "c3d3e21ba147fa550786e4da92710514d338a88198136e9553bb0c7f9f219473"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch4/kernel.vxbin",
+      "bytes": 6960,
+      "sha256": "b65cb94a5672270b9d34c1ebd11685594e2d640127163b9901f0946f497f5fd8"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch4/kernel.elf",
+      "bytes": 8688,
+      "sha256": "68cb9f514c4e4e69de64aa990139acf772f6ebc3bb6a2930c6feeb3f8c3b5a1b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch4/kernel.dump",
+      "bytes": 43960,
+      "sha256": "0d3c61a96179e9d5d88303974cc492fc230b07e5824009ad16f17ae61b75db55"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch8/forza_message_batch_batch8",
+      "bytes": 46128,
+      "sha256": "d1bb750d1eb88c347dc3b7fcb773103d095a51c2bccb4f3716ac954a814ea76e"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch8/kernel.vxbin",
+      "bytes": 6960,
+      "sha256": "6cc5857fbda784351d63ac90865cb86913ef2164a87d324d71310ade19b756df"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch8/kernel.elf",
+      "bytes": 8688,
+      "sha256": "8afbc146d081aa25c570148f49d336ab87ef0af84042f8742c88f99c98a09d8d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/artifacts/batch8/kernel.dump",
+      "bytes": 43960,
+      "sha256": "e5319c6518d611a2355ed83324f4c5a1e2465f0eca2f7d240435ba6154cdc53b"
+    }
+  ],
+  "verified_logs": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_lock-k64-u0-random-wide/run.log",
+      "bytes": 862,
+      "sha256": "8e29b918c8a586187b1965137a69a537783edf20a6c466d238f235abc651cf49"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_warp-k64-u0-random-wide/run.log",
+      "bytes": 865,
+      "sha256": "7cb2047df2125da3fa326d5c05f04b3fd7bc50936e2b27e7cb8ab2dc9c7dbe0e"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_owner-k64-u0-random-wide/run.log",
+      "bytes": 884,
+      "sha256": "cc588e6edd1d17eec8cfd9aaa11286165bece290367915c62154cd22ff35c95d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_field_core-k64-u0-random-wide/run.log",
+      "bytes": 893,
+      "sha256": "7b52e9250b5eef742c5f8179569f686a22925bce745deece7356c70353c533bf"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch1-k64-u0-random-wide/run.log",
+      "bytes": 867,
+      "sha256": "bc844c8e8d4e5a247fd8c8cebbc2f3e8c84180d4b23b1def1e68703309fc218c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch4-k64-u0-random-wide/run.log",
+      "bytes": 867,
+      "sha256": "5e96d6ba0f2867a01d8977592548f19b5e4b986af29839df7cb37f3bd98cab9c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch8-k64-u0-random-wide/run.log",
+      "bytes": 867,
+      "sha256": "218ca9eb06d8a97cce2193225a289d262997419f72011e7992671456dbcba4ec"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_lock-k64-u1-random-wide/run.log",
+      "bytes": 866,
+      "sha256": "c6200b09f431c93ca941d091186a8c89130362703f547b84e3fa07c3c48051c9"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_warp-k64-u1-random-wide/run.log",
+      "bytes": 867,
+      "sha256": "e08885ffd10367474c05266009dc6b2c9636c68fa6b1dc438567933487430317"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_owner-k64-u1-random-wide/run.log",
+      "bytes": 886,
+      "sha256": "4d418ca2a654b1c742a6ab253dfc217af24bd56ceb634a745f51724c35b50436"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_field_core-k64-u1-random-wide/run.log",
+      "bytes": 896,
+      "sha256": "9f72a6464208c51bdef73b2d91eb963fd926c4f46d03b24ba7011795f0e1ee68"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch1-k64-u1-random-wide/run.log",
+      "bytes": 869,
+      "sha256": "d9f2794394d3d62a34b672af60dc6350d6c6659d9c7b523d2bacdc16706b6dd9"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch4-k64-u1-random-wide/run.log",
+      "bytes": 869,
+      "sha256": "0c3971df483a34135642fb7b3b5ce3afb7852b6a47516486260a726e42f0fa63"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch8-k64-u1-random-wide/run.log",
+      "bytes": 869,
+      "sha256": "54bcf99e969aa302dce7c60827017c07f827d22e2c79ab96d5980d0c18c73ce9"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_lock-k64-u128-random-wide/run.log",
+      "bytes": 878,
+      "sha256": "f7aabb85a40b592b436ef10b22d41eda44f9c7a292e33e5b125de1621660cfa0"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_warp-k64-u128-random-wide/run.log",
+      "bytes": 881,
+      "sha256": "bafe08976c612044dac25858f948ff8c3e695e32d39958c8aa8e6671c6d8d417"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_owner-k64-u128-random-wide/run.log",
+      "bytes": 895,
+      "sha256": "c47707f685ee1920030625ad119933a7e3d3f60809b7ab859288fd369ac42a69"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_field_core-k64-u128-random-wide/run.log",
+      "bytes": 905,
+      "sha256": "067469650006dd348cd08a2ba84fa4e77b81c909c0cd90b06d00eab788a401c9"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch1-k64-u128-random-wide/run.log",
+      "bytes": 891,
+      "sha256": "cd7fe7842d867db574f1d4766ddecbdda99a525fa21bf63225e0abc433af843f"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch4-k64-u128-random-wide/run.log",
+      "bytes": 889,
+      "sha256": "303b40cfe6079de35f4753f03be6750c8f5adb7231cbbdd5a4991b2278533171"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch8-k64-u128-random-wide/run.log",
+      "bytes": 887,
+      "sha256": "9e384e847220c3805d696eef2b0909285f48b0bcd19fed8f54c62a8a4c5af101"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_lock-k64-u131-random-wide/run.log",
+      "bytes": 878,
+      "sha256": "78a0aad606c2a41d76079543790ff702e2f3c1f255aec2ccc52cbfdd3779656a"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_warp-k64-u131-random-wide/run.log",
+      "bytes": 881,
+      "sha256": "54c3209c6cf043fd29d337f1ed64d18ce75bee6560bf7426e0efac5868744001"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_owner-k64-u131-random-wide/run.log",
+      "bytes": 895,
+      "sha256": "1f3984bdfa76897e663527f53cfb9a528accf9fb7c310e651d5e4edb6dd027c0"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_field_core-k64-u131-random-wide/run.log",
+      "bytes": 905,
+      "sha256": "83cc5ca61b00120f7ff9c5d595bdba6b3418d2f7d6078fc849d5f503562b93b1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch1-k64-u131-random-wide/run.log",
+      "bytes": 891,
+      "sha256": "b69a37525b0c9e4d63f36b0765e5a0fda5927156435b4661ddfe33f1d0f94f2a"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch4-k64-u131-random-wide/run.log",
+      "bytes": 889,
+      "sha256": "7d4809e0a7eb44dcc99d93acb158c89d804d5be6c4e47cdf8f860e192e6a0760"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch8-k64-u131-random-wide/run.log",
+      "bytes": 888,
+      "sha256": "6b9143cc7b3e0f01e641804af3f4bd7422bcbb43cfe3f3e22b8c0b1a5c14c7ec"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_lock-k64-u131-hot-wide/run.log",
+      "bytes": 876,
+      "sha256": "ff2d41c4ee20ce82b37e7d85a4d136c3d3ac9467ff9ba6823223f87d494a8e1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_warp-k64-u131-hot-wide/run.log",
+      "bytes": 875,
+      "sha256": "8810fa1d393d892d4812c8ba23c8042983753f2b9d9cd3d5334bc8af70a5ccae"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_owner-k64-u131-hot-wide/run.log",
+      "bytes": 889,
+      "sha256": "1d775adf8d9d967082df4f53004e9a618a325c31ca480d2e74333c4ca19d2052"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-gpu_field_core-k64-u131-hot-wide/run.log",
+      "bytes": 899,
+      "sha256": "2e0e3c637f77026e8e1e1e38c54a4abf4dfe3df78c24234e66eafc35b04434bd"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch1-k64-u131-hot-wide/run.log",
+      "bytes": 885,
+      "sha256": "872bf3e213ffef227812049f537c022f000cf2c29fb1334481f07d7aea4de228"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch4-k64-u131-hot-wide/run.log",
+      "bytes": 883,
+      "sha256": "08b93b85775474dddbdac639f2dcb7f47d86f333bb4c1479af7bf757cc42b2f2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/smoke-batch8-k64-u131-hot-wide/run.log",
+      "bytes": 882,
+      "sha256": "b89067fc05a7df668d3aa9aefc6c6d8b081503ba9c865fefbe94e56533e63b51"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_lock-k64-u4096-random-wide/run.log",
+      "bytes": 893,
+      "sha256": "0fc2c3110010ae4a49bcbb3451c7d38e303f77586e5d02f7069c83cd1ab3884a"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_warp-k64-u4096-random-wide/run.log",
+      "bytes": 896,
+      "sha256": "1ad1956513daf61e6fea9136978bc817637884b57eb479653b4654d73567d7d1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_owner-k64-u4096-random-wide/run.log",
+      "bytes": 908,
+      "sha256": "4787d511d219d635357f6c15d0251bc835e74bd350fb85306b8db19150458091"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_field_core-k64-u4096-random-wide/run.log",
+      "bytes": 920,
+      "sha256": "3fa108fbe7778772efa85dbfb26ba27cb7d58691688ae05d1f10f20edf8de6ba"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch1-k64-u4096-random-wide/run.log",
+      "bytes": 1355,
+      "sha256": "03b7c93bbd8d938a289adfc0191cabe57791cef323b7963983a333f5289b69a8"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch4-k64-u4096-random-wide/run.log",
+      "bytes": 915,
+      "sha256": "4101eab1a369a42f7f7ca5cfc84e8777c5d9fb7cf64c977e994cdac6504fe1c6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch8-k64-u4096-random-wide/run.log",
+      "bytes": 914,
+      "sha256": "e08106e3e71073a4d34db57a05d42e0b0693d766ee4b23e4fb02c768aebd098f"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_lock-k64-u4096-hotset-wide/run.log",
+      "bytes": 894,
+      "sha256": "3b5fafac1d621765e6c25db636f4b65a888bdf2dd24e6d3c5064ce985a3c6fe5"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_warp-k64-u4096-hotset-wide/run.log",
+      "bytes": 897,
+      "sha256": "7bfa73c557ac5b86259b8066f1bcfaffec6708b8b3599ecedb813b3d7953f25f"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_owner-k64-u4096-hotset-wide/run.log",
+      "bytes": 908,
+      "sha256": "792c2fee4bd4bf2e58c1eade4f331c28ce8114eeae51ee3a18ba82a69581d291"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_field_core-k64-u4096-hotset-wide/run.log",
+      "bytes": 920,
+      "sha256": "bfe253e649a1f5a55757429aca987211e442123577ba0cef8e0c54c8f8d31516"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch1-k64-u4096-hotset-wide/run.log",
+      "bytes": 1353,
+      "sha256": "7d749485f7eb760da1c1f4a0ae5888a5a33d6bc16b81e46a1492bf23704fcf93"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch4-k64-u4096-hotset-wide/run.log",
+      "bytes": 912,
+      "sha256": "579927927fd6cef1171a1133e03a23111ee6af6101aee64b3d04ef9050ef91ae"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch8-k64-u4096-hotset-wide/run.log",
+      "bytes": 912,
+      "sha256": "2bb13c0dccf9e867844fbd011a8af37302ec696e8eafe708b90f29b2514d1778"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_lock-k64-u4096-hot-wide/run.log",
+      "bytes": 891,
+      "sha256": "57fbd1d7cb50e0b06f29e0f2c01e934feda624c23734e0de94c25e6f15a4accc"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_warp-k64-u4096-hot-wide/run.log",
+      "bytes": 891,
+      "sha256": "fb39d8bcf056b27514c64cbe6b68ad53468e2cda8bbde46ad0a8df7284c67aed"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_owner-k64-u4096-hot-wide/run.log",
+      "bytes": 904,
+      "sha256": "07c660d5f91af2166d25ef3367d3e378b64092018465095be089d99cf93e7c55"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-gpu_field_core-k64-u4096-hot-wide/run.log",
+      "bytes": 914,
+      "sha256": "552e2df5fa88bd7f5842ccfd5e4bd033e2f8fb783c184da4040349898a02a7cd"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch1-k64-u4096-hot-wide/run.log",
+      "bytes": 1345,
+      "sha256": "d4f5d2823e77a632e673aaca8d890320995e35aef706c5f354570d80c26b6ea2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch4-k64-u4096-hot-wide/run.log",
+      "bytes": 904,
+      "sha256": "c6b2c8ee85a6343a3722dbcc753924d3cbfb82db153a97b3f5e0e24b54ac0240"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/tests/regression/forza_pgas_message_batch_validated/runs/performance-batch8-k64-u4096-hot-wide/run.log",
+      "bytes": 901,
+      "sha256": "1506c043e389a7ce4d89f62be6b49eb73063d64b412623791529f7975a9e4e40"
+    }
+  ],
+  "engine_absence": {
+    "command": [
+      "nm",
+      "-C",
+      "--defined-only",
+      "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/runtime/libsimx.so"
+    ],
+    "library": {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/runtime/libsimx.so",
+      "bytes": 2095024,
+      "sha256": "06a7a43a4c47b6073aaa81bcf8fac05561efbd081899a3dfc064a10b6c848dcb"
+    },
+    "tick_record_present": false,
+    "tick_update_present": false
+  },
+  "summary": [
+    {
+      "pattern": "random",
+      "cycles": {
+        "gpu_lock": 212264,
+        "gpu_warp": 2051068,
+        "gpu_owner": 391674,
+        "gpu_field_core": 1197253,
+        "batch1": 3654832,
+        "batch4": 3236138,
+        "batch8": 2838931
+      },
+      "best_native": "gpu_lock",
+      "batch8_speedup_over_batch1": 1.2873972632656447,
+      "batch8_slowdown_vs_best_native": 13.374528888553876,
+      "messages": {
+        "batch1": 4096,
+        "batch4": 1931,
+        "batch8": 1023
+      },
+      "handler_key_scans": {
+        "batch1": 4096,
+        "batch4": 7724,
+        "batch8": 8184
+      }
+    },
+    {
+      "pattern": "hotset",
+      "cycles": {
+        "gpu_lock": 392022,
+        "gpu_warp": 1856863,
+        "gpu_owner": 382097,
+        "gpu_field_core": 1178525,
+        "batch1": 3406334,
+        "batch4": 3002657,
+        "batch8": 2619747
+      },
+      "best_native": "gpu_owner",
+      "batch8_speedup_over_batch1": 1.3002530397019254,
+      "batch8_slowdown_vs_best_native": 6.856235458535398,
+      "messages": {
+        "batch1": 4096,
+        "batch4": 1917,
+        "batch8": 1021
+      },
+      "handler_key_scans": {
+        "batch1": 4096,
+        "batch4": 7668,
+        "batch8": 8168
+      }
+    },
+    {
+      "pattern": "hot",
+      "cycles": {
+        "gpu_lock": 1119811,
+        "gpu_warp": 1005670,
+        "gpu_owner": 1009330,
+        "gpu_field_core": 2197517,
+        "batch1": 5462774,
+        "batch4": 3387357,
+        "batch8": 2923574
+      },
+      "best_native": "gpu_warp",
+      "batch8_speedup_over_batch1": 1.8685259890804884,
+      "batch8_slowdown_vs_best_native": 2.9070907951912655,
+      "messages": {
+        "batch1": 4096,
+        "batch4": 1024,
+        "batch8": 512
+      },
+      "handler_key_scans": {
+        "batch1": 4096,
+        "batch4": 4096,
+        "batch8": 4096
+      }
+    }
+  ],
+  "same_case_hashes_and_checksums_match": true,
+  "preserved_diagnostic": {
+    "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix",
+    "run_count": 5,
+    "passed": 4,
+    "failed": 1,
+    "cause": {
+      "cause": "Host incoming vector lifetime ended before asynchronous vx_enqueue_write consumed its pointer",
+      "fix": "Retain batch_counts vector in main scope through completion",
+      "failed_log": "app/runs/smoke-batch1-k64-u0-random-wide/run.log",
+      "successful_cohort": "validated"
+    },
+    "verified_artifacts": [
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/kernel_lock.cpp",
+        "bytes": 1244,
+        "sha256": "6559657b422194f16b80f6d3a7fe9e88f528b6f7076b3a501df2c99659e16e17"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/kernel_bucket.cpp",
+        "bytes": 2954,
+        "sha256": "1f438c3abd0418b4a67078643c98f7b75cb7756fac4900177d716e2b1ac12d40"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/kernel_field_core.cpp",
+        "bytes": 2169,
+        "sha256": "d1138415c42980ee7053aee6951d1c68a7e4e355915489b79341370a1cae801d"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/kernel_warp.cpp",
+        "bytes": 2989,
+        "sha256": "c78c0cb87597666c42b12702cf548752c1e1721967824e7fe3c846a54b2f7595"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/kernel_batch.cpp",
+        "bytes": 6227,
+        "sha256": "a1b1314907bdd7fcf56fb7aa5f6039636f5e7dba8dd1ddac4633ab935c40d2e6"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/main.cpp",
+        "bytes": 14564,
+        "sha256": "a644742ee09aa0f84096c5ada49d39b3b99ba16cb7ceb41a5d8670f08a8b66cd"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/device.h",
+        "bytes": 1426,
+        "sha256": "6b86ec7e06a38f974fc90f376a3285bd5a3849a3a58b97a66035d1b2d2e3b3cc"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/field_handler.h",
+        "bytes": 2172,
+        "sha256": "112620b58ae4ecaaab62fd40b43904f564e906cebbb7b1f8014fc177adc3ce37"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/transport.h",
+        "bytes": 1662,
+        "sha256": "02c5b788a58b451ccbe4574204f4ce60e58f09eb01dbd0920bcc09adf8d02688"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/common.h",
+        "bytes": 694,
+        "sha256": "9fd3b2f606eba4b58730997f56877b8f01dddadb6f0f7ab47a5c3907cf3b3c12"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/Makefile",
+        "bytes": 1236,
+        "sha256": "351aa95fa0ed7b8f299385c252cefb8c1f6c2d3a15f97cfbae40d15d75cdcbb2"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/README.md",
+        "bytes": 2806,
+        "sha256": "01195fc94b94d5b874dc81af077a70d277f509c9b30ce36ac1e375178836de4b"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/source/run_matrix.py",
+        "bytes": 5568,
+        "sha256": "d131115514d512e63798707577a7c127e620c2524921f399a3e3374b851db786"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_mmio_abi.h",
+        "bytes": 2450,
+        "sha256": "dafe9eba0190d89a129a30905d0546684ebe92aca02d49004f3a525a3093d2b1"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/runtime/libsimx.so",
+        "bytes": 2095024,
+        "sha256": "06a7a43a4c47b6073aaa81bcf8fac05561efbd081899a3dfc064a10b6c848dcb"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/runtime/libvortex.so",
+        "bytes": 309800,
+        "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/runtime/libvortex-simx.so",
+        "bytes": 111856,
+        "sha256": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/sw/kernel/libvortex2.a",
+        "bytes": 67566,
+        "sha256": "bca73f38ede9f7b6d2b0cd7bc6bf570ee0b3208debe3529089a4e7f9e1e39ef4"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_lock/forza_message_batch_gpu_lock",
+        "bytes": 46024,
+        "sha256": "f1f18f0bc1c669ab6cdd4856483b45d61da2f4158cbbf4f3121351b649612f8e"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_lock/kernel.vxbin",
+        "bytes": 4720,
+        "sha256": "21d8d5a928a1004aa2d07359549c6dfd4e5fd5a68a30dce57c2843ba6dc73851"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_lock/kernel.elf",
+        "bytes": 6184,
+        "sha256": "249203f64b40f441f4eea1a498e36fca70923cb791041bc82d2fc090ea4804a1"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_lock/kernel.dump",
+        "bytes": 17375,
+        "sha256": "d4e2dfc78d8c0d81c53d0773fe75f7bd5fbeca3a50fed217064707274ef47548"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_warp/forza_message_batch_gpu_warp",
+        "bytes": 46024,
+        "sha256": "ca95ba1c0bc62fcad612c4bd6773324050d925a72712a5e03df0543ee0b17ba4"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_warp/kernel.vxbin",
+        "bytes": 5552,
+        "sha256": "f851d993bd515e49a1e4521d790ada366abd985f0b611fe7bdbe1ffaab0cea7f"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_warp/kernel.elf",
+        "bytes": 7048,
+        "sha256": "5663f2f5a8dceebd10ec5f92b70353af9fc29f921c5a336874c5b05098fbb385"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_warp/kernel.dump",
+        "bytes": 26155,
+        "sha256": "a4b1037d02a4fd99d1e9df8f39dea221314302755d42c1bef8c1bed48a0e287e"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_owner/forza_message_batch_gpu_owner",
+        "bytes": 46024,
+        "sha256": "9af4dd4e93745b2c691358b24dcf80e38239175f1cec902f5700378ccfce566a"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_owner/kernel.vxbin",
+        "bytes": 5744,
+        "sha256": "48e9cfb4c4bacf159508b002e5fd326f9ce1dabcf421218101fcbbff20bf0760"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_owner/kernel.elf",
+        "bytes": 7208,
+        "sha256": "530ab8ef4e3c86109150f774f9e7765c9c4534d2fff121431da2602e40daada2"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_owner/kernel.dump",
+        "bytes": 28189,
+        "sha256": "75d8e807c0f37311b136d2816e97d5e3140e65c0155247545f2169e6b41d558f"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_field_core/forza_message_batch_gpu_field_core",
+        "bytes": 46024,
+        "sha256": "599aa5c5f9ea4dface7e71e4cd5e00ead068f10354d44b7a521178bbbc67de5f"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_field_core/kernel.vxbin",
+        "bytes": 5680,
+        "sha256": "5f3968798fc3ed159732b1e1b2fcfb206a36f346c5ea9ecdf93d091c8f5389c8"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_field_core/kernel.elf",
+        "bytes": 7160,
+        "sha256": "f37c52b99defc62f1e374666d17ec5c034a397847a8ce9b1a049910014c31018"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/gpu_field_core/kernel.dump",
+        "bytes": 27679,
+        "sha256": "c0f1d8e34a4b6d8e8e6b41e363bc3cae5008d4aab94e116df76563b49dcb49b6"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch1/forza_message_batch_batch1",
+        "bytes": 46024,
+        "sha256": "c5ce2cc3f5c75824fa90da19e697717fd1c3f5a5fc3e57f46912d81240ea01a4"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch1/kernel.vxbin",
+        "bytes": 6768,
+        "sha256": "85bccf3b8283c472ec0af25e535d26925e3331452c8c39448afd92237cf1dc6b"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch1/kernel.elf",
+        "bytes": 8504,
+        "sha256": "d117edc0da63881f7c266b17ecb440282b777592ae4ea1bc8042424d13564227"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch1/kernel.dump",
+        "bytes": 41865,
+        "sha256": "8eedf9243f35b88f35d4818230c8391317c709cb6831bd329489f033c1ab8b0d"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch4/forza_message_batch_batch4",
+        "bytes": 46024,
+        "sha256": "0382d2223be0ba7758c3a57ffb7bfa57cf91a5552449cbe79e79f9adad0b6e5b"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch4/kernel.vxbin",
+        "bytes": 6960,
+        "sha256": "b65cb94a5672270b9d34c1ebd11685594e2d640127163b9901f0946f497f5fd8"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch4/kernel.elf",
+        "bytes": 8688,
+        "sha256": "68cb9f514c4e4e69de64aa990139acf772f6ebc3bb6a2930c6feeb3f8c3b5a1b"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch4/kernel.dump",
+        "bytes": 43960,
+        "sha256": "0d3c61a96179e9d5d88303974cc492fc230b07e5824009ad16f17ae61b75db55"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch8/forza_message_batch_batch8",
+        "bytes": 46024,
+        "sha256": "7a7f6315cc877ddbb24e1a031dbd429ec760838bc0f18dd974b4eb948eceec32"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch8/kernel.vxbin",
+        "bytes": 6960,
+        "sha256": "6cc5857fbda784351d63ac90865cb86913ef2164a87d324d71310ade19b756df"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch8/kernel.elf",
+        "bytes": 8688,
+        "sha256": "8afbc146d081aa25c570148f49d336ab87ef0af84042f8742c88f99c98a09d8d"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/artifacts/batch8/kernel.dump",
+        "bytes": 43960,
+        "sha256": "e5319c6518d611a2355ed83324f4c5a1e2465f0eca2f7d240435ba6154cdc53b"
+      }
+    ],
+    "verified_logs": [
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/runs/smoke-gpu_lock-k64-u0-random-wide/run.log",
+        "bytes": 862,
+        "sha256": "8e29b918c8a586187b1965137a69a537783edf20a6c466d238f235abc651cf49"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/runs/smoke-gpu_warp-k64-u0-random-wide/run.log",
+        "bytes": 865,
+        "sha256": "7cb2047df2125da3fa326d5c05f04b3fd7bc50936e2b27e7cb8ab2dc9c7dbe0e"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/runs/smoke-gpu_owner-k64-u0-random-wide/run.log",
+        "bytes": 884,
+        "sha256": "cc588e6edd1d17eec8cfd9aaa11286165bece290367915c62154cd22ff35c95d"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/runs/smoke-gpu_field_core-k64-u0-random-wide/run.log",
+        "bytes": 893,
+        "sha256": "7b52e9250b5eef742c5f8179569f686a22925bce745deece7356c70353c533bf"
+      },
+      {
+        "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-batch-generic/diagnostics/pre-count-lifetime-fix/app/runs/smoke-batch1-k64-u0-random-wide/run.log",
+        "bytes": 784,
+        "sha256": "0978ee76463e8ecd0e9bdb3ad0c17236435552d3761d8e556e510a98ed3dc01a"
+      }
+    ]
+  }
+}

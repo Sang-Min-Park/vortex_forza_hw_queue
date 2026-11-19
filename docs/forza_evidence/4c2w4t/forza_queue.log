@@ -1,0 +1,15 @@
+make: Entering directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/tests/regression/forza_queue'
+CONFIGS="-DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_NUM_CORES=4 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=4 -DVX_CFG_NUM_SFU_LANES=4"     make -C /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime/stub DESTDIR=/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime
+make[1]: Entering directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime/stub'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime/stub'
+CONFIGS="-DVX_CFG_EXT_FORZA_ENABLE -DVX_CFG_NUM_CORES=4 -DVX_CFG_NUM_WARPS=2 -DVX_CFG_NUM_THREADS=4 -DVX_CFG_NUM_SFU_LANES=4"     make -C /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime/simx DESTDIR=/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime
+make[1]: Entering directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime/simx'
+DESTDIR=/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime make -C /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sim/simx /export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime/libsimx.so
+make[2]: Entering directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sim/simx'
+make[2]: Leaving directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sim/simx'
+make[1]: Leaving directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime/simx'
+LD_LIBRARY_PATH=/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/sw/runtime:/nethome/spark3100/vortex-deps/root/usr/lib/x86_64-linux-gnu:/nethome/spark3100/vortex-deps/root/usr/lib/x86_64-linux-gnu VORTEX_DRIVER=simx ./forza_queue -n8
+FORZA queues: 4 cores, 2 warps, 4 lanes, 8 rounds, 32 actors
+PASSED: 1536 messages; two-slot FIFO, shared mailbox pressure, seven-word payloads, explicit release, mixed memory loads, ACK counts zero
+make: Leaving directory '/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-csr-generalize-4c2w4t/tests/regression/forza_queue'

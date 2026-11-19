@@ -1,0 +1,166 @@
+{
+  "passed": 52,
+  "manifest": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/record-manifest.json",
+  "artifacts_verified": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/kernel_bucket.cpp",
+      "bytes": 2160,
+      "sha256": "1daba0dbbb1762f13b55801794d53275b062b46f90de9ed761e24acc9d30b8c2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/kernel_warp.cpp",
+      "bytes": 2609,
+      "sha256": "27f0db210740d86ecbd98816cb89751d39660b12d761b294cba6eee226cdf053"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/main.cpp",
+      "bytes": 11875,
+      "sha256": "e5d6c929844481633996da606199826fa573873372d9128d73965bd1eabdb42d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/kernel_engine.cpp",
+      "bytes": 2812,
+      "sha256": "1c55b8b7bbc82bdf6e6fd7c4d89260c8caa3f133cb76d7d3c8c1bae8d1b3febf"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/kernel_lock.cpp",
+      "bytes": 1244,
+      "sha256": "6559657b422194f16b80f6d3a7fe9e88f528b6f7076b3a501df2c99659e16e17"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/device.h",
+      "bytes": 1247,
+      "sha256": "5d423a53bec1bc0c83b3089e0c3fd3cbf58dd2337b3a4f5886c9f2efabf4e341"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/common.h",
+      "bytes": 675,
+      "sha256": "362ee1c47dfdb4d021110aeb8f78e1a9125a5be86a23a23f9d67431138af1531"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/Makefile",
+      "bytes": 900,
+      "sha256": "4117411a4cc26fee6a4d7c99b2c2f96961cc42794ba553c5704ef05c98b830e4"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/README.md",
+      "bytes": 2431,
+      "sha256": "f86bd6055f30a59a2c81d395f1bdb63fd7e287d0008a79bb6cfdfffb16fc3881"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_record/run_matrix.py",
+      "bytes": 5607,
+      "sha256": "607e100453d52f075bd253a9cd0376860c132ab06edcfc0fd902269890c2a774"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_record_abi.h",
+      "bytes": 1805,
+      "sha256": "1da7895af9dcc61572376d127bb4da9141561f871551774a635736c096fd608d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_mmio_abi.h",
+      "bytes": 1912,
+      "sha256": "492fcdc7cb9dac592346767a52d28e942c17dd508d36a76bebfdf33bef622675"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/sw/runtime/libsimx.so",
+      "bytes": 2113352,
+      "sha256": "9530f38580d17a5ed6913242fd88488cf1337eafd66cecc15000c0acb2161700"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/sw/runtime/libvortex.so",
+      "bytes": 309800,
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/sw/runtime/libvortex-simx.so",
+      "bytes": 111856,
+      "sha256": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/sw/kernel/libvortex2.a",
+      "bytes": 67566,
+      "sha256": "6d08eb93ec2a71a9cad4ad64c40b8c02dabeda38e069a97b7b8b676a56722f0f"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_lock/forza_record_gpu_lock",
+      "bytes": 41784,
+      "sha256": "a73b1f345af584b5de077203c40d1834972e2cd6cbd106162e023ed7f9218fd1"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_lock/kernel.vxbin",
+      "bytes": 4720,
+      "sha256": "178258ddfc1def718455f4fe2e547db637cdc65ef461495dd3fc134bf62a189c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_lock/kernel.elf",
+      "bytes": 6184,
+      "sha256": "54c1ebd2c27ee9db04a9eff6507e74692d7cc2272ac9b8edc150dd4884aef4ae"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_lock/kernel.dump",
+      "bytes": 17380,
+      "sha256": "4199dfe2f9f9216bc67fc67547588d1d314f91a44beb45f57110dadf92643124"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_warp/forza_record_gpu_warp",
+      "bytes": 41784,
+      "sha256": "dc877d05bccab883ceefec556324d11d81274a019defb6e05e6d46f92fd717b8"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_warp/kernel.vxbin",
+      "bytes": 5680,
+      "sha256": "85728320d152e1f1226689d4cf4663933de7e3d1a770f71e06dc1cce89a34dc2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_warp/kernel.elf",
+      "bytes": 7128,
+      "sha256": "838961e1f3a2d3220418d345e02f430f134be57a8d0ba8d4d2d0ca69c4075739"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_warp/kernel.dump",
+      "bytes": 26990,
+      "sha256": "1f421dbfe9db77f5eed1b7180a636170a4abc74ace0d476812405fabb1612c32"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_owner/forza_record_gpu_owner",
+      "bytes": 41784,
+      "sha256": "5d780edc12eef7e5dc5f9cfe236432f4c80b1076d252d8bf80cbabe5162a01b6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_owner/kernel.vxbin",
+      "bytes": 5552,
+      "sha256": "509c1c4245348fec321b4176fe28e77c41fe6c836d7374f3bdbfd77be90b33f5"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_owner/kernel.elf",
+      "bytes": 7008,
+      "sha256": "f6e3cd68d7257e0936ef1306234dad1b8081731e5d1ba63747fcff4d0aa8f9ae"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/gpu_owner/kernel.dump",
+      "bytes": 26063,
+      "sha256": "0999b1d2a36850260d67275f2666cbb6549567c8319801b7d17413883e5843e6"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/engine/forza_record_engine",
+      "bytes": 41784,
+      "sha256": "030e53649e011b29f91b681489517d7e673248fe2a6fcb8416439d639dbc8b03"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/engine/kernel.vxbin",
+      "bytes": 5552,
+      "sha256": "86415f75c89dac65bd4bf94140de4419b63eca86f9393922227a5e8c089834dc"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/engine/kernel.elf",
+      "bytes": 6992,
+      "sha256": "497464167a3a24e91fab224c0131d58547b43539732f3605dd00e4beea9419b7"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-record/tests/regression/forza_pgas_record/artifacts/engine/kernel.dump",
+      "bytes": 25811,
+      "sha256": "31a2418f0e0395cb75e123da2a6e9aaab57ce0aac6716ce4fb19cdabdc39d34c"
+    }
+  ]
+}

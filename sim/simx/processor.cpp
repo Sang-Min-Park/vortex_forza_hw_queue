@@ -19,6 +19,10 @@
 
 #include <cstdlib>
 #include <execinfo.h>
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+#include "sfu_unit.h"
+#include "forza/forza_zone.h"
+#endif
 
 using namespace vortex;
 
@@ -67,6 +71,63 @@ ProcessorImpl::ProcessorImpl()
   // dispatcher; CTAs cross into the core's domain through the slice, and
   // admission credits return to the KMU through a slice of their own.
   constexpr uint32_t cores_per_cluster = NUM_SOCKETS * VX_CFG_SOCKET_SIZE;
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  forza_fabric_ = ForzaFabric::Create("forza-fabric", total_cores);
+  for (uint32_t i = 0; i < total_cores; ++i) {
+    auto* core = clusters_.at(i / cores_per_cluster)->get_core(i % cores_per_cluster);
+    const auto& zone = core->forza_zone();
+    core->sfu_unit()->forza_req_out.bind(&zone->csr_req_in);
+    zone->csr_rsp_out.bind(&core->sfu_unit()->forza_rsp_in);
+    // Cross-domain sends are deferred. Sender-owned boundary credits reserve
+    // sink capacity until its pop, including packets not yet delivered.
+    RegSlice<ForzaMessage>::Ptr message_tx;
+    RegSlice<ForzaAck>::Ptr ack_tx;
+#if defined(VX_CFG_FORZA_RECORD_ENABLE) || defined(VX_CFG_FORZA_VM_ENABLE)
+    RegSlice<ForzaMessage>::Ptr record_reply_tx;
+#endif
+    {
+      SimPlatform::DomainScope core_scope(core);
+      snprintf(sname, 100, "forza-msg-tx%d", i);
+      message_tx = RegSlice<ForzaMessage>::Create(sname, 1);
+      snprintf(sname, 100, "forza-ack-tx%d", i);
+      ack_tx = RegSlice<ForzaAck>::Create(sname, 1);
+#if defined(VX_CFG_FORZA_RECORD_ENABLE) || defined(VX_CFG_FORZA_VM_ENABLE)
+      snprintf(sname, 100, "forza-record-reply-tx%d", i);
+      record_reply_tx = RegSlice<ForzaMessage>::Create(sname, 1);
+#endif
+    }
+    RegSlice<ForzaMessage>::Ptr message_rx;
+    RegSlice<ForzaAck>::Ptr ack_rx;
+#if defined(VX_CFG_FORZA_RECORD_ENABLE) || defined(VX_CFG_FORZA_VM_ENABLE)
+    RegSlice<ForzaMessage>::Ptr record_reply_rx;
+#endif
+    {
+      SimPlatform::DomainScope fabric_scope(forza_fabric_.get());
+      snprintf(sname, 100, "forza-msg-rx%d", i);
+      message_rx = RegSlice<ForzaMessage>::Create(sname, 1);
+      snprintf(sname, 100, "forza-ack-rx%d", i);
+      ack_rx = RegSlice<ForzaAck>::Create(sname, 1);
+#if defined(VX_CFG_FORZA_RECORD_ENABLE) || defined(VX_CFG_FORZA_VM_ENABLE)
+      snprintf(sname, 100, "forza-record-reply-rx%d", i);
+      record_reply_rx = RegSlice<ForzaMessage>::Create(sname, 1);
+#endif
+    }
+    zone->net_tx.bind(&message_tx->In);
+    message_tx->Out.bind(&forza_fabric_->msg_in[i]);
+    forza_fabric_->msg_out[i].bind(&message_rx->In);
+    message_rx->Out.bind(&zone->net_rx);
+    zone->ack_tx.bind(&ack_tx->In);
+    ack_tx->Out.bind(&forza_fabric_->ack_in[i]);
+    forza_fabric_->ack_out[i].bind(&ack_rx->In);
+    ack_rx->Out.bind(&zone->ack_rx);
+#if defined(VX_CFG_FORZA_RECORD_ENABLE) || defined(VX_CFG_FORZA_VM_ENABLE)
+    zone->reply_net_tx.bind(&record_reply_tx->In);
+    record_reply_tx->Out.bind(&forza_fabric_->record_reply_in[i]);
+    forza_fabric_->record_reply_out[i].bind(&record_reply_rx->In);
+    record_reply_rx->Out.bind(&zone->reply_net_rx);
+#endif
+  }
+#endif
   for (uint32_t i = 0; i < total_cores; ++i) {
     snprintf(sname, 100, "kmu-lane%d", i);
     auto slice = RegSlice<kmu_req_t>::Create(sname, 1);

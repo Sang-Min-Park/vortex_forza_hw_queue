@@ -43,6 +43,12 @@
 #include "processor_impl.h"
 #include "kmu.h"
 #include "debug.h"
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+#include "forza/forza_zone.h"
+#ifdef VX_CFG_FORZA_VM_ENABLE
+#include "forza/forza_vm.h"
+#endif
+#endif
 #ifdef VX_CFG_EXT_TCU_ENABLE
 #include "tcu_unit.h"
 #endif
@@ -121,7 +127,11 @@ public:
 
     // create local memory.
     snprintf(sname, 100, "%s-lmem", name.c_str());
-    uint32_t lmem_num_reqs = LSU_NUM_REQS + VX_CFG_EXT_TCU_ENABLED + VX_CFG_EXT_DXA_ENABLED;
+    uint32_t lmem_num_reqs = LSU_NUM_REQS + VX_CFG_EXT_TCU_ENABLED
+                           + VX_CFG_EXT_DXA_ENABLED + VX_CFG_FORZA_UPDATE_ENABLED;
+#ifdef VX_CFG_FORZA_VM_ENABLE
+    ++lmem_num_reqs;
+#endif
     local_mem_ = LocalMem::Create(sname, LocalMem::Config{
       (1 << VX_CFG_LMEM_LOG_SIZE),
       LSU_WORD_SIZE,
@@ -135,6 +145,38 @@ public:
       snprintf(sname, 100, "%s-lmem_switch%d", name.c_str(), b);
       lmem_switch_.at(b) = LocalMemSwitch::Create(sname, 1);
     }
+
+  #ifdef VX_CFG_EXT_FORZA_ENABLE
+    snprintf(sname, 100, "%s-forza", name.c_str());
+    forza_zone_ = ForzaZone::Create(sname, simobject_->id());
+    for (uint32_t b = 0; b < VX_CFG_NUM_LSU_BLOCKS; ++b) {
+      lmem_switch_.at(b)->ReqOutForza.bind(&forza_zone_->mem_req_in.at(b));
+      forza_zone_->mem_rsp_out.at(b).bind(&lmem_switch_.at(b)->RspInForza);
+    }
+  #ifdef VX_CFG_FORZA_UPDATE_ENABLE
+    {
+      uint32_t port = LSU_NUM_REQS + VX_CFG_EXT_TCU_ENABLED + VX_CFG_EXT_DXA_ENABLED;
+      forza_zone_->update_req_out.bind(&local_mem_->Inputs.at(port));
+      local_mem_->Outputs.at(port).bind(&forza_zone_->update_rsp_in);
+    }
+  #endif
+  #ifdef VX_CFG_FORZA_VM_ENABLE
+    snprintf(sname, 100, "%s-forza-vm", name.c_str());
+    forza_vm_ = ForzaVm::Create(sname, simobject_->id());
+    forza_zone_->vm_request_out.bind(&forza_vm_->request_in);
+    forza_vm_->result_out.bind(&forza_zone_->vm_result_in);
+    forza_zone_->vm_result_ack_out.bind(&forza_vm_->result_ack_in);
+    forza_vm_->completion_out.bind(&forza_zone_->vm_completion_in);
+    forza_zone_->vm_config_out.bind(&forza_vm_->config_in);
+    forza_vm_->config_ack_out.bind(&forza_zone_->vm_config_ack_in);
+    {
+      uint32_t port = LSU_NUM_REQS + VX_CFG_EXT_TCU_ENABLED + VX_CFG_EXT_DXA_ENABLED
+                    + VX_CFG_FORZA_UPDATE_ENABLED;
+      forza_vm_->memory_req_out.bind(&local_mem_->Inputs.at(port));
+      local_mem_->Outputs.at(port).bind(&forza_vm_->memory_rsp_in);
+    }
+  #endif
+  #endif
 
     // create per-block lmem adapters
     std::vector<LsuMemAdapter::Ptr> lsu_lmem_adapter(VX_CFG_NUM_LSU_BLOCKS);
@@ -937,6 +979,9 @@ public:
 #endif
 
   const std::shared_ptr<LocalMem>& local_mem() const { return local_mem_; }
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  const std::shared_ptr<ForzaZone>& forza_zone() const { return forza_zone_; }
+#endif
   const std::shared_ptr<MemCoalescer>& mem_coalescer(uint32_t idx) const { return mem_coalescers_.at(idx); }
   const std::shared_ptr<LocalMemSwitch>& lmem_switch(uint32_t idx) const { return lmem_switch_.at(idx); }
 
@@ -990,6 +1035,12 @@ private:
   std::vector<Dispatcher::Ptr> dispatchers_;
   std::vector<std::shared_ptr<FuncUnitBase>> func_units_;
   LocalMem::Ptr local_mem_;
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  std::shared_ptr<ForzaZone> forza_zone_;
+#ifdef VX_CFG_FORZA_VM_ENABLE
+  ForzaVm::Ptr forza_vm_;
+#endif
+#endif
   std::vector<LocalMemSwitch::Ptr> lmem_switch_;
   std::vector<MemCoalescer::Ptr> mem_coalescers_;
 
@@ -1171,6 +1222,12 @@ std::shared_ptr<SfuUnit> Core::sfu_unit() {
 const std::shared_ptr<LocalMem>& Core::local_mem() const {
   return impl_->local_mem();
 }
+
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+const std::shared_ptr<ForzaZone>& Core::forza_zone() const {
+  return impl_->forza_zone();
+}
+#endif
 
 const std::shared_ptr<MemCoalescer>& Core::mem_coalescer(uint32_t idx) const {
   return impl_->mem_coalescer(idx);

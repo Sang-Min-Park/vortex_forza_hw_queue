@@ -1,0 +1,414 @@
+{
+  "scope": "RV64 SimX CSR-only correctness experiments; production queue and runtime unchanged",
+  "feature": "VX_CFG_EXT_FORZA_ENABLE; optional FORZA ISA/MMIO/UPDATE/RECORD/VM disabled",
+  "experiments": [
+    {
+      "test": "forza_queue",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 16,
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "summaries": [
+        "FORZA queues: 2 cores, 2 warps, 4 lanes, 8 rounds, 16 actors",
+        "PASSED: 768 messages; two-slot FIFO, shared mailbox pressure, seven-word payloads, explicit release, mixed memory loads, ACK counts zero"
+      ],
+      "log": "build64-forza-csr-generalize-2c2w4t/diagnostics/forza_queue.log"
+    },
+    {
+      "test": "forza_runtime",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 16,
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "summaries": [
+        "FORZA runtime: 2 cores, 2 warps, 4 lanes, 4 rounds, 16 actors",
+        "PASSED: 384 handler invocations; global-PE ring and fan-in, two mailboxes, short payloads, per-sender FIFO, software DONE from all peers, ACK counts zero; 13 actors closed before their final handler-generated reply; backpressure retries=0"
+      ],
+      "log": "build64-forza-csr-generalize-2c2w4t/diagnostics/forza_runtime.log"
+    },
+    {
+      "test": "forza_queue",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 8,
+      "physical_actors": 32,
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "summaries": [
+        "FORZA queues: 2 cores, 2 warps, 8 lanes, 8 rounds, 32 actors",
+        "PASSED: 1536 messages; two-slot FIFO, shared mailbox pressure, seven-word payloads, explicit release, mixed memory loads, ACK counts zero"
+      ],
+      "log": "build64-forza-csr-generalize-2c2w8t/diagnostics/forza_queue.log"
+    },
+    {
+      "test": "forza_runtime",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 8,
+      "physical_actors": 32,
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "summaries": [
+        "FORZA runtime: 2 cores, 2 warps, 8 lanes, 4 rounds, 32 actors",
+        "PASSED: 768 handler invocations; global-PE ring and fan-in, two mailboxes, short payloads, per-sender FIFO, software DONE from all peers, ACK counts zero; 32 actors closed before their final handler-generated reply; backpressure retries=2"
+      ],
+      "log": "build64-forza-csr-generalize-2c2w8t/diagnostics/forza_runtime.log"
+    },
+    {
+      "test": "forza_queue",
+      "cores": 4,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 32,
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "summaries": [
+        "FORZA queues: 4 cores, 2 warps, 4 lanes, 8 rounds, 32 actors",
+        "PASSED: 1536 messages; two-slot FIFO, shared mailbox pressure, seven-word payloads, explicit release, mixed memory loads, ACK counts zero"
+      ],
+      "log": "build64-forza-csr-generalize-4c2w4t/diagnostics/forza_queue.log"
+    },
+    {
+      "test": "forza_runtime",
+      "cores": 4,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 32,
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "summaries": [
+        "FORZA runtime: 4 cores, 2 warps, 4 lanes, 4 rounds, 32 actors",
+        "PASSED: 768 handler invocations; global-PE ring and fan-in, two mailboxes, short payloads, per-sender FIFO, software DONE from all peers, ACK counts zero; 29 actors closed before their final handler-generated reply; backpressure retries=0"
+      ],
+      "log": "build64-forza-csr-generalize-4c2w4t/diagnostics/forza_runtime.log"
+    },
+    {
+      "test": "forza_queue",
+      "cores": 4,
+      "warps_per_core": 2,
+      "lanes_per_warp": 8,
+      "physical_actors": 64,
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "summaries": [
+        "FORZA queues: 4 cores, 2 warps, 8 lanes, 8 rounds, 64 actors",
+        "PASSED: 3072 messages; two-slot FIFO, shared mailbox pressure, seven-word payloads, explicit release, mixed memory loads, ACK counts zero"
+      ],
+      "log": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-queue.log"
+    },
+    {
+      "test": "forza_runtime",
+      "cores": 4,
+      "warps_per_core": 2,
+      "lanes_per_warp": 8,
+      "physical_actors": 64,
+      "exit_code": 2,
+      "timed_out": true,
+      "passed": false,
+      "summaries": [
+        "FORZA runtime: 4 cores, 2 warps, 8 lanes, 4 rounds, 64 actors",
+        "FAILED: FORZA runtime test exceeded the 125s deadline"
+      ],
+      "log": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector.log"
+    },
+    {
+      "test": "forza_queue",
+      "cores": 2,
+      "warps_per_core": 4,
+      "lanes_per_warp": 8,
+      "physical_actors": 64,
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "summaries": [
+        "FORZA queues: 2 cores, 4 warps, 8 lanes, 8 rounds, 64 actors",
+        "PASSED: 2560 messages; two-slot FIFO, shared mailbox pressure, seven-word payloads, explicit release, mixed memory loads, ACK counts zero"
+      ],
+      "log": "build64-forza-csr-generalize-2c4w8t/diagnostics/forza_queue.log"
+    },
+    {
+      "test": "forza_runtime",
+      "cores": 2,
+      "warps_per_core": 4,
+      "lanes_per_warp": 8,
+      "physical_actors": 64,
+      "exit_code": 1,
+      "timed_out": true,
+      "passed": false,
+      "summaries": [
+        "FORZA runtime: 2 cores, 4 warps, 8 lanes, 1 rounds, 64 actors",
+        "FAILED: FORZA runtime test exceeded the 125s deadline"
+      ],
+      "log": "build64-forza-csr-generalize-2c4w8t/diagnostics/forza_runtime.log"
+    },
+    {
+      "test": "forza_csr_generalize",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 16,
+      "grid_blocks": 2,
+      "launched_logical_threads": 16,
+      "pe_mode": "physical",
+      "exit_code": 0,
+      "passed": true,
+      "errors": 0,
+      "registration_errors": 0,
+      "sent": 64,
+      "received": 64,
+      "retries": 0,
+      "summary": "PASSED: errors=0 registration_errors=0 sent=64 received=64 retries=0",
+      "log": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w1-physical.log"
+    },
+    {
+      "test": "forza_csr_generalize",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 16,
+      "grid_blocks": 2,
+      "launched_logical_threads": 16,
+      "pe_mode": "logical",
+      "exit_code": 0,
+      "passed": true,
+      "errors": 0,
+      "registration_errors": 0,
+      "sent": 64,
+      "received": 64,
+      "retries": 0,
+      "summary": "PASSED: errors=0 registration_errors=0 sent=64 received=64 retries=0",
+      "log": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w1-logical.log"
+    },
+    {
+      "test": "forza_csr_generalize",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 16,
+      "grid_blocks": 4,
+      "launched_logical_threads": 32,
+      "pe_mode": "physical",
+      "exit_code": 0,
+      "passed": true,
+      "errors": 0,
+      "registration_errors": 0,
+      "sent": 128,
+      "received": 128,
+      "retries": 0,
+      "summary": "PASSED: errors=0 registration_errors=0 sent=128 received=128 retries=0",
+      "log": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w2-physical.log"
+    },
+    {
+      "test": "forza_csr_generalize",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 16,
+      "grid_blocks": 4,
+      "launched_logical_threads": 32,
+      "pe_mode": "logical",
+      "exit_code": 1,
+      "passed": false,
+      "errors": 16,
+      "registration_errors": 16,
+      "sent": 64,
+      "received": 64,
+      "retries": 0,
+      "summary": "FAILED: errors=16 registration_errors=16 sent=64 received=64 retries=0",
+      "log": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w2-logical.log"
+    },
+    {
+      "test": "forza_csr_generalize",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 16,
+      "grid_blocks": 8,
+      "launched_logical_threads": 64,
+      "pe_mode": "physical",
+      "exit_code": 0,
+      "passed": true,
+      "errors": 0,
+      "registration_errors": 0,
+      "sent": 256,
+      "received": 256,
+      "retries": 0,
+      "summary": "PASSED: errors=0 registration_errors=0 sent=256 received=256 retries=0",
+      "log": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w4-physical.log"
+    },
+    {
+      "test": "forza_csr_generalize",
+      "cores": 2,
+      "warps_per_core": 2,
+      "lanes_per_warp": 4,
+      "physical_actors": 16,
+      "grid_blocks": 8,
+      "launched_logical_threads": 64,
+      "pe_mode": "logical",
+      "exit_code": 1,
+      "passed": false,
+      "errors": 48,
+      "registration_errors": 48,
+      "sent": 64,
+      "received": 64,
+      "retries": 0,
+      "summary": "FAILED: errors=48 registration_errors=48 sent=64 received=64 retries=0",
+      "log": "build64-forza-csr-generalize-2c2w4t/diagnostics/probe-w4-logical.log"
+    }
+  ],
+  "interpretation": [
+    "Topology results establish correctness only for the observed configurations and bounded patterns.",
+    "Runtime tests have all actors sending/receiving; handlers create replies; no dedicated service warp.",
+    "Physical PE reuse probes send only to self, drain all messages and ACKs, and retain physical addresses.",
+    "Logical PE probes change address identity on a reused endpoint; registration rejection is an actual failed probe, not hidden as success.",
+    "Delivery to nonresident blocks, arbitrary handler cycles, general logical-actor virtualization and HW-vs-SW performance were not tested."
+  ],
+  "source_sha256": {
+    "tests/regression/forza_csr_generalize/README.md": "ca659d7186ac71d0a3eeba87c46e4b6803733335e878801236143fc054c24194",
+    "tests/regression/forza_csr_generalize/Makefile": "f627f9b6feb4b6e77e50455f608df19a9ac97883f472c10dcede74dc9240b054",
+    "tests/regression/forza_csr_generalize/main.cpp": "faae1cc5cf7c61cd294109b6fbfd985e585c001515846fceb4acbfa87f95a5bc",
+    "tests/regression/forza_csr_generalize/common.h": "b3a4964b1851b5a335021e290522bcf23ea80587b8c5d2bd0a5224f67db1e150",
+    "tests/regression/forza_csr_generalize/kernel.cpp": "88339a622063bfa4f2d27f3632f56edff46baab6aac7f21f60ec97a8003ec34a",
+    "sim/simx/forza/forza_zone.cpp": "b813bc39fda974eb592908cc3019ffdcb791d42146777ff7f1d634a2d905919f",
+    "sim/simx/forza/forza_zone.h": "88f3f3871ca355a9f31b99d532e0892308c91472c06e2398169979abfcb77cda",
+    "sim/simx/forza/forza_fabric.cpp": "07dc940fad1de5741efaedfe1c519875e6e9b012b24f561c142208cb8552931c",
+    "sw/common/forza_abi.h": "3cdd800b945ba971b6c51a5c310ca903120360a4c41538db48d45a05cb48ff5c",
+    "tests/regression/forza_queue/kernel.cpp": "91c51428381efbc40697ff580462aff3d3f909bd487b719e5690aaaca17b19fd",
+    "tests/regression/forza_runtime/kernel.cpp": "a6b68aff7af1275cd802dd5cd4aeeaae8f89ff7142d777804586b9de3f3e651a",
+    "/export/nethomes/spark3100/forza-runtime-vortex/inc/forza_message_lib.vortex.h": "6007f6747937f1bddc7417e94342250ebb1edeb3bc989e924642496c46405007",
+    "/export/nethomes/spark3100/forza-runtime-vortex/inc/forza_message_lib.software.h": "9940874021775f07d85a1f5d2cbff1a599b14e002b088c889459a1282bc356e6",
+    "/export/nethomes/spark3100/forza-runtime-vortex/inc/selector.forza.h": "f3619c9664b8cd1d80acc9afab40cfa9ea69559349dd3578a7b4d14a317a0187",
+    "/export/nethomes/spark3100/forza-runtime-vortex/inc/selector.vortex.h": "301a41fd2f45101ccda96114db2fdb8f5131f6439e0e8bcaa89ca182570f3421",
+    "/export/nethomes/spark3100/forza-runtime-vortex/vortex.mk": "10bdfe4ce8fff5f18692786ee9ec021dc29a5687c183ee4fa6b2f593a78e0c02"
+  },
+  "artifact_sha256": {
+    "build64-forza-csr-generalize-2c2w4t/tests/regression/forza_queue/forza_queue": "54d83706208d7b18a26d4a32cdd8f12eab63409a759b4de61a92d53602c98dcc",
+    "build64-forza-csr-generalize-2c2w4t/tests/regression/forza_queue/kernel.vxbin": "3df3800dc2ef6b57a0de595ba8e5060cfb99c4e197c18f7293a4ee769f8f59f9",
+    "build64-forza-csr-generalize-2c2w4t/tests/regression/forza_runtime/forza_runtime": "d19a9fc55d6bbdfac5529eb0246f0071e51a78670e8401e7aa295a2baaf252aa",
+    "build64-forza-csr-generalize-2c2w4t/tests/regression/forza_runtime/kernel.vxbin": "cb035cdd693cca68ab9d74904a4af9be6ad507aded7efa1d71ab77223be82d18",
+    "build64-forza-csr-generalize-2c2w4t/sw/runtime/libsimx.so": "ed54b3a2f892acb839b7bbb3a8d19f8f6e36e96253104480121bd07ea363cbef",
+    "build64-forza-csr-generalize-2c2w8t/tests/regression/forza_queue/forza_queue": "54d83706208d7b18a26d4a32cdd8f12eab63409a759b4de61a92d53602c98dcc",
+    "build64-forza-csr-generalize-2c2w8t/tests/regression/forza_queue/kernel.vxbin": "3df3800dc2ef6b57a0de595ba8e5060cfb99c4e197c18f7293a4ee769f8f59f9",
+    "build64-forza-csr-generalize-2c2w8t/tests/regression/forza_runtime/forza_runtime": "d19a9fc55d6bbdfac5529eb0246f0071e51a78670e8401e7aa295a2baaf252aa",
+    "build64-forza-csr-generalize-2c2w8t/tests/regression/forza_runtime/kernel.vxbin": "cb035cdd693cca68ab9d74904a4af9be6ad507aded7efa1d71ab77223be82d18",
+    "build64-forza-csr-generalize-2c2w8t/sw/runtime/libsimx.so": "c272f35d7437b7f1e2514040b6fa10e56aec28aeae7d65fd8c1aa06c7f33baf6",
+    "build64-forza-csr-generalize-4c2w4t/tests/regression/forza_queue/forza_queue": "54d83706208d7b18a26d4a32cdd8f12eab63409a759b4de61a92d53602c98dcc",
+    "build64-forza-csr-generalize-4c2w4t/tests/regression/forza_queue/kernel.vxbin": "3df3800dc2ef6b57a0de595ba8e5060cfb99c4e197c18f7293a4ee769f8f59f9",
+    "build64-forza-csr-generalize-4c2w4t/tests/regression/forza_runtime/forza_runtime": "d19a9fc55d6bbdfac5529eb0246f0071e51a78670e8401e7aa295a2baaf252aa",
+    "build64-forza-csr-generalize-4c2w4t/tests/regression/forza_runtime/kernel.vxbin": "cb035cdd693cca68ab9d74904a4af9be6ad507aded7efa1d71ab77223be82d18",
+    "build64-forza-csr-generalize-4c2w4t/sw/runtime/libsimx.so": "64dfb14721df00a20f1d25b43db7d59c5793ed0f58bff7a20994ef9a31a27f61",
+    "build64-forza-csr-generalize-4c2w8t/tests/regression/forza_queue/forza_queue": "54d83706208d7b18a26d4a32cdd8f12eab63409a759b4de61a92d53602c98dcc",
+    "build64-forza-csr-generalize-4c2w8t/tests/regression/forza_queue/kernel.vxbin": "3df3800dc2ef6b57a0de595ba8e5060cfb99c4e197c18f7293a4ee769f8f59f9",
+    "build64-forza-csr-generalize-4c2w8t/tests/regression/forza_runtime/forza_runtime": "d19a9fc55d6bbdfac5529eb0246f0071e51a78670e8401e7aa295a2baaf252aa",
+    "build64-forza-csr-generalize-4c2w8t/tests/regression/forza_runtime/kernel.vxbin": "cb035cdd693cca68ab9d74904a4af9be6ad507aded7efa1d71ab77223be82d18",
+    "build64-forza-csr-generalize-4c2w8t/sw/runtime/libsimx.so": "9f20d510dc14347b89f727d81a62f06d0252cf25a9dafc42145d68953ee454a3",
+    "build64-forza-csr-generalize-2c4w8t/tests/regression/forza_queue/forza_queue": "54d83706208d7b18a26d4a32cdd8f12eab63409a759b4de61a92d53602c98dcc",
+    "build64-forza-csr-generalize-2c4w8t/tests/regression/forza_queue/kernel.vxbin": "3df3800dc2ef6b57a0de595ba8e5060cfb99c4e197c18f7293a4ee769f8f59f9",
+    "build64-forza-csr-generalize-2c4w8t/tests/regression/forza_runtime/forza_runtime": "d19a9fc55d6bbdfac5529eb0246f0071e51a78670e8401e7aa295a2baaf252aa",
+    "build64-forza-csr-generalize-2c4w8t/tests/regression/forza_runtime/kernel.vxbin": "cb035cdd693cca68ab9d74904a4af9be6ad507aded7efa1d71ab77223be82d18",
+    "build64-forza-csr-generalize-2c4w8t/sw/runtime/libsimx.so": "b58d590aea6ae09b5f2e6588446d33bbcde58fd5a1e2d272aa85f3f81419d83e",
+    "build64-forza-csr-generalize-2c2w4t/tests/regression/forza_csr_generalize/forza_csr_generalize": "7ee349f8d265cdb21e442563b723a7fea0e2c0fc5406a331f69bba2a97bc5ab7",
+    "build64-forza-csr-generalize-2c2w4t/tests/regression/forza_csr_generalize/kernel.vxbin": "8d33b77547980119ad6c77fc72dbd5bc0093e7d87326eb0d9faa7cdd581987c5"
+  },
+  "replay_scripts": [
+    "build64-forza-csr-generalize-2c2w4t/diagnostics/run.sh",
+    "build64-forza-csr-generalize-2c2w8t/diagnostics/run.sh",
+    "build64-forza-csr-generalize-4c2w4t/diagnostics/run.sh",
+    "build64-forza-csr-generalize-4c2w8t/diagnostics/run-experiment.sh",
+    "build64-forza-csr-generalize-2c2w4t/diagnostics/run-probes.sh",
+    "build64-forza-csr-generalize-2c4w8t/diagnostics/run-experiment.sh",
+    "build64-forza-csr-generalize-4c2w8t/diagnostics/run-long-host.sh",
+    "build64-forza-csr-generalize-4c2w8t/diagnostics/run-phase-probe.sh"
+  ],
+  "additional_diagnostics": [
+    {
+      "description": "Same device kernel, fewer application rounds; original host timeout",
+      "exit_code": 2,
+      "timed_out": true,
+      "summaries": [
+        "FORZA runtime: 4 cores, 2 warps, 8 lanes, 1 rounds, 64 actors",
+        "FAILED: FORZA runtime test exceeded the 125s deadline"
+      ],
+      "log": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector-n1.log"
+    },
+    {
+      "description": "Same device kernel, host event wait extended to 300 seconds",
+      "exit_code": 1,
+      "timed_out": true,
+      "summaries": [
+        "FORZA runtime: 4 cores, 2 warps, 8 lanes, 1 rounds, 64 actors",
+        "FAILED: FORZA runtime test exceeded the 305s deadline"
+      ],
+      "log": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-selector-n1-long.log"
+    },
+    {
+      "description": "Separate instrumented device diagnostic; no conclusions from this artifact",
+      "exit_code": 134,
+      "timed_out": false,
+      "summaries": [
+        "FORZA runtime: 4 cores, 2 warps, 8 lanes, 1 rounds, 64 actors"
+      ],
+      "log": "build64-forza-csr-generalize-4c2w8t/diagnostics/run-phase.log"
+    }
+  ],
+  "long_host_summary": {
+    "configuration": {
+      "clusters": 1,
+      "cores": 4,
+      "warps_per_core": 2,
+      "threads_per_warp": 8,
+      "sfu_lanes": 8,
+      "actors": 64,
+      "xlen": 64,
+      "transport": "CSR",
+      "additional_forza_extensions": false
+    },
+    "raw_queue": {
+      "arguments": "-n8",
+      "exit_code": 0,
+      "status": "PASS",
+      "messages": 3072,
+      "log": "run-queue.log"
+    },
+    "runtime_n4": {
+      "arguments": "-n4 -p10000",
+      "make_exit_code": 2,
+      "status": "HOST_TIMEOUT",
+      "event_timeout_s": 120,
+      "alarm_s": 125,
+      "log": "run-selector.log"
+    },
+    "runtime_n1": {
+      "arguments": "-n1 -p10000",
+      "make_exit_code": 2,
+      "status": "HOST_TIMEOUT",
+      "timing": "Command exited with non-zero status 2\nwall_seconds=125.35 user_seconds=135.51 system_seconds=0.15 exit=2",
+      "log": "run-selector-n1.log"
+    },
+    "runtime_n1_long_host": {
+      "arguments": "-n1 -p10000",
+      "exit_code": 1,
+      "status": "HOST_TIMEOUT",
+      "event_timeout_s": 300,
+      "alarm_s": 305,
+      "external_timeout_s": 315,
+      "timing": "Command exited with non-zero status 1\nwall_seconds=305.18 user_seconds=329.95 system_seconds=0.09 exit=1",
+      "log": "run-selector-n1-long.log",
+      "host_patch": "host-wait-only.patch",
+      "device_unchanged": true
+    },
+    "interpretation": "Raw CSR queue passed at64 physical actors; existing Selector runtime did not complete within120s or300s event waits. Timeout does not establish deadlock or locate root cause. No simulator/device/runtime source modifications were made for these runs."
+  },
+  "optional_phase_diagnostic": "Instrumented kernel aborted with exit134 before any device markers; no localization claim is made from it."
+}

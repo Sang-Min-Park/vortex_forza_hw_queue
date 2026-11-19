@@ -26,6 +26,9 @@
 #include "decompressor.h"
 #include "instr.h"
 #include "gfx_doctrine.h"
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+#include "forza/forza_types.h"
+#endif
 
 #ifdef VX_CFG_EXT_TCU_ENABLE
 #include "tensor_cfg.h"
@@ -353,6 +356,13 @@ static op_string_t op_string(const Instr &instr) {
         std::abort();
       }
     },
+#ifdef VX_CFG_FORZA_ISA_ENABLE
+    [&](ForzaType type)-> op_string_t {
+      std::ostringstream name;
+      name << type;
+      return {name.str(), ""};
+    },
+#endif
     [&](CsrType csr_type)-> op_string_t {
       auto csrArgs = std::get<IntrCsrArgs>(instrArgs);
       if (csrArgs.is_imm) {
@@ -678,6 +688,13 @@ Instr::Ptr Decoder::decode(uint32_t code, uint64_t uuid) {
         std::abort();
       }
       auto imm12 = code >> shift_rs2;
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+      // A stalled commit may yield to other warps, but later CSR writes from
+      // this warp must not overtake it and overwrite its assembly buffer.
+      if (is_forza_csr(imm12)) {
+        instr->set_wstall(true);
+      }
+#endif
       if (funct3 < 5) {
         instr->set_src_reg(0, rs1, RegType::Integer);
         instr->set_args(IntrCsrArgs{0, 0, imm12});
@@ -802,6 +819,17 @@ Instr::Ptr Decoder::decode(uint32_t code, uint64_t uuid) {
   } break;
   case Opcode::EXT1: {
     switch (funct7) {
+#ifdef VX_CFG_FORZA_ISA_ENABLE
+    case FORZA_ISA_FUNCT7: {
+      instr->set_fu_type(FUType::SFU);
+      instr->set_op_type(static_cast<ForzaType>(funct3));
+      instr->set_args(IntrForzaArgs{});
+      instr->set_dest_reg(rd, RegType::Integer);
+      instr->set_src_reg(0, rs1, RegType::Integer);
+      instr->set_src_reg(1, rs2, RegType::Integer);
+      instr->set_wstall(true);
+    } break;
+#endif
     case 0: {
       instr->set_fu_type(FUType::SFU);
       IntrWctlArgs wctlArgs{};

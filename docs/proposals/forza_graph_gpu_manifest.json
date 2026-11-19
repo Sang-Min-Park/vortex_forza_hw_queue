@@ -1,0 +1,126 @@
+{
+  "measurement_date_utc": "2026-10-27T18:57:42.280531+00:00",
+  "scope": "matched same-SimX hardware-actor versus direct global-memory atomic graph scatter; 2 cores x 2 warps x 4 lanes",
+  "cache_groups": {
+    "l1_off": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph-gpu",
+    "l1_on": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-graph-gpu-l1"
+  },
+  "notes": [
+    "Each mode and case uses a fresh host process and device.",
+    "Exact built-artifact hashes, flags and run commands are saved in each gpu-run-manifest.json.",
+    "Phase timestamps and post-readback device cycles have different completion windows."
+  ],
+  "files": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/Makefile",
+      "bytes": 1280,
+      "sha256": "a77d201b06015e515335dac659b06e369bb01a6ec399b68859b54df1e537be9b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/common.h",
+      "bytes": 1720,
+      "sha256": "4c6048e5a9c9860f2b3313adf16b9013daf4c2039b3df49d88fb0f352073fb11"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/main.cpp",
+      "bytes": 15721,
+      "sha256": "1acd8fcbae02c702ffa4df6567cc2025bbb512496066251f8cfb20d6dd76c790"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/kernel.cpp",
+      "bytes": 4810,
+      "sha256": "ac717ce8e5a345968beb316f853401d06faba78737b0f5470ee3ff267b75ac13"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/kernel_gpu.cpp",
+      "bytes": 2854,
+      "sha256": "4799aca170206c148405ee0540e3b45fb84aff06c63fcdaba1e8055eac04197b"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/run_gpu_comparison.py",
+      "bytes": 3801,
+      "sha256": "9d719ae1a99f8b9fe7c4117a5bb042fdccc58699f7e77c52465949738871cd0d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_graph/analyze_gpu.py",
+      "bytes": 12154,
+      "sha256": "fc1de104ccc24a4b5a8c1d4a0f39122bbe3b7d5c860fac1e988f6960ef5278af"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/VX_config.toml",
+      "bytes": 20412,
+      "sha256": "6ba1610d4d8263a85fffa6c075b1528ea2d8770338f98ca8496b12b644c0d4e2"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/lsu_unit.cpp",
+      "bytes": 21413,
+      "sha256": "01ca50a673c7f53b8c15e47ad77d9e3e20f403fbdc21565491c628d2b73c19fb"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/mem/cache.cpp",
+      "bytes": 75543,
+      "sha256": "e3b2c0ae1aebd18e4d7c7fdccdc643f3284526154c9cf11c2dc919d0190fb5c4"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/processor.cpp",
+      "bytes": 17401,
+      "sha256": "d8cc7bf6a0b4b335064c841a23b5c33d3a532f5920acdc51b07ea1a21dd1a528"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_fabric.cpp",
+      "bytes": 1716,
+      "sha256": "e4d9833673fd8e1de8884d2cb729de73d98fb4db55c121b1890b119b4157f579"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_fabric.h",
+      "bytes": 649,
+      "sha256": "fd130c822a6b83e1b7684bd9fa0e27f0500aca8a14469e59faba7b19bba36079"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_types.h",
+      "bytes": 996,
+      "sha256": "1782480fa301078958997e82793d565eaf62f993db93351daaa108c8f1a79dda"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_zone.cpp",
+      "bytes": 14251,
+      "sha256": "4bf88d704f90af7e58b841329d53d76147838627aea0d92b648066eccebdeb42"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_zone.h",
+      "bytes": 2322,
+      "sha256": "b7e94a57481a5fffeccc4261610bb7a24c1959a0208e1f39bb7b0b7efa2f72a9"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/vortex.mk",
+      "bytes": 460,
+      "sha256": "10bdfe4ce8fff5f18692786ee9ec021dc29a5687c183ee4fa6b2f593a78e0c02"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/selector.vortex.h",
+      "bytes": 13055,
+      "sha256": "301a41fd2f45101ccda96114db2fdb8f5131f6439e0e8bcaa89ca182570f3421"
+    },
+    {
+      "path": "/export/nethomes/spark3100/forza-runtime-vortex/inc/forza_message_lib.vortex.h",
+      "bytes": 6430,
+      "sha256": "6007f6747937f1bddc7417e94342250ebb1edeb3bc989e924642496c46405007"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_abi.h",
+      "bytes": 1457,
+      "sha256": "3cdd800b945ba971b6c51a5c310ca903120360a4c41538db48d45a05cb48ff5c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_software_abi.h",
+      "bytes": 497,
+      "sha256": "b9549c35dec27c4659a72f973facb5ad8db957d08eb09df69f2bb78a7d89a28e"
+    }
+  ],
+  "compiler": {
+    "invoked_path": "/export/nethomes/spark3100/tools/llvm-vortex/bin/clang++",
+    "resolved_path": "/export/nethomes/spark3100/tools/llvm-vortex/bin/clang-20",
+    "version": "clang version 20.1.8 (https://github.com/vortexgpgpu/llvm.git 4c836512a60c0b965bb298104e084cd0f07ca962)",
+    "sha256": "a953f76b8aaa0f80dd12b0fff30f455684d64f489f9917e8135072220ba1cf3a"
+  }
+}

@@ -29,10 +29,40 @@ LocalMemSwitch::LocalMemSwitch(
   , RspInLmem(this)
   , ReqOutDC(this)
   , RspInDC(this)
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  , ReqOutForza(this)
+  , RspInForza(this)
+#endif
   , delay_(delay)
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  , rsp_cursor_(0)
+#endif
 {}
 
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+void LocalMemSwitch::on_reset() {
+  rsp_cursor_ = 0;
+}
+#endif
+
 void LocalMemSwitch::on_tick() {
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  std::array<SimChannel<LsuRsp>*, 3> rsp_inputs = {&RspInLmem, &RspInDC, &RspInForza};
+  for (uint32_t i = 0; i < rsp_inputs.size(); ++i) {
+    uint32_t idx = (rsp_cursor_ + i) % rsp_inputs.size();
+    auto& rsp_in = *rsp_inputs.at(idx);
+    if (rsp_in.empty()) {
+      continue;
+    }
+    auto& out_rsp = rsp_in.peek();
+    if (RspOut.try_send(out_rsp, 1)) {
+      DT(4, this->name() << " rsp" << idx << ": " << out_rsp);
+      rsp_in.pop();
+      rsp_cursor_ = (idx + 1) % rsp_inputs.size();
+    }
+    break;
+  }
+#else
   // process outgoing responses
   if (!RspInLmem.empty()) {
     auto& out_rsp = RspInLmem.peek();
@@ -48,65 +78,59 @@ void LocalMemSwitch::on_tick() {
       RspInDC.pop();
     }
   }
+#endif
 
   // process incoming requests
   if (!ReqIn.empty()) {
     auto& in_req = ReqIn.peek();
 
-    LsuReq out_dc_req(in_req.mask.size());
-    out_dc_req.tag   = in_req.tag;
-    out_dc_req.cid   = in_req.cid;
-    out_dc_req.uuid  = in_req.uuid;
-    out_dc_req.wid   = in_req.wid;
-    // Op + per-lane tids carry through. Adapter recovers hart_id via
-    // make_hart_id(cid, wid, tids[i]) at the dcache boundary.
-    out_dc_req.op    = in_req.op;
-    out_dc_req.flags = in_req.flags;
-    out_dc_req.tids  = in_req.tids;
-
-    LsuReq out_lmem_req(in_req.mask.size());
-    out_lmem_req.tag   = in_req.tag;
-    out_lmem_req.cid   = in_req.cid;
-    out_lmem_req.uuid  = in_req.uuid;
-    out_lmem_req.wid   = in_req.wid;
-    // Same fields as the dcache branch: the LMEM banks implement AMOs, so
-    // amo_unsigned decides the MIN/MAX compare style, and the per-lane tids
-    // are what give each lane a distinct hart_id for LR/SC reservations.
-    out_lmem_req.op    = in_req.op;
-    out_lmem_req.flags = in_req.flags;
-    out_lmem_req.tids  = in_req.tids;
+    LsuReq out_dc_req = in_req;
+    out_dc_req.mask.reset();
+    LsuReq out_lmem_req = in_req;
+    out_lmem_req.mask.reset();
+  #ifdef VX_CFG_EXT_FORZA_ENABLE
+    LsuReq out_forza_req = in_req;
+    out_forza_req.mask.reset();
+  #endif
 
     for (uint32_t i = 0; i < in_req.mask.size(); ++i) {
-      if (in_req.mask.test(i)) {
-        auto type = get_addr_type(in_req.addrs.at(i));
-        // An AMO whose address is Shared is executed by the LMEM bank here.
-        // The RTL has no such path -- VX_lmem_switch strips the AMO bits and
-        // asserts -- so the two models diverge on this op until the hardware
-        // path lands, and a Shared AMO cannot be run on FPGA.
-        if (type == AddrType::Shared) {
-          out_lmem_req.mask.set(i);
-          out_lmem_req.addrs.at(i)  = in_req.addrs.at(i);
-          out_lmem_req.data.at(i)   = in_req.data.at(i);
-          out_lmem_req.byteen.at(i) = in_req.byteen.at(i);
-        } else {
-          out_dc_req.mask.set(i);
-          out_dc_req.addrs.at(i)  = in_req.addrs.at(i);
-          out_dc_req.data.at(i)   = in_req.data.at(i);
-          out_dc_req.byteen.at(i) = in_req.byteen.at(i);
-        }
+      if (!in_req.mask.test(i)) {
+        continue;
       }
+      auto type = get_addr_type(in_req.addrs.at(i));
+      auto* out_req = &out_dc_req;
+      if (type == AddrType::Shared) {
+        out_req = &out_lmem_req;
+      }
+    #ifdef VX_CFG_EXT_FORZA_ENABLE
+      if (type == AddrType::Forza) {
+        out_req = &out_forza_req;
+      }
+    #endif
+      out_req->mask.set(i);
     }
 
     bool send_to_dc = !out_dc_req.mask.none();
     bool send_to_lmem = !out_lmem_req.mask.none();
+  #ifdef VX_CFG_EXT_FORZA_ENABLE
+    bool send_to_forza = !out_forza_req.mask.none();
+  #endif
 
     // check DC backpressure
-    if (send_to_dc && ReqOutDC.full())
-      return; // stall
+    if (send_to_dc && ReqOutDC.full()) {
+      return;
+    }
 
     // check LMem backpressure
-    if (send_to_lmem && ReqOutLmem.full())
-      return; // stall
+    if (send_to_lmem && ReqOutLmem.full()) {
+      return;
+    }
+
+  #ifdef VX_CFG_EXT_FORZA_ENABLE
+    if (send_to_forza && ReqOutForza.full()) {
+      return;
+    }
+  #endif
 
     if (send_to_dc) {
       ReqOutDC.send(out_dc_req, delay_);
@@ -117,11 +141,21 @@ void LocalMemSwitch::on_tick() {
       ReqOutLmem.send(out_lmem_req, delay_);
       DT(4, this->name() << " lmem-req: " << out_lmem_req);
     }
+  #ifdef VX_CFG_EXT_FORZA_ENABLE
+    if (send_to_forza) {
+      ReqOutForza.send(out_forza_req, delay_);
+      DT(4, this->name() << " forza-req: " << out_forza_req);
+    }
+  #endif
     ReqIn.pop();
   }
 
-  // sleep when nothing is queued or in flight toward us (no cross-tick state).
-  if (ReqIn.size() == 0 && RspInLmem.size() == 0 && RspInDC.size() == 0) {
+  // Sleep only when no queued or in-flight inputs can need a retry.
+  bool idle = (ReqIn.size() == 0 && RspInLmem.size() == 0 && RspInDC.size() == 0);
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  idle = idle && (RspInForza.size() == 0);
+#endif
+  if (idle) {
     this->tick_sleep();
   }
 }

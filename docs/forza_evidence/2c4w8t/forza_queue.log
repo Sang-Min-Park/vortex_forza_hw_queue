@@ -1,0 +1,2 @@
+FORZA queues: 2 cores, 4 warps, 8 lanes, 8 rounds, 64 actors
+PASSED: 2560 messages; two-slot FIFO, shared mailbox pressure, seven-word payloads, explicit release, mixed memory loads, ACK counts zero

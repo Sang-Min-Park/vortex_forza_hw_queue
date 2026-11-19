@@ -1,0 +1,227 @@
+{
+  "completed_utc": "2026-10-28T02:45:01.188755+00:00",
+  "scope": "Actual RV64 scalar/vector MMIO guest, explicit active-message PGAS GET/UPDATE/reply using real core-local SRAM",
+  "geometry": {
+    "cores": 2,
+    "warps_per_core": 2,
+    "lanes_per_warp": 4,
+    "actors": 16,
+    "ring_messages_per_actor": 64,
+    "additional_request_reply_messages_sent_per_actor": 8,
+    "private_state_words_per_actor": 4
+  },
+  "guest_identical_scalar_vector": true,
+  "forza_message_csr_opcode_decode": "No FORZA message CSR opcodes in either complete compiled guest; standard identity/startup/barrier CSRs remain",
+  "runs": [
+    {
+      "build": "build64-forza-pgas",
+      "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/tests/regression/forza_mmio/smoke-mmio-actor-address.log",
+      "guest_sha256": "d78aeed13c702b1f522e18ceb1e788030c7a5992f61708b9c95f0842616a2088",
+      "forza_message_csr_instructions": [],
+      "decoded_standard_csr_addresses": [
+        "0x2f2",
+        "0x340",
+        "0x726",
+        "0x735",
+        "0x746",
+        "0x747",
+        "0xcc0",
+        "0xcc1",
+        "0xcc2",
+        "0xcc4",
+        "0xcd0",
+        "0xcd2",
+        "0xcdf",
+        "0xce1",
+        "0xf14",
+        "0xfc0",
+        "0xfc2"
+      ],
+      "static_amoswap_count": 7,
+      "passed": true,
+      "result": "PASSED: mmio transport, 16 actors, 64 ring messages/actor, full64 including zero/high bits, PGAS remote GET/UPDATE/reply on real core-local SRAM, errors0, send_retries=1311"
+    },
+    {
+      "build": "build64-forza-pgas-vector",
+      "log": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/tests/regression/forza_mmio/smoke-mmio-vector.log",
+      "guest_sha256": "d78aeed13c702b1f522e18ceb1e788030c7a5992f61708b9c95f0842616a2088",
+      "forza_message_csr_instructions": [],
+      "decoded_standard_csr_addresses": [
+        "0x2f2",
+        "0x340",
+        "0x726",
+        "0x735",
+        "0x746",
+        "0x747",
+        "0xcc0",
+        "0xcc1",
+        "0xcc2",
+        "0xcc4",
+        "0xcd0",
+        "0xcd2",
+        "0xcdf",
+        "0xce1",
+        "0xf14",
+        "0xfc0",
+        "0xfc2"
+      ],
+      "static_amoswap_count": 7,
+      "passed": true,
+      "result": "PASSED: mmio transport, 16 actors, 64 ring messages/actor, full64 including zero/high bits, PGAS remote GET/UPDATE/reply on real core-local SRAM, errors0, send_retries=1320"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/tests/regression/forza_mmio/smoke-mmio-actor-address.log",
+      "bytes": 173,
+      "sha256": "41e5b8f626fdb44bba186e625694f9d0e4231ce6d02235290c01969abaeda555"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/tests/regression/forza_mmio/kernel-mmio.vxbin",
+      "bytes": 7344,
+      "sha256": "d78aeed13c702b1f522e18ceb1e788030c7a5992f61708b9c95f0842616a2088"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/tests/regression/forza_mmio/kernel.elf",
+      "bytes": 8920,
+      "sha256": "942355e2ded6b7df20f8f02075443333d7f37c726885dac412c4b0fdef64f9ba"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/tests/regression/forza_mmio/kernel.dump",
+      "bytes": 44999,
+      "sha256": "1fd16d81bea72115c7740b83f82fbf420238e91b1774f9615751f0ec159d6083"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/tests/regression/forza_mmio/forza_mmio_smoke_mmio",
+      "bytes": 26848,
+      "sha256": "604eee3a12031f90b1c17254e0590561f0475dfb0c2e2724e7a7ba3385d1650c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/sw/runtime/libsimx.so",
+      "bytes": 2095024,
+      "sha256": "864eec832e79e434ba201d10961ac9d0e6b34830864b2bb5bdf0205383a17a42"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/sw/runtime/libvortex-simx.so",
+      "bytes": 111856,
+      "sha256": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas/sw/runtime/libvortex.so",
+      "bytes": 309800,
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/tests/regression/forza_mmio/smoke-mmio-vector.log",
+      "bytes": 173,
+      "sha256": "50370330ed913a6f1cc2803080cdd87c67d0a7231ae176f07957e9e02dcc7c5a"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/tests/regression/forza_mmio/kernel-mmio.vxbin",
+      "bytes": 7344,
+      "sha256": "d78aeed13c702b1f522e18ceb1e788030c7a5992f61708b9c95f0842616a2088"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/tests/regression/forza_mmio/kernel.elf",
+      "bytes": 8920,
+      "sha256": "942355e2ded6b7df20f8f02075443333d7f37c726885dac412c4b0fdef64f9ba"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/tests/regression/forza_mmio/kernel.dump",
+      "bytes": 44999,
+      "sha256": "1fd16d81bea72115c7740b83f82fbf420238e91b1774f9615751f0ec159d6083"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/tests/regression/forza_mmio/forza_mmio_smoke_mmio",
+      "bytes": 26848,
+      "sha256": "604eee3a12031f90b1c17254e0590561f0475dfb0c2e2724e7a7ba3385d1650c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/sw/runtime/libsimx.so",
+      "bytes": 2095024,
+      "sha256": "f433bbe9f6e15c423f325d5376b8eb083f98f2b688aeb431767ee6a35c4b76b9"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/sw/runtime/libvortex-simx.so",
+      "bytes": 111856,
+      "sha256": "d167992e9b8f2c1acb2415f6177f7d273bdce30bc2093de8cac3f63274f0c0ab"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/build64-forza-pgas-vector/sw/runtime/libvortex.so",
+      "bytes": 309800,
+      "sha256": "95f048ca56b1466832c124c2dc58c7f3a44290c84b475a44bc2063d6fc37dd1c"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/VX_config.toml",
+      "bytes": 20625,
+      "sha256": "aeece11cd5096e30d104487cae84104e45c41b4c4a8310acd02266449e8de1c7"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/types.h",
+      "bytes": 51561,
+      "sha256": "9a54d8c73f2efd01328f63aa8ac52d869642e26a082d340aaec61efb2caade61"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_zone.cpp",
+      "bytes": 24037,
+      "sha256": "da2c08a7ec1b841ca4fb2758d3b3f83f3d40d63f61b4506c9480080662f52c85"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_zone.h",
+      "bytes": 2534,
+      "sha256": "d035d9b1b9c6274da207b66c873a298b9d97e3c46608419835f4348c5c52c9f8"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_fabric.cpp",
+      "bytes": 1716,
+      "sha256": "e4d9833673fd8e1de8884d2cb729de73d98fb4db55c121b1890b119b4157f579"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/forza/forza_fabric.h",
+      "bytes": 649,
+      "sha256": "fd130c822a6b83e1b7684bd9fa0e27f0500aca8a14469e59faba7b19bba36079"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sim/simx/mem/local_mem_switch.cpp",
+      "bytes": 4342,
+      "sha256": "17c23bc6094947d6e5786e2edcfb25599f8796e2ef435cfbe7b3d19dbfcaa2ab"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/sw/common/forza_mmio_abi.h",
+      "bytes": 1912,
+      "sha256": "492fcdc7cb9dac592346767a52d28e942c17dd508d36a76bebfdf33bef622675"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_mmio/common.h",
+      "bytes": 923,
+      "sha256": "e2d4b087294d1b727a7fd6560979a42c0028ab51e9fef1399465a088b6dc5d8d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_mmio/kernel.cpp",
+      "bytes": 5147,
+      "sha256": "84236f482280d1507e0b577048db9746599641c5ff62c4fa69ed1a55318386ea"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_mmio/main.cpp",
+      "bytes": 4482,
+      "sha256": "084e419287b37704ab3451ed8bd4c2bb2104807a6174bc123d82c0d52dbce540"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_mmio/Makefile",
+      "bytes": 769,
+      "sha256": "e6120c0361c6b81024036172479f1e9120c201b93bb658da529f11fb9497f72d"
+    },
+    {
+      "path": "/export/nethomes/spark3100/vortex-forza-hwqueue/tests/regression/forza_pgas_explore/transport.h",
+      "bytes": 3346,
+      "sha256": "e167ac39b8ff30a929a0d9d587a4dcb81ccbebc2fc7b349dc05d12b834d3d386"
+    }
+  ],
+  "limitations": [
+    "SimX-only; no RTL or measured physical GPU result",
+    "8B payload; underlying frame/slot remains64B",
+    "Logical owner+offset naming and explicit remote requests, not transparent remote loads/stores",
+    "No generic HClib finish/termination port; exact-count bounded test phases",
+    "No RZA/ECC/fault recovery proof"
+  ]
+}

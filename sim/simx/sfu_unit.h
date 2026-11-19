@@ -18,6 +18,9 @@
 #include "func_unit.h"
 #include "wctl_unit.h"
 #include "csr_unit.h"
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+#include "forza/forza_types.h"
+#endif
 #include "rtu/rtu_window.h"   // RtuWindow — the RTU hit-window slot file
 #ifdef VX_CFG_EXT_DXA_ENABLE
 #include "dxa/dxa_unit.h"
@@ -57,6 +60,11 @@ public:
 	SfuUnit(const SimContext& ctx, const char* name, Core*);
 
 	CsrUnit& csr_unit() { return *csr_unit_; }
+
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+	SimChannel<ForzaCsrRequest> forza_req_out;
+	SimChannel<ForzaCsrRequest> forza_rsp_in;
+#endif
 
 #ifdef VX_CFG_EXT_DXA_ENABLE
 	// Outbound DXA request channel — bound by Cluster to

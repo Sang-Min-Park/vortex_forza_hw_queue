@@ -34,6 +34,9 @@ class SfuUnit;
 class LocalMem;
 class LocalMemSwitch;
 class MemCoalescer;
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+class ForzaZone;
+#endif
 
 class Core : public SimObject<Core> {
 public:
@@ -126,6 +129,10 @@ public:
   }
 
   const std::shared_ptr<LocalMem>& local_mem() const;
+
+#ifdef VX_CFG_EXT_FORZA_ENABLE
+  const std::shared_ptr<ForzaZone>& forza_zone() const;
+#endif
 
   const std::shared_ptr<MemCoalescer>& mem_coalescer(uint32_t idx) const;
 

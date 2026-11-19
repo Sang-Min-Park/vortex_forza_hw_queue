@@ -1,0 +1,10 @@
+{
+  "diagnostics/run-experiment.sh": "2a8f08e3b25b316e2b7d89663036383754eb7aab45b54303a32b92966cf9271f",
+  "diagnostics/configs.txt": "060ecbbb70928458cb92a78297d8d0e7ffcf0c760ccc26e2dcf47328864f3aa5",
+  "diagnostics/effective-config.txt": "f935588c31203954461c71fac621c5c14e1a48efe5437c9cd52c45116e5159e2",
+  "tests/regression/forza_queue/kernel.vxbin": "3df3800dc2ef6b57a0de595ba8e5060cfb99c4e197c18f7293a4ee769f8f59f9",
+  "tests/regression/forza_runtime/kernel.vxbin": "cb035cdd693cca68ab9d74904a4af9be6ad507aded7efa1d71ab77223be82d18",
+  "sw/runtime/libvortex-simx.so": "5096bc768899b1c98884f9c941383fbd2d8f1c32cf85e9516d9f1fde0893e3c4",
+  "diagnostics/forza_queue.log": "dce06d6a698949711081ae1476673f8952973ba49005dea00d4db68770a4438d",
+  "diagnostics/forza_runtime.log": "0f4d3d24b3381add3c70a555750ddf7a5769172feb908c90fec98805a88412c7"
+}

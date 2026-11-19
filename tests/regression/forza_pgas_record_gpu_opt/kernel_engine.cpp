@@ -1,0 +1,14 @@
+#include "device.h"
+#include <forza_record_abi.h>
+#include <forza_mmio_abi.h>
+__kernel void kernel_main(args_t* __UNIFORM__ a){
+ uint32_t rank=rank_of(a),local=vx_warp_id()*a->threads+vx_thread_id(),workers=a->cores*a->per_core,core=vx_core_id(),cursor=rank;auto input=reinterpret_cast<const request_t*>(a->input);auto state=reinterpret_cast<record_t*>(a->state);auto responses=reinterpret_cast<volatile response_t*>(a->responses);auto out=reinterpret_cast<result_t*>(a->results)+rank;auto scratch=reinterpret_cast<uint64_t*>(__local_mem());out->rank=rank;
+ uint64_t reg=forza_mmio_actor_address(local,FORZA_MMIO_REGISTER);if(swap64(reinterpret_cast<uint64_t*>(reg),(uint64_t(local)<<8)|2)!=0)out->error=1;
+ for(uint32_t i=local;i<(a->keys>>a->core_shift)*3;i+=a->per_core)swap64(scratch+i,0);barrier(1);uint64_t start=vx_rdcycle(),sent=0,received=0,retries=0,credits=0;bool complete=false;uint64_t expected=(a->requests+workers-1-rank)/workers;
+ uint64_t peek=forza_mmio_actor_address(local,forza_record_peek_address(1)),release=forza_mmio_actor_address(local,forza_record_release_address(1)),count_address=forza_mmio_actor_address(local,FORZA_MMIO_TX_COUNTS);
+ for(uint32_t iteration=0;iteration<a->limit;++iteration){if(cursor<a->requests){request_t r=load_request(input,cursor);uint32_t owner=r.key&(a->cores-1),offset=r.key>>a->core_shift;uint64_t address=FORZA_RECORD_BASE+uint64_t(owner)*FORZA_RECORD_ZONE_STRIDE+uint64_t(offset)*8;uint64_t status=swap64(reinterpret_cast<uint64_t*>(address),forza_record_pack(r.id,r.delta));if(status==0){cursor+=workers;++sent;}else if(status==1)++retries;else out->error=2;}
+  uint64_t pointer=*reinterpret_cast<volatile const uint64_t*>(peek);if(pointer){auto p=reinterpret_cast<volatile const uint64_t*>(pointer);uint64_t control=p[0],id=p[1],count=p[2],sum=p[3],value=p[4];uint64_t token=control^id^count^sum^value;if(swap64(reinterpret_cast<uint64_t*>(release),token)!=0)out->error=3;if(id>=a->requests||id%workers!=rank)out->error=4;else{respond(responses,id,count,sum,value);++received;}}
+  bool done=false;if(cursor>=a->requests&&received==expected){credits=*reinterpret_cast<volatile const uint64_t*>(count_address)&255;done=credits==0;}uint32_t __UNIFORM__ all_done=vx_vote_all(done);if(all_done){complete=true;break;}
+ }
+ if(!complete)out->error=5;barrier(2);uint64_t finish=vx_rdcycle();for(uint32_t offset=local;offset<(a->keys>>a->core_shift);offset+=a->per_core){uint32_t key=(offset<<a->core_shift)+core;state[key].count=scratch[offset*3];state[key].sum=scratch[offset*3+1];state[key].xor_value=scratch[offset*3+2];}barrier(3);out->processed=sent;out->sent=sent;out->received=received;out->retries=retries;out->outstanding=credits;out->start=start;out->initialized=start;out->processed_cycle=finish;out->end=vx_rdcycle();out->complete=RECORD_COMPLETE;
+}
