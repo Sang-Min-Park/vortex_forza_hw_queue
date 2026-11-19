@@ -12,6 +12,7 @@ and requires RV64. It has not been integrated and validated in Vortex RTL.
 - [Queue design and original FORZA differences](docs/proposals/forza_runtime_contract.md)
 - [Recorded CSR scalability/lifetime results](docs/proposals/forza_csr_generalization_results.json)
 - [Archived CSR evidence](docs/forza_evidence/manifest.json)
+- [SimX bit-manipulation subset and RV32/RV64 tests](tests/unittest/bitmanip/README.md)
 
 Recorded raw queue checks passed at 16, 32 and 64 physical actors. The Selector
 runtime passed at 16/32 actors and timed out in the tested 64-actor cases.

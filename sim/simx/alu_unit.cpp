@@ -43,7 +43,28 @@ uint32_t AluUnit::latency_of(const instr_trace_t* trace) const {
 		case AluType::SLTU:
 		case AluType::XOR:
 		case AluType::AND:
+    case AluType::ANDN:
 		case AluType::OR:
+		case AluType::ORN:
+    case AluType::BCLR:
+    case AluType::BEXT:
+    case AluType::BINV:
+    case AluType::BSET:
+    case AluType::CLZ:
+    case AluType::CPOP:
+    case AluType::CTZ:
+    case AluType::MAX:
+    case AluType::MAXU:
+    case AluType::MIN:
+    case AluType::MINU:
+    case AluType::ORCB:
+    case AluType::REV8:
+    case AluType::ROL:
+    case AluType::ROR:
+    case AluType::SH1ADD:
+    case AluType::SH2ADD:
+    case AluType::SH3ADD:
+    case AluType::XNOR:
 		case AluType::CZERO:
     case AluType::DOT8:
 			return 2;
@@ -220,10 +241,109 @@ void AluUnit::execute(instr_trace_t* trace) {
 				}
 			}
 		} break;
+    case AluType::BCLR:
+    case AluType::BEXT:
+    case AluType::BINV:
+    case AluType::BSET:
+    case AluType::CLZ:
+    case AluType::CPOP:
+    case AluType::CTZ:
+    case AluType::MAX:
+    case AluType::MAXU:
+    case AluType::MIN:
+    case AluType::MINU:
+    case AluType::ORCB:
+    case AluType::REV8:
+    case AluType::ROL:
+    case AluType::ROR:
+    case AluType::SH1ADD:
+    case AluType::SH2ADD:
+    case AluType::SH3ADD:
+    case AluType::XNOR:
+    {
+      for (uint32_t t = thread_start; t < num_threads; ++t) {
+        if (!tmask.test(t)) {
+          continue;
+        }
+        Word a = rs1_data[t].u;
+        Word b = aluArgs.is_imm ? Word(aluArgs.imm) : rs2_data[t].u;
+        uint32_t shift = b & (VX_CFG_XLEN - 1);
+        Word result = 0;
+        switch (alu_type) {
+        case AluType::BCLR: result = a & ~(Word(1) << shift); break;
+        case AluType::BEXT: result = (a >> shift) & 1; break;
+        case AluType::BINV: result = a ^ (Word(1) << shift); break;
+        case AluType::BSET: result = a | (Word(1) << shift); break;
+        case AluType::CLZ:
+        case AluType::CTZ:
+        case AluType::CPOP:
+#ifdef VX_CFG_XLEN_64
+          if (alu_type == AluType::CLZ) {
+            result = a ? __builtin_clzll(a) : VX_CFG_XLEN;
+          } else if (alu_type == AluType::CTZ) {
+            result = a ? __builtin_ctzll(a) : VX_CFG_XLEN;
+          } else {
+            result = __builtin_popcountll(a);
+          }
+#else
+          if (alu_type == AluType::CLZ) {
+            result = a ? __builtin_clz(a) : VX_CFG_XLEN;
+          } else if (alu_type == AluType::CTZ) {
+            result = a ? __builtin_ctz(a) : VX_CFG_XLEN;
+          } else {
+            result = __builtin_popcount(a);
+          }
+#endif
+          break;
+        case AluType::MAX: result = WordI(a) > WordI(b) ? a : b; break;
+        case AluType::MAXU: result = a > b ? a : b; break;
+        case AluType::MIN: result = WordI(a) < WordI(b) ? a : b; break;
+        case AluType::MINU: result = a < b ? a : b; break;
+        case AluType::ORCB:
+          for (uint32_t byte = 0; byte < VX_CFG_XLEN / 8; ++byte) {
+            if ((a >> (byte * 8)) & 0xff) {
+              result |= Word(0xff) << (byte * 8);
+            }
+          }
+          break;
+        case AluType::REV8:
+          for (uint32_t byte = 0; byte < VX_CFG_XLEN / 8; ++byte) {
+            result = (result << 8) | ((a >> (byte * 8)) & 0xff);
+          }
+          break;
+        case AluType::ROL:
+          result = (a << shift) | (a >> ((VX_CFG_XLEN - shift) & (VX_CFG_XLEN - 1)));
+          break;
+        case AluType::ROR:
+          result = (a >> shift) | (a << ((VX_CFG_XLEN - shift) & (VX_CFG_XLEN - 1)));
+          break;
+        case AluType::SH1ADD: result = (a << 1) + b; break;
+        case AluType::SH2ADD: result = (a << 2) + b; break;
+        case AluType::SH3ADD: result = (a << 3) + b; break;
+        case AluType::XNOR: result = ~(a ^ b); break;
+        default: std::abort();
+        }
+        rd_data[t].u = result;
+      }
+    } break;
+    case AluType::ANDN: {
+      for (uint32_t t = thread_start; t < num_threads; ++t) {
+        if (!tmask.test(t)) {
+          continue;
+        }
+        rd_data[t].u = rs1_data[t].u & ~rs2_data[t].u;
+      }
+    } break;
 		case AluType::AND: {
 			for (uint32_t t = thread_start; t < num_threads; ++t) {
 				if (!tmask.test(t)) continue;
 				rd_data[t].i = rs1_data[t].i & (aluArgs.is_imm ? imm : rs2_data[t].i);
+			}
+		} break;
+		case AluType::ORN: {
+			for (uint32_t t = thread_start; t < num_threads; ++t) {
+				if (!tmask.test(t)) continue;
+				rd_data[t].i = rs1_data[t].i | ~rs2_data[t].i;
 			}
 		} break;
 		case AluType::OR: {

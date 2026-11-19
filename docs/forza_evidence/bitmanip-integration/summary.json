@@ -1,0 +1,37 @@
+{
+  "scope": "SimX functional support for 26 RV32/RV64 bit-manipulation mnemonics; not full Zba/Zbb/Zbs and not RTL",
+  "date": "2026-11-19",
+  "origin": "Uncommitted implementation recovered from vortex-forza-step12 at base 1ab680880",
+  "widths": {
+    "32": {
+      "positive_programs": 26,
+      "negative_programs": 26,
+      "positive_vectors": 4450,
+      "all_expected_results_matched": true,
+      "simulator_sha256": "ea800680395b5edab941593f8d09c17b4b1b57453bc280dd86a479d905d0b9b4"
+    },
+    "64": {
+      "positive_programs": 26,
+      "negative_programs": 26,
+      "positive_vectors": 5226,
+      "all_expected_results_matched": true,
+      "simulator_sha256": "c63d5992952155df2b8e0418e5f1880dd75a6dcba6796ce516908060e8505cc1"
+    }
+  },
+  "csr_coexistence": {
+    "cores": 2,
+    "warps_per_core": 2,
+    "threads_per_warp": 4,
+    "queue_messages": 768,
+    "runtime_handlers": 384,
+    "physical_reuse_messages": 128,
+    "status": "PASS"
+  },
+  "source_sha256": {
+    "sim/simx/alu_unit.cpp": "2b93360c63e4ea1cc28f5061dc131be777c8408fccb9e60900af1a222f452190",
+    "sim/simx/decode.cpp": "37e075b285cefb4558572005454c362cb41acd69beed5c9cbf5adbcd6af7fc88",
+    "sim/simx/types.h": "122e0049fc6e550d2e7fc25ee53c3f412dcc004b88b65e496cef34ae3cd1651f",
+    "tests/unittest/bitmanip/run.py": "2eb75b6499f12a073715e77029f611bfcbe4d6befad542889f06b6e277afab46",
+    "tests/unittest/bitmanip/link.ld": "37857b535cfbed5141bd8ded11bf9c25738cc6487afdbbc887bd68384f0dc003"
+  }
+}

@@ -129,5 +129,13 @@ preserved, but the default configuration keeps those optional paths disabled.
 
 Hardware thread migration, RZA operations, `spawn`, `quit` and the original
 FORZA instruction encodings are outside the validated CSR queue contract.
+The separate SimX bit-manipulation work is included as a 26-mnemonic subset of
+Zba/Zbb/Zbs, with portable RV32/RV64 positive and negative regressions. See
+[the bit-manipulation test guide](../tests/unittest/bitmanip/README.md); this is
+distinct from FORZA's custom instruction encodings and does not add RTL support.
+The RV32/RV64 integration check passed 9,676 positive reference vectors across
+52 programs and detected all 52 negative programs, while retaining the CSR
+baseline results. [Bit-manipulation evidence](forza_evidence/bitmanip-integration/summary.json)
+is included.
 The upstream Vortex history and licenses are retained. The handoff baseline
 also contains an earlier local DOT8 snapshot at commit `1ab680880`.

@@ -265,8 +265,29 @@ enum class AluType {
   SLT,
   SLTU,
   AND,
+  ANDN,
   OR,
+  ORN,
   XOR,
+  BCLR,
+  BEXT,
+  BINV,
+  BSET,
+  CLZ,
+  CPOP,
+  CTZ,
+  MAX,
+  MAXU,
+  MIN,
+  MINU,
+  ORCB,
+  REV8,
+  ROL,
+  ROR,
+  SH1ADD,
+  SH2ADD,
+  SH3ADD,
+  XNOR,
   CZERO,
   DOT8
 };
@@ -289,8 +310,29 @@ inline std::ostream &operator<<(std::ostream &os, const AluType& type) {
   case AluType::SLT:     os << "SLT"; break;
   case AluType::SLTU:    os << "SLTU"; break;
   case AluType::AND:     os << "AND"; break;
+  case AluType::ANDN:    os << "ANDN"; break;
   case AluType::OR:      os << "OR"; break;
+  case AluType::ORN:     os << "ORN"; break;
   case AluType::XOR:     os << "XOR"; break;
+  case AluType::BCLR: os << "BCLR"; break;
+  case AluType::BEXT: os << "BEXT"; break;
+  case AluType::BINV: os << "BINV"; break;
+  case AluType::BSET: os << "BSET"; break;
+  case AluType::CLZ: os << "CLZ"; break;
+  case AluType::CPOP: os << "CPOP"; break;
+  case AluType::CTZ: os << "CTZ"; break;
+  case AluType::MAX: os << "MAX"; break;
+  case AluType::MAXU: os << "MAXU"; break;
+  case AluType::MIN: os << "MIN"; break;
+  case AluType::MINU: os << "MINU"; break;
+  case AluType::ORCB: os << "ORCB"; break;
+  case AluType::REV8: os << "REV8"; break;
+  case AluType::ROL: os << "ROL"; break;
+  case AluType::ROR: os << "ROR"; break;
+  case AluType::SH1ADD: os << "SH1ADD"; break;
+  case AluType::SH2ADD: os << "SH2ADD"; break;
+  case AluType::SH3ADD: os << "SH3ADD"; break;
+  case AluType::XNOR: os << "XNOR"; break;
   case AluType::CZERO:   os << "CZERO"; break;
   case AluType::DOT8:    os << "DOT8"; break;
   default:

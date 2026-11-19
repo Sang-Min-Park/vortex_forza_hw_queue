@@ -95,6 +95,7 @@ static op_string_t op_string(const Instr &instr) {
           return {"SLTU", ""};
         }
       }
+      case AluType::ANDN: return {"ANDN", ""};
       case AluType::AND: {
         if (aluArgs.is_imm) {
           return {"ANDI", to_hex_str(aluArgs.imm)};
@@ -102,6 +103,7 @@ static op_string_t op_string(const Instr &instr) {
           return {"AND", ""};
         }
       }
+      case AluType::ORN: return {"ORN", ""};
       case AluType::OR: {
         if (aluArgs.is_imm) {
           return {"ORI", to_hex_str(aluArgs.imm)};
@@ -116,6 +118,25 @@ static op_string_t op_string(const Instr &instr) {
           return {"XOR", ""};
         }
       }
+      case AluType::BCLR: return {aluArgs.is_imm ? "BCLRI" : "BCLR", aluArgs.is_imm ? to_hex_str(aluArgs.imm) : ""};
+      case AluType::BEXT: return {aluArgs.is_imm ? "BEXTI" : "BEXT", aluArgs.is_imm ? to_hex_str(aluArgs.imm) : ""};
+      case AluType::BINV: return {aluArgs.is_imm ? "BINVI" : "BINV", aluArgs.is_imm ? to_hex_str(aluArgs.imm) : ""};
+      case AluType::BSET: return {aluArgs.is_imm ? "BSETI" : "BSET", aluArgs.is_imm ? to_hex_str(aluArgs.imm) : ""};
+      case AluType::CLZ: return {"CLZ", ""};
+      case AluType::CPOP: return {"CPOP", ""};
+      case AluType::CTZ: return {"CTZ", ""};
+      case AluType::MAX: return {"MAX", ""};
+      case AluType::MAXU: return {"MAXU", ""};
+      case AluType::MIN: return {"MIN", ""};
+      case AluType::MINU: return {"MINU", ""};
+      case AluType::ORCB: return {"ORC.B", ""};
+      case AluType::REV8: return {"REV8", ""};
+      case AluType::ROL: return {"ROL", ""};
+      case AluType::ROR: return {aluArgs.is_imm ? "RORI" : "ROR", aluArgs.is_imm ? to_hex_str(aluArgs.imm) : ""};
+      case AluType::SH1ADD: return {"SH1ADD", ""};
+      case AluType::SH2ADD: return {"SH2ADD", ""};
+      case AluType::SH3ADD: return {"SH3ADD", ""};
+      case AluType::XNOR: return {"XNOR", ""};
       case AluType::CZERO: return {aluArgs.imm ? "CZERO.NEZ":"CZERO.EQZ", ""};
       case AluType::DOT8: return {"DOT8", ""};
       default:
@@ -494,7 +515,6 @@ Instr::Ptr Decoder::decode(uint32_t code, uint64_t uuid) {
   auto funct5 = (code >> shift_funct5) & mask_funct5;
   auto funct6 = (code >> shift_funct6) & mask_funct6;
   auto funct7 = (code >> shift_funct7) & mask_funct7;
-  __unused(funct6);
 
   auto rd  = (code >> shift_rd)  & mask_reg;
   auto rs1 = (code >> shift_rs1) & mask_reg;
@@ -519,7 +539,82 @@ Instr::Ptr Decoder::decode(uint32_t code, uint64_t uuid) {
   case Opcode::I: {
     bool is_w = (op == Opcode::R_W) || (op == Opcode::I_W);
     bool is_imm = (op == Opcode::I) || (op == Opcode::I_W);
-    if (op == Opcode::R && funct7 == 0x7) {
+    bool bitmanip = false;
+    bool unary = false;
+    AluType bit_op = AluType::ANDN;
+    uint32_t bit_imm = rs2;
+#ifdef VX_CFG_XLEN_64
+    bit_imm |= (funct7 & 1) << 5;
+#endif
+    if (op == Opcode::R) {
+      if (funct7 == 0x20) {
+        switch (funct3) {
+        case 4: bit_op = AluType::XNOR; bitmanip = true; break;
+        case 6: bit_op = AluType::ORN; bitmanip = true; break;
+        case 7: bit_op = AluType::ANDN; bitmanip = true; break;
+        }
+      } else if (funct7 == 0x05 && funct3 >= 4) {
+        switch (funct3) {
+        case 4: bit_op = AluType::MIN; break;
+        case 5: bit_op = AluType::MINU; break;
+        case 6: bit_op = AluType::MAX; break;
+        case 7: bit_op = AluType::MAXU; break;
+        }
+        bitmanip = true;
+      } else if (funct7 == 0x10) {
+        switch (funct3) {
+        case 2: bit_op = AluType::SH1ADD; bitmanip = true; break;
+        case 4: bit_op = AluType::SH2ADD; bitmanip = true; break;
+        case 6: bit_op = AluType::SH3ADD; bitmanip = true; break;
+        }
+      } else if (funct7 == 0x30 && (funct3 == 1 || funct3 == 5)) {
+        bit_op = funct3 == 1 ? AluType::ROL : AluType::ROR;
+        bitmanip = true;
+      } else if (funct7 == 0x24 && (funct3 == 1 || funct3 == 5)) {
+        bit_op = funct3 == 1 ? AluType::BCLR : AluType::BEXT;
+        bitmanip = true;
+      } else if (funct3 == 1 && (funct7 == 0x14 || funct7 == 0x34)) {
+        bit_op = funct7 == 0x14 ? AluType::BSET : AluType::BINV;
+        bitmanip = true;
+      }
+    } else if (op == Opcode::I) {
+      auto imm12 = code >> shift_rs2;
+      if (funct3 == 1 && imm12 >= 0x600 && imm12 <= 0x602) {
+        switch (rs2) {
+        case 0: bit_op = AluType::CLZ; break;
+        case 1: bit_op = AluType::CTZ; break;
+        case 2: bit_op = AluType::CPOP; break;
+        }
+        bitmanip = unary = true;
+      } else if (funct3 == 5 && imm12 == 0x287) {
+        bit_op = AluType::ORCB;
+        bitmanip = unary = true;
+      } else if (funct3 == 5 && (imm12 == 0x698 || imm12 == 0x6b8)) {
+        if (imm12 != (VX_CFG_XLEN == 64 ? 0x6b8u : 0x698u)) {
+          std::abort();
+        }
+        bit_op = AluType::REV8;
+        bitmanip = unary = true;
+      } else if ((funct3 == 1 && (funct6 == 0x0a || funct6 == 0x12 || funct6 == 0x1a))
+              || (funct3 == 5 && (funct6 == 0x12 || funct6 == 0x18))) {
+#ifndef VX_CFG_XLEN_64
+        if (funct7 & 1) {
+          std::abort();
+        }
+#endif
+        switch (funct6) {
+        case 0x0a: bit_op = AluType::BSET; break;
+        case 0x12: bit_op = funct3 == 1 ? AluType::BCLR : AluType::BEXT; break;
+        case 0x1a: bit_op = AluType::BINV; break;
+        case 0x18: bit_op = AluType::ROR; break;
+        }
+        bitmanip = true;
+      }
+    }
+    if (bitmanip) {
+      instr->set_op_type(bit_op);
+      instr->set_args(IntrAluArgs{is_imm, 0, unary ? 0u : bit_imm});
+    } else if (op == Opcode::R && funct7 == 0x7) {
       uint32_t imm;
       if (funct3 == 0x5) { // CZERO.EQZ
         imm = 0;
