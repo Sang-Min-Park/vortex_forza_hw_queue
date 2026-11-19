@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-19",
+  "scope": "Bit-manipulation subset integrated with CSR hardware-queue model; RV64 tested with FORZA enabled. SimX only.",
+  "checks": {
+    "rv32": {
+      "programs": 52,
+      "positive_programs": 26,
+      "negative_programs": 26,
+      "positive_vectors": 4450,
+      "status": "PASS",
+      "simulator_sha256": "ea800680395b5edab941593f8d09c17b4b1b57453bc280dd86a479d905d0b9b4"
+    },
+    "rv64-forza-enabled": {
+      "programs": 52,
+      "positive_programs": 26,
+      "negative_programs": 26,
+      "positive_vectors": 5226,
+      "status": "PASS",
+      "simulator_sha256": "625d3ab0e0ff53438925b563294664feaccf8e53cbad211d6ac2172b5eaf6716"
+    },
+    "forza_compiled_into_both_simulators": true,
+    "csr": {
+      "configuration": {
+        "cores": 2,
+        "warps_per_core": 2,
+        "threads_per_warp": 4,
+        "sfu_lanes": 4
+      },
+      "queue_messages": 768,
+      "runtime_handler_invocations": 384,
+      "physical_reuse_messages": 128,
+      "status": "PASS"
+    }
+  },
+  "source_sha256": {
+    "sim/simx/alu_unit.cpp": "2b93360c63e4ea1cc28f5061dc131be777c8408fccb9e60900af1a222f452190",
+    "sim/simx/decode.cpp": "37e075b285cefb4558572005454c362cb41acd69beed5c9cbf5adbcd6af7fc88",
+    "sim/simx/types.h": "122e0049fc6e550d2e7fc25ee53c3f412dcc004b88b65e496cef34ae3cd1651f",
+    "sim/simx/forza/forza_zone.cpp": "b813bc39fda974eb592908cc3019ffdcb791d42146777ff7f1d634a2d905919f",
+    "sim/simx/forza/forza_fabric.cpp": "07dc940fad1de5741efaedfe1c519875e6e9b012b24f561c142208cb8552931c",
+    "ci/run_forza_csr.sh": "ad07f094ac8a31530386fa71fd3e779cf073767d5c16ddffcd5d8f117b1d0e15",
+    "ci/run_bitmanip.sh": "d386c2bd0116b479f172459fdae7fd3beb3b1f4ed96449c50760bd932d91c8f0",
+    "tests/unittest/bitmanip/run.py": "2eb75b6499f12a073715e77029f611bfcbe4d6befad542889f06b6e277afab46"
+  }
+}

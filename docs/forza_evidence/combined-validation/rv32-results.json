@@ -1,0 +1,371 @@
+{
+  "xlen": 32,
+  "simulator": "/export/nethomes/spark3100/vortex-forza-github-handoff/build32-bitmanip/sim/simx/simx",
+  "simulator_sha256": "ea800680395b5edab941593f8d09c17b4b1b57453bc280dd86a479d905d0b9b4",
+  "tests": [
+    {
+      "test": "andn",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "andn_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "bclr",
+      "vectors": 210,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "bclr_negative",
+      "vectors": 210,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "bclri",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "bclri_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "bext",
+      "vectors": 210,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "bext_negative",
+      "vectors": 210,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "bexti",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "bexti_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "binv",
+      "vectors": 210,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "binv_negative",
+      "vectors": 210,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "binvi",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "binvi_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "bset",
+      "vectors": 210,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "bset_negative",
+      "vectors": 210,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "bseti",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "bseti_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "clz",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "clz_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "cpop",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "cpop_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "ctz",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "ctz_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "max",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "max_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "maxu",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "maxu_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "min",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "min_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "minu",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "minu_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "orc_b",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "orc_b_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "orn",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "orn_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "rev8",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "rev8_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "rol",
+      "vectors": 210,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "rol_negative",
+      "vectors": 210,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "ror",
+      "vectors": 210,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "ror_negative",
+      "vectors": 210,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "rori",
+      "vectors": 165,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "rori_negative",
+      "vectors": 165,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "sh1add",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "sh1add_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "sh2add",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "sh2add_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "sh3add",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "sh3add_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "test": "xnor",
+      "vectors": 154,
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "test": "xnor_negative",
+      "vectors": 154,
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    }
+  ]
+}

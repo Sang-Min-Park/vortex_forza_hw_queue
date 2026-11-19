@@ -39,6 +39,16 @@ bash ci/run_bitmanip.sh 32
 bash ci/run_bitmanip.sh 64
 ```
 
+To verify coexistence with the FORZA CSR queues in one configuration:
+
+```bash
+bash ci/run_forza_csr.sh
+```
+
+This builds FORZA-enabled RV64 SimX, runs all 26 positive and 26 negative
+bit-manipulation programs, then checks the CSR queue, Selector runtime and
+drained physical-endpoint reuse.
+
 Each command configures a separate generated build directory, builds standalone
 SimX, and runs positive and negative programs for every listed mnemonic. Results,
 assembly, ELF, disassembly and logs remain in that build directory under

@@ -55,7 +55,9 @@ runtime, but the bundled backend is the default for the FORZA regression Makefil
 Existing dependency builds may be reused through `THIRD_PARTY_DIR` and
 `FORZA_RUNTIME_HOME`. The default smoke script creates a separate generated
 build directory, builds matching artifacts and checks the queue, actor runtime
-and drained physical-endpoint reuse. Logs are under that build's `diagnostics`.
+and drained physical-endpoint reuse. It also runs the 26 bit-manipulation
+mnemonics with positive and negative programs in the same FORZA-enabled RV64
+configuration. Logs are under that build's `diagnostics`.
 
 To test eight lanes without mixing build configurations:
 
@@ -71,6 +73,14 @@ with the bundled runtime using `ci/run_forza_csr.sh`. At 2 cores, 2 warps/core,
 handler calls, and 128 drained self-messages across four full-core CTAs.
 [Validation and logs](forza_evidence/handoff-smoke/validation.json) are included.
 The existing 64-actor runtime and registration limits were not changed.
+
+The combined runner was subsequently checked with bit manipulation enabled in
+the same FORZA RV64 build configuration: all 26 positive and 26 negative
+programs passed, followed by the queue/runtime/reuse checks above. RV32 also
+passed its 52 bit-manipulation programs. The FORZA model was confirmed present
+in both the standalone simulator and runtime library.
+[Combined validation evidence](forza_evidence/combined-validation/summary.json)
+is included.
 
 ## Recorded results and their limits
 

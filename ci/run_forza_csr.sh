@@ -36,6 +36,8 @@ done
 
 export LD_LIBRARY_PATH="$forza_build/sw/runtime:${LD_LIBRARY_PATH:-}"
 export VORTEX_DRIVER=simx
+make -j"$forza_jobs" -C tests/unittest/bitmanip run BITMANIP_TEST_ARGS=--negative \
+  2>&1 | tee "$forza_build/diagnostics/bitmanip.log"
 forza_run() {
   local forza_test=$1
   local forza_log=$2
